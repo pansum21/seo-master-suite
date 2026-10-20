@@ -1,0 +1,3253 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEOPulse Pro Suite — Global Free SEO Audit Studio & Keyword Explorer</title>
+  <meta name="description" content="100% Free All-in-One Global SEO Studio. Deep on-page auditor, Google SERP simulator, LSI keyword explorer, Core Web Vitals, Schema JSON-LD builder, and Gemini AI assistant. Available in English, Español, Deutsch, Français, and हिन्दी.">
+  
+  <!-- Multilingual International SEO Meta Keywords for High-CPC Global Ranking -->
+  <meta name="keywords" content="free seo tool, seo audit online, google serp simulator, screaming frog alternative, keyword difficulty cpc, herramientas seo gratis, auditoria web online, palabras clave lsi, kostenlose seo tools, website analyse kostenlos, outils seo gratuits, audit seo en ligne, फ्री एसईओ टूल, वेबसाइट ऑडिट">
+  
+  <!-- Multilingual Hreflang Tags for Global Search Engines (US, UK, Europe, LATAM, India) -->
+  <link rel="alternate" hreflang="en" href="https://seopulse.pro/en" />
+  <link rel="alternate" hreflang="es" href="https://seopulse.pro/es" />
+  <link rel="alternate" hreflang="de" href="https://seopulse.pro/de" />
+  <link rel="alternate" hreflang="fr" href="https://seopulse.pro/fr" />
+  <link rel="alternate" hreflang="hi" href="https://seopulse.pro/hi" />
+  <link rel="alternate" hreflang="x-default" href="https://seopulse.pro/" />
+
+  <!-- Open Graph Social Protocol for Global Shares -->
+  <meta property="og:title" content="SEOPulse Pro Suite — All-in-One Free SEO Studio">
+  <meta property="og:description" content="16 professional SEO tools with 100% free unlimited audits, Core Web Vitals, and Gemini AI optimization.">
+  <meta property="og:type" content="website">
+
+  <!-- JSON-LD Structured Data Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "SEOPulse Pro Suite",
+    "url": "https://seopulse.pro",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "description": "100% Free All-in-One Global SEO Studio with 16 Professional Tools, Core Web Vitals, and AI Optimizer.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- Google AdSense Ready Tag Placeholder (Uncomment when Google approves your publisher code) -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css?v=2.9.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body>
+
+  <!-- Dynamic Cursor Spotlight Glow -->
+  <div id="cursor-glow" class="cursor-glow"></div>
+
+  <!-- Ambient Cinematic Background Glows -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+  <div class="tech-grid-pattern"></div>
+
+  <!-- ==========================================================================
+       FRONT WINDOW: MODERN GLASSMORPHIC LANDING PAGE
+       ========================================================================== -->
+  <div id="landing-view" class="landing-view">
+    
+    <!-- Top Sticky Landing Navbar -->
+    <header class="landing-navbar">
+      <div class="landing-nav-container">
+        <a href="#home" class="landing-brand-link">
+          <div class="brand-icon-halo">
+            <div class="brand-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="landing-brand-text">
+            <span class="landing-suite-title">SEOPulse Suite PRO</span>
+            <span class="landing-status-badge"><span class="pulse-dot"></span>v6.0 PRO Live</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="landing-nav-links" aria-label="Landing Navigation">
+          <a href="#how-it-works" class="landing-nav-item">How It Works</a>
+          <a href="#tools-showcase" class="landing-nav-item">15 Pro Tools</a>
+          <a href="#feedback-section" class="landing-nav-item">Feedback</a>
+          <a href="#faq-section" class="landing-nav-item">FAQ</a>
+        </nav>
+
+        <!-- Navbar Actions -->
+        <div class="landing-nav-actions">
+          <div class="lang-switcher-dropdown">
+            <button class="lang-switcher-btn" id="landing-lang-btn" type="button">
+              <span class="lang-flag">🌐</span>
+              <span class="lang-text" id="landing-lang-label">English</span>
+              <span class="lang-arrow">▼</span>
+            </button>
+            <div class="lang-dropdown-menu" id="landing-lang-menu">
+              <button class="lang-option-item active" data-lang="en" type="button"><span class="flag">🇺🇸</span> English (US/UK)</button>
+              <button class="lang-option-item" data-lang="hi" type="button"><span class="flag">🇮🇳</span> हिन्दी (Hindi)</button>
+              <button class="lang-option-item" data-lang="es" type="button"><span class="flag">🇪🇸</span> Español (LATAM/EU)</button>
+              <button class="lang-option-item" data-lang="de" type="button"><span class="flag">🇩🇪</span> Deutsch (German)</button>
+              <button class="lang-option-item" data-lang="fr" type="button"><span class="flag">🇫🇷</span> Français (French)</button>
+            </div>
+          </div>
+          <button class="theme-toggle-btn" title="Toggle Dark/Light Mode">☀️</button>
+          <button class="landing-cta-primary-pill launch-studio-action" data-tool="auditor" title="Open 15-Tool Interactive Workspace">
+            <span>Launch Studio</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="landing-hero-section" id="home">
+      <div class="landing-hero-container">
+        
+        <div class="landing-pill-tag">
+          <span class="pill-sparkle">✨</span>
+          <span>100% Free SEO Intelligence • Zero Subscriptions • Real-Time Crawler & Core Web Vitals</span>
+        </div>
+
+        <h1 class="landing-hero-title">
+          The Unified SEO Audit & Search Optimization Studio
+        </h1>
+
+        <p class="landing-hero-sub">
+          <strong>15 interconnected pro-grade engines</strong> running client-first with live server-side crawling. 
+          Deep on-page site health scoring, multi-page sitemap spidering, Google Core Web Vitals (Lighthouse), 
+          SERP simulator, keyword explorer, 12-month link history tracker, and competitor showdown — all free.
+        </p>
+
+        <!-- Call-to-Action Group -->
+        <div class="landing-hero-cta-group">
+          <button class="hero-btn-primary launch-studio-action" data-tool="auditor">
+            <span>🚀</span>
+            <span>Launch Studio (All 15 Tools Free)</span>
+          </button>
+          
+          <button class="hero-btn-glass launch-studio-action" data-tool="sitemap-crawler">
+            <span>🕸️</span>
+            <span>Spider XML Sitemap</span>
+          </button>
+        </div>
+
+        <!-- High-Impact Trust Metrics Strip -->
+        <div class="landing-metrics-strip">
+          <div class="metric-item">
+            <span class="metric-num">15</span>
+            <span class="metric-label">Pro SEO Engines</span>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <span class="metric-num">100%</span>
+            <span class="metric-label">Free Forever</span>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <span class="metric-num">&lt; 300 ms</span>
+            <span class="metric-label">Crawl Latency</span>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <span class="metric-num">0</span>
+            <span class="metric-label">Hidden Paywalls</span>
+          </div>
+        </div>
+
+        <!-- Live Interactive Mini-Scanner Card inside Hero -->
+        <div class="landing-interactive-hero-card">
+          <div class="interactive-card-header">
+            <div class="interactive-tag">
+              <span class="dot-live"></span>
+              <span>LIVE INSTANT AUDIT CRAWLER</span>
+            </div>
+            <div style="font-size:0.8rem;color:var(--text-muted);">Real-time HTML & Header Inspection</div>
+          </div>
+
+          <div class="interactive-card-body">
+            <div class="hero-quick-scanner-bar">
+              <input type="url" id="hero-scanner-input" class="hero-url-input" placeholder="Enter any website URL (e.g. https://example.com or https://yourbrand.com)" value="">
+              <button id="hero-scanner-btn" class="hero-scan-btn">Scan Live ⚡</button>
+            </div>
+
+            <div class="hero-quick-pills">
+              <span class="quick-pill-label">Quick Test Presets:</span>
+              <button class="quick-url-chip highlight hero-quick-chip" data-url="https://github.com">GitHub</button>
+              <button class="quick-url-chip hero-quick-chip" data-url="https://vercel.com">Vercel</button>
+              <button class="quick-url-chip hero-quick-chip" data-url="https://stripe.com">Stripe</button>
+            </div>
+
+            <!-- Instant Mini Result Box -->
+            <div id="hero-scanner-result" style="display:none;margin-top:1.25rem;padding:1rem;background:rgba(255,255,255,0.03);border:1px solid var(--border-glass);border-radius:12px;"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="landing-section" id="how-it-works">
+      <div class="landing-section-container">
+        
+        <div class="section-badge-header">
+          <span class="section-kicker">WORKFLOW ARCHITECTURE</span>
+          <h2 class="section-title">How SEOPulse Works: From Audit to Rank #1</h2>
+          <p class="section-sub">A 4-step automated pipeline designed so beginners and senior growth marketers alike can outrank competitors without paying $100+/mo for legacy SaaS tools.</p>
+        </div>
+
+        <div class="workflow-steps-grid">
+          
+          <div class="workflow-step-card">
+            <div class="step-number-bubble">01</div>
+            <div class="step-icon-wrap">🌐</div>
+            <h3 class="step-card-title">Live Crawl & Scrape</h3>
+            <p class="step-card-desc">
+              Our ultra-fast Cheerio engine inspects full DOM trees, headings hierarchy, image alt text coverage, response headers, and canonical tags in under 350ms.
+            </p>
+            <div class="step-highlight-tag">Tool 01: Site Health Auditor</div>
+          </div>
+
+          <div class="workflow-step-card">
+            <div class="step-number-bubble">02</div>
+            <div class="step-icon-wrap">📊</div>
+            <h3 class="step-card-title">100-Point Algorithmic Audit</h3>
+            <p class="step-card-desc">
+              Every on-page signal is weighted mathematically to produce an actionable 0-100 score, letter grade (A-F), and prioritized technical checklists.
+            </p>
+            <div class="step-highlight-tag">Tool 02 & 10: SERP & Security</div>
+          </div>
+
+          <div class="workflow-step-card">
+            <div class="step-number-bubble">03</div>
+            <div class="step-icon-wrap">🤖</div>
+            <h3 class="step-card-title">AI Content Optimization</h3>
+            <p class="step-card-desc">
+              Powered by Google Gemini 3.8 Flash to rewrite high-CTR meta titles, find competitor content gaps, and build comprehensive rank-ready article outlines.
+            </p>
+            <div class="step-highlight-tag">Tool 06: Gemini AI Assistant</div>
+          </div>
+
+          <div class="workflow-step-card">
+            <div class="step-number-bubble">04</div>
+            <div class="step-icon-wrap">🚀</div>
+            <h3 class="step-card-title">Export & Outrank</h3>
+            <p class="step-card-desc">
+              Export 1-click Schema.org JSON-LD structured data, validated OpenGraph tags, complete robots.txt files, and printable executive PDF audit reports.
+            </p>
+            <div class="step-highlight-tag">Tool 04, 05 & 12: Schemas & PDF</div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Comprehensive 12 Tools Showcase -->
+    <section class="landing-section" id="tools-showcase">
+      <div class="landing-section-container">
+        
+        <div class="section-badge-header">
+          <span class="section-kicker">COMPLETE SUITE CATALOG</span>
+          <h2 class="section-title">15 Interconnected Professional SEO Engines</h2>
+          <p class="section-sub">Every tool is engineered with pure Vanilla JavaScript, zero paywalls, and instant response time. Click any tool to launch directly into the Studio workspace.</p>
+        </div>
+
+        <div class="tools-catalog-grid" id="landing-tools-grid">
+          <!-- Populated dynamically via renderCatalogGrid() -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Community Feedback Section -->
+    <section class="landing-section" id="feedback-section">
+      <div class="landing-section-container">
+        
+        <div class="section-badge-header">
+          <span class="section-kicker">USER FEEDBACK & COMMUNITY</span>
+          <h2 class="section-title">Help Us Improve SEOPulse Studio</h2>
+          <p class="section-sub">Share your feedback, request new features, or suggest improvements. We update the suite continuously!</p>
+        </div>
+
+        <div class="feedback-layout-grid">
+          
+          <!-- Feedback Input Form -->
+          <div class="feedback-form-card">
+            <h3 class="feedback-card-heading">Send Your Thoughts</h3>
+            <p class="feedback-card-sub">Your feedback is saved locally and instantly queued for cloud synchronization.</p>
+
+            <form id="landing-feedback-form" class="feedback-form-inner">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="fb-name-input">Your Name</label>
+                  <input type="text" id="fb-name-input" class="feedback-input" placeholder="e.g., Sumit Pandey">
+                </div>
+                <div class="form-group">
+                  <label>Rating (1 - 5 Stars)</label>
+                  <div class="star-rating-selector" id="star-rating-picker">
+                    <button type="button" class="star-btn active" data-rating="1">★</button>
+                    <button type="button" class="star-btn active" data-rating="2">★</button>
+                    <button type="button" class="star-btn active" data-rating="3">★</button>
+                    <button type="button" class="star-btn active" data-rating="4">★</button>
+                    <button type="button" class="star-btn active" data-rating="5">★</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="fb-message-input">Your Feedback or Feature Request *</label>
+                <textarea id="fb-message-input" class="feedback-input" rows="4" placeholder="Tell us what you loved, what could be easier, or what tool to add next..." required></textarea>
+              </div>
+
+              <button type="submit" class="feedback-submit-btn">
+                <span>Submit Feedback ✨</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Community Reviews Stream -->
+          <div class="feedback-reviews-card">
+            <h3 class="feedback-card-heading">Recent Community Reviews</h3>
+            <p class="feedback-card-sub">What growth marketers and web designers are saying about SEOPulse Pro.</p>
+            <div id="landing-feedback-list" class="feedback-stream-list">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="landing-section" id="faq-section">
+      <div class="landing-section-container">
+        
+        <div class="section-badge-header">
+          <span class="section-kicker">FREQUENTLY ASKED QUESTIONS</span>
+          <h2 class="section-title">Answers to Common Questions</h2>
+          <p class="section-sub">Clear details on privacy, licensing, crawling speed, and Gemini AI integration.</p>
+        </div>
+
+        <div class="faq-grid">
+          
+          <div class="faq-item-card">
+            <h4 class="faq-question">Is SEOPulse Pro Suite really 100% free?</h4>
+            <p class="faq-answer">Yes! All 12 SEO tools are completely free with zero subscription fees, watermarks, or artificial limits. You can audit unlimited websites and research unlimited keywords.</p>
+          </div>
+
+          <div class="faq-item-card">
+            <h4 class="faq-question">How does the Live Auditor crawl websites so fast?</h4>
+            <p class="faq-answer">Our backend utilizes an ultra-lightweight Cheerio DOM scraper that bypasses heavy Chromium headless browser rendering. It parses HTML in under 400ms without wasting memory.</p>
+          </div>
+
+          <div class="faq-item-card">
+            <h4 class="faq-question">Can I use the exported JSON-LD schemas commercially?</h4>
+            <p class="faq-answer">Absolutely. All generated Schema.org JSON-LD scripts, OpenGraph meta tags, and robots.txt files are 100% compliant with Google guidelines and ready for commercial client projects.</p>
+          </div>
+
+          <div class="faq-item-card">
+            <h4 class="faq-question">How does the Gemini AI integration work?</h4>
+            <p class="faq-answer">The AI Assistant connects directly to Google Gemini 3.8 Flash to rewrite high-CTR meta tags and detect competitor content gaps. If API keys are absent, it automatically uses our smart heuristic rule engine.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Landing Footer -->
+    <footer class="landing-footer">
+      <div class="landing-footer-container">
+        
+        <div class="footer-top-row">
+          <div class="footer-brand-col">
+            <div class="landing-brand-link">
+              <span class="landing-suite-title">SEOPulse Suite PRO</span>
+              <span class="landing-status-badge">v6.0 Live</span>
+            </div>
+            <p class="footer-brand-tagline">
+              Modern unified web SEO studio for startup founders, digital creators, and search engineers worldwide.
+            </p>
+          </div>
+
+          <div class="footer-links-col">
+            <span class="footer-links-title">Core Engines</span>
+            <a href="#auditor" class="footer-link launch-studio-action" data-tool="auditor">01 Site Health Auditor</a>
+            <a href="#serp" class="footer-link launch-studio-action" data-tool="serp">02 Google SERP Simulator</a>
+            <a href="#keywords" class="footer-link launch-studio-action" data-tool="keywords">03 Keyword Explorer</a>
+            <a href="#schema" class="footer-link launch-studio-action" data-tool="schema">04 Schema Generator</a>
+            <a href="#compare" class="footer-link launch-studio-action" data-tool="compare">07 Competitor Showdown</a>
+          </div>
+
+          <div class="footer-links-col">
+            <span class="footer-links-title">Advanced Engines</span>
+            <a href="#ai" class="footer-link launch-studio-action" data-tool="ai">06 Gemini AI Assistant</a>
+            <a href="#robots" class="footer-link launch-studio-action" data-tool="robots">08 Robots & Sitemap</a>
+            <a href="#headers" class="footer-link launch-studio-action" data-tool="headers">10 HTTP Security Check</a>
+            <a href="#readability" class="footer-link launch-studio-action" data-tool="readability">11 Readability Engine</a>
+            <a href="#checklist" class="footer-link launch-studio-action" data-tool="checklist">12 Launch Checklist</a>
+          </div>
+
+          <div class="footer-links-col">
+            <span class="footer-links-title">Platform</span>
+            <a href="#home" class="footer-link">Front Page</a>
+            <a href="#how-it-works" class="footer-link">How It Works</a>
+            <a href="#beginner-guides" class="footer-link">User Guidelines</a>
+            <a href="#feedback-section" class="footer-link">Feedback & Requests</a>
+          </div>
+        </div>
+
+        <div class="footer-bottom-row">
+          <span>© 2026 SEOPulse Pro Suite. Built with Vanilla Web Standards. All rights reserved.</span>
+          <div style="display:flex;gap:1rem;">
+            <span>🔒 Zero Data Tracking</span>
+            <span>⚡ Instant Live Crawling</span>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
+
+
+  <!-- ==========================================================================
+       MASTER STUDIO WORKSPACE LAYOUT (FULL INTERACTIVE STUDIO)
+       ========================================================================== -->
+  <div id="studio-view" class="app-layout" style="display:none;">
+
+    <!-- Left Vertical Sticky Sidebar: Sequential Tools 01 to 12 -->
+    <aside class="app-sidebar" aria-label="Tools Navigation">
+      <div class="sidebar-header">
+        <a href="#home" class="sidebar-brand-link return-home-action">
+          <div class="brand-icon-halo">
+            <div class="brand-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="sidebar-brand-text">
+            <span class="sidebar-suite-title">SEOPulse Suite</span>
+            <span class="sidebar-status-tag"><span class="pulse-dot"></span>v6.0 PRO Live</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="sidebar-section-divider">
+        <span class="sidebar-section-label">STUDIO ENGINES (01 - 15)</span>
+      </div>
+
+      <!-- Vertical 1 to 15 Navigation -->
+      <nav class="sidebar-nav" role="tablist">
+        <button class="nav-tab-btn active" data-tool="auditor" role="tab" aria-selected="true">
+          <span class="tool-seq-num">01</span>
+          <span class="tab-icon">🔍</span>
+          <span class="tab-label">Site Health Auditor</span>
+          <kbd class="nav-shortcut-key">1</kbd>
+        </button>
+
+        <button class="nav-tab-btn" data-tool="serp" role="tab" aria-selected="false">
+          <span class="tool-seq-num">02</span>
+          <span class="tab-icon">📱</span>
+          <span class="tab-label">Google SERP Simulator</span>
+          <kbd class="nav-shortcut-key">2</kbd>
+        </button>
+
+        <button class="nav-tab-btn" data-tool="keywords" role="tab" aria-selected="false">
+          <span class="tool-seq-num">03</span>
+          <span class="tab-icon">🎯</span>
+          <span class="tab-label">Keyword & LSI Explorer</span>
+          <kbd class="nav-shortcut-key">3</kbd>
+        </button>
+
+        <button class="nav-tab-btn" data-tool="schema" role="tab" aria-selected="false">
+          <span class="tool-seq-num">04</span>
+          <span class="tab-icon">🏷️</span>
+          <span class="tab-label">Schema Generator</span>
+          <kbd class="nav-shortcut-key">4</kbd>
+        </button>
+
+        <button class="nav-tab-btn" data-tool="meta" role="tab" aria-selected="false">
+          <span class="tool-seq-num">05</span>
+          <span class="tab-icon">🌐</span>
+          <span class="tab-label">Meta & OpenGraph</span>
+          <kbd class="nav-shortcut-key">5</kbd>
+        </button>
+
+        <button class="nav-tab-btn" data-tool="ai" role="tab" aria-selected="false">
+          <span class="tool-seq-num">06</span>
+          <span class="tab-icon">🤖</span>
+          <span class="tab-label">Gemini AI Assistant</span>
+          <kbd class="nav-shortcut-key">6</kbd>
+        </button>
+
+        <button class="nav-tab-btn" data-tool="compare" role="tab" aria-selected="false">
+          <span class="tool-seq-num">07</span>
+          <span class="tab-icon">⚔️</span>
+          <span class="tab-label">Competitor Showdown</span>
+          <kbd class="nav-shortcut-key">7</kbd>
+        </button>
+
+        <button class="nav-tab-btn" data-tool="robots" role="tab" aria-selected="false">
+          <span class="tool-seq-num">08</span>
+          <span class="tab-icon">🤖</span>
+          <span class="tab-label">Robots & Sitemap</span>
+          <kbd class="nav-shortcut-key">8</kbd>
+        </button>
+
+        <button class="nav-tab-btn" data-tool="images" role="tab" aria-selected="false">
+          <span class="tool-seq-num">09</span>
+          <span class="tab-icon">🖼️</span>
+          <span class="tab-label">Image SEO & Alt Text</span>
+          <kbd class="nav-shortcut-key">9</kbd>
+        </button>
+
+        <button class="nav-tab-btn" data-tool="headers" role="tab" aria-selected="false">
+          <span class="tool-seq-num">10</span>
+          <span class="tab-icon">🔒</span>
+          <span class="tab-label">HTTP & Security Audit</span>
+          <kbd class="nav-shortcut-key">0</kbd>
+        </button>
+
+        <button class="nav-tab-btn" data-tool="readability" role="tab" aria-selected="false">
+          <span class="tool-seq-num">11</span>
+          <span class="tab-icon">📝</span>
+          <span class="tab-label">Content & Readability</span>
+          <kbd class="nav-shortcut-key">A</kbd>
+        </button>
+
+        <button class="nav-tab-btn" data-tool="checklist" role="tab" aria-selected="false">
+          <span class="tool-seq-num">12</span>
+          <span class="tab-icon">✅</span>
+          <span class="tab-label">SEO Launch Checklist</span>
+          <kbd class="nav-shortcut-key">B</kbd>
+        </button>
+
+        <button class="nav-tab-btn" data-tool="sitemap-crawler" role="tab" aria-selected="false">
+          <span class="tool-seq-num">13</span>
+          <span class="tab-icon">🕸️</span>
+          <span class="tab-label">Sitemap Spider Crawler</span>
+          <kbd class="nav-shortcut-key">C</kbd>
+        </button>
+
+        <button class="nav-tab-btn" data-tool="lighthouse" role="tab" aria-selected="false">
+          <span class="tool-seq-num">14</span>
+          <span class="tab-icon">⚡</span>
+          <span class="tab-label">Core Web Vitals & LH</span>
+          <kbd class="nav-shortcut-key">L</kbd>
+        </button>
+
+        <button class="nav-tab-btn" data-tool="history" role="tab" aria-selected="false">
+          <span class="tool-seq-num">15</span>
+          <span class="tab-icon">📈</span>
+          <span class="tab-label">12-Mo Trend & Links</span>
+          <kbd class="nav-shortcut-key">H</kbd>
+        </button>
+
+        <button class="nav-tab-btn" data-tool="gsc-tracker" role="tab" aria-selected="false">
+          <span class="tool-seq-num">16</span>
+          <span class="tab-icon">📊</span>
+          <span class="tab-label">Google Search Console</span>
+          <kbd class="nav-shortcut-key">G</kbd>
+        </button>
+      </nav>
+
+      <!-- Sidebar Secondary Actions -->
+      <div class="sidebar-secondary-actions">
+        <button class="sidebar-action-pill-btn return-home-action" title="Return to Front Page">
+          <span>🏠</span>
+          <span>Front Page</span>
+        </button>
+        <button id="agency-pdf-modal-btn" class="sidebar-action-pill-btn" style="background:linear-gradient(135deg,rgba(99,102,241,0.25),rgba(6,182,212,0.25));border:1px solid rgba(99,102,241,0.4);" title="Export Branded Agency PDF">
+          <span>📄</span>
+          <span>Agency PDF Studio</span>
+        </button>
+        <button id="workspace-print-btn" class="sidebar-action-pill-btn" title="Quick Print Report">
+          <span>🖨️</span>
+          <span>Quick Print</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Workspace Stage -->
+    <main class="app-main-stage">
+      
+      <!-- Top Sticky Workspace Header -->
+      <header class="workspace-header">
+        <div class="header-left-col">
+          <span class="header-breadcrumb" id="header-breadcrumb-tool">Tool 01 / Crawl & Score</span>
+          <h2 class="header-tool-title" id="header-tool-title">🔍 Site Health Auditor</h2>
+        </div>
+
+        <!-- Global Header Quick Scanner Bar -->
+        <div class="header-scanner-bar">
+          <input type="url" id="global-header-url-input" class="header-url-input" placeholder="Quick audit any URL (e.g. https://example.com)..." value="">
+          <button id="global-header-scan-btn" class="header-scan-btn">Audit ⚡</button>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:0.6rem;">
+          <!-- Quick User Guide Pill for Current Active Tab -->
+          <button id="global-toggle-guide-btn" class="header-guide-btn" title="Open and jump to the User Guide for this active tool tab">
+            <span class="guide-icon">📖</span>
+            <span id="global-guide-btn-text">User Guide for this tab</span>
+          </button>
+          <!-- Active Synced Target Website / Project Selector -->
+          <div class="header-site-sync-box" title="Active Target Website (Synced Across All 16 Tools)">
+            <span style="font-size:0.85rem;" title="Target Website">🌐</span>
+            <select id="header-project-select" style="background:transparent;border:none;color:var(--text-main);font-size:0.82rem;font-weight:600;cursor:pointer;outline:none;max-width:145px;" title="Switch or select active project website">
+              <option value="" style="background:#0f172a;color:#fff;">🌐 Select website...</option>
+            </select>
+            <button id="header-add-project-btn" style="background:linear-gradient(135deg,var(--neon-indigo),var(--neon-cyan));border:none;color:#fff;border-radius:12px;padding:0.25rem 0.55rem;font-size:0.75rem;font-weight:700;cursor:pointer;" title="Save or Add Current Website as a Project">+ Save</button>
+          </div>
+          <!-- Health Alerts Notification Bell -->
+          <button id="header-alerts-btn" class="header-alerts-btn" title="Automated SEO Health & Latency Alerts">
+            <span>🔔</span>
+            <span class="alerts-label" style="font-size:0.78rem;">Alerts</span>
+            <span id="alerts-count-badge" style="display:none;position:absolute;top:-4px;right:-4px;background:#ef4444;color:#fff;font-size:0.65rem;font-weight:800;border-radius:10px;padding:1px 5px;line-height:1.2;">0</span>
+          </button>
+          <!-- Language Switcher in Studio -->
+          <div class="lang-switcher-dropdown">
+            <button class="lang-switcher-btn" id="studio-lang-btn" type="button">
+              <span class="lang-flag">🌐</span>
+              <span class="lang-text" id="studio-lang-label">English</span>
+              <span class="lang-arrow">▼</span>
+            </button>
+            <div class="lang-dropdown-menu" id="studio-lang-menu">
+              <button class="lang-option-item active" data-lang="en" type="button"><span class="flag">🇺🇸</span> English (US/UK)</button>
+              <button class="lang-option-item" data-lang="hi" type="button"><span class="flag">🇮🇳</span> हिन्दी (Hindi)</button>
+              <button class="lang-option-item" data-lang="es" type="button"><span class="flag">🇪🇸</span> Español (LATAM/EU)</button>
+              <button class="lang-option-item" data-lang="de" type="button"><span class="flag">🇩🇪</span> Deutsch (German)</button>
+              <button class="lang-option-item" data-lang="fr" type="button"><span class="flag">🇫🇷</span> Français (French)</button>
+            </div>
+          </div>
+          <button class="theme-toggle-btn" title="Toggle Theme">☀️</button>
+        </div>
+      </header>
+
+      <!-- Workspace Content (Dynamic Tool Panels) -->
+      <div class="workspace-content">
+
+        <!-- ==========================================
+             TOOL 01: SITE HEALTH AUDITOR
+             ========================================== -->
+        <div id="tool-auditor" class="tool-panel active">
+          
+          <div class="panel-intro-header">
+            <h2 class="panel-intro-title">Deep Site Health Crawler & 100-Point Scorer</h2>
+            <p class="panel-intro-sub">Inspect full DOM structure, headings hierarchy, image alt coverage, technical files, and Core Web Vitals latency in under 350ms.</p>
+          </div>
+
+          <!-- ==========================================
+               BEGINNER USER GUIDE: TOOL 01
+               ========================================== -->
+          <div class="tool-user-guide-box" data-tool="auditor">
+            <div class="guide-box-header" onclick="toggleToolGuide(this)">
+              <div class="guide-header-left">
+                <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+                  <span class="guide-badge-pill">📖 USER GUIDE &amp; HOW IT WORKS</span>
+                  </div>
+                <h3 class="guide-headline">How to Use <span class="highlight">Site Health Auditor</span> &amp; How It Works (आसान यूजर गाइड)</h3>
+              </div>
+              <div class="guide-header-right" style="display:flex;align-items:center;gap:0.65rem;">
+                <span class="guide-toggle-prompt">गाइड पढ़ें / छिपाएं</span>
+                <span class="guide-chevron">▼</span>
+                <button type="button" class="guide-close-pill-btn" onclick="event.stopPropagation(); closeToolGuide(this);" title="Close User Guide">✕ Close</button>
+              </div>
+            </div>
+            <div class="guide-box-content">
+              <div class="guide-section">
+                <div class="guide-section-title">💡 आसान शब्दों में समझें (सरल परिभाषा):</div>
+                <p class="guide-text">
+                  जैसे डॉक्टर स्टेथोस्कोप लगाकर मरीज़ की धड़कन, बुखार और ब्लड प्रेशर चेक करता है, वैसे ही यह टूल आपकी वेबसाइट की 100 ज़रूरी चीज़ें (टाइटल, हेडिंग्स, तस्वीरें, स्पीड, टूटी कड़ियाँ) सिर्फ 1 सेकंड में चेक करके 100 में से ओवरऑल स्कोर और ग्रेड (Grade A+, A, B, C, F) दे देता है।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🚀 इसे कैसे इस्तेमाल करें (3 आसान स्टेप्स):</div>
+                <div class="guide-steps-grid">
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 1</span><strong>वेबसाइट लिंक डालें</strong>
+                    सर्च बॉक्स में अपनी वेबसाइट का पूरा URL डालें (जैसे <code>https://mywebsite.com</code>)। आप नीचे दिए गए टेस्ट चिप्स (GitHub, Vercel) पर भी क्लिक कर सकते हैं।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 2</span><strong>स्कैन बटन दबाएं</strong>
+                    नीले रंग का <strong>"Run Full Audit ⚡"</strong> बटन दबाएं। टूल 1 सेकंड में लाइव वेबसाइट का पूरा कोड स्कैन कर लेगा।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 3</span><strong>कमियां ठीक करें</strong>
+                    नीचे <strong>Critical Issues (लाल बत्ती)</strong> और <strong>Warnings (पीली बत्ती)</strong> देखें। जो-जो कमी दिखे, उसे अपनी वेबसाइट में जाकर ठीक करें।
+                  </div>
+                </div>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">⚙️ यह टूल पर्दे के पीछे कैसे काम करता है (How It Works):</div>
+                <p class="guide-text">
+                  हमारा बैकएंड सर्वर सीधे आपकी वेबसाइट को एक रोबोट की तरह लोड करता है। यह HTML कोड में से Meta Tags, H1-H6 हेडिंग्स, इमेज के <code>alt</code> एट्रिब्यूट्स, और सर्वर लेटेंसी को नापता है और 20 से अधिक SEO नियमों के आधार पर आपका हेल्थ स्कोर कैलकुलेट करता है।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🎯 गूगल में इसका क्या फायदा है:</div>
+                <p class="guide-text">
+                  जब आपकी वेबसाइट पर कोई तकनीकी गलती (जैसे खाली टाइटल या टूटी इमेज) नहीं होती, तो गूगल का सर्च बॉट आपकी साइट को भरोसेमंद और हाई-क्वालिटी मानकर सर्च रिजल्ट्स में ऊपर रैंक करता है।
+                </p>
+              </div>
+
+              <div class="guide-section guide-faq-section">
+                <div class="guide-section-title">❓ अक्सर पूछे जाने वाले सवाल (Beginner FAQ):</div>
+                <div class="guide-faq-item">
+                  <strong>Q: अगर मेरा स्कोर 60 से कम आए तो क्या वेबसाइट बंद हो जाएगी?</strong>
+                  <p>A: बिल्कुल नहीं! इसका बस यह मतलब है कि गूगल को आपकी वेबसाइट समझने में परेशानी हो रही है। आप "Critical Issues" में दिए गए सुझाव ठीक करेंगे तो स्कोर तुरंत 85+ हो जाएगा।</p>
+                </div>
+                <div class="guide-faq-item">
+                  <strong>Q: अच्छा SEO स्कोर कितना माना जाता है?</strong>
+                  <p>A: 80 से ऊपर का स्कोर बहुत अच्छा (Grade A) माना जाता है। 90+ स्कोर पर आपकी वेबसाइट गूगल के टॉप पेजों पर आने के लिए पूरी तरह तैयार है।</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Input Control Card -->
+          <div class="ws-card">
+            <div style="display:flex;gap:0.85rem;margin-bottom:1rem;flex-wrap:wrap;">
+              <input type="url" id="auditor-url-input" class="hero-url-input" style="flex:1;min-width:280px;" placeholder="https://example.com" value="">
+              <button id="auditor-scan-btn" class="hero-scan-btn" style="padding:0.85rem 2rem;">Run Full Audit ⚡</button>
+            </div>
+            <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+              <span style="font-size:0.8rem;color:var(--text-muted);font-weight:600;">Presets:</span>
+              <button class="quick-url-chip highlight studio-quick-url-chip" data-url="https://github.com">GitHub</button>
+              <button class="quick-url-chip studio-quick-url-chip" data-url="https://vercel.com">Vercel</button>
+              <button class="quick-url-chip studio-quick-url-chip" data-url="https://stripe.com">Stripe</button>
+            </div>
+          </div>
+
+          <div id="auditor-loading" style="display:none;text-align:center;padding:3rem;">
+            <div style="font-size:2rem;margin-bottom:0.75rem;">⚡</div>
+            <div style="font-size:1.1rem;font-weight:700;">Crawling live DOM structure and verifying headers...</div>
+            <div style="font-size:0.85rem;color:var(--text-muted);">Parsing metadata, image tags, and robots directives</div>
+          </div>
+
+          <!-- Results Section -->
+          <div id="auditor-results" style="display:none;">
+            
+            <!-- Hero Score Card with Circular SVG Dial -->
+            <div class="ws-card score-hero-card">
+              <div class="score-circle-wrap">
+                <svg class="score-svg" viewBox="0 0 180 180">
+                  <circle class="score-bg-circle" cx="90" cy="90" r="72"></circle>
+                  <circle id="auditor-circle-bar" class="score-bar-circle" cx="90" cy="90" r="72" stroke-dasharray="452" stroke-dashoffset="90"></circle>
+                </svg>
+                <div class="score-center-text">
+                  <span id="auditor-score-num" class="score-big-num">80</span>
+                  <span id="auditor-grade-tag" class="score-grade-tag">Grade A</span>
+                </div>
+              </div>
+
+              <div>
+                <div style="font-size:0.85rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;margin-bottom:0.25rem;">Audited Target</div>
+                <a id="auditor-target-link" href="#" target="_blank" style="font-size:1.25rem;font-weight:800;color:var(--neon-cyan);text-decoration:none;margin-bottom:1rem;display:inline-block;">https://example.com</a>
+                <p style="font-size:0.92rem;color:var(--text-dim);line-height:1.6;margin-bottom:1.25rem;">
+                  Your overall SEO health is evaluated using mathematical weighting across Metadata, Headings, Alt coverage, SSL security, and TTFB latency.
+                </p>
+                <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+                  <button class="launch-studio-action ws-badge ws-badge-info" data-tool="serp" style="cursor:pointer;padding:0.4rem 0.85rem;border:none;">View in SERP Simulator →</button>
+                  <button class="launch-studio-action ws-badge ws-badge-success" data-tool="ai" style="cursor:pointer;padding:0.4rem 0.85rem;border:none;">Optimize with Gemini AI →</button>
+                  <button id="auditor-direct-pdf-btn" class="ws-badge" style="cursor:pointer;padding:0.4rem 0.85rem;border:none;background:linear-gradient(135deg, #06b6d4, #3b82f6);color:#ffffff;font-weight:700;">📄 Export Client PDF Report</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4 Quick Key Metrics -->
+            <div class="ws-metrics-grid">
+              <div class="ws-metric-box">
+                <span id="auditor-metric-speed" class="ws-metric-val" style="color:var(--neon-cyan);">350 ms</span>
+                <span class="ws-metric-lbl">Page Load (TTFB)</span>
+              </div>
+              <div class="ws-metric-box">
+                <span id="auditor-metric-words" class="ws-metric-val" style="color:var(--neon-indigo);">1,240</span>
+                <span class="ws-metric-lbl">On-Page Word Count</span>
+              </div>
+              <div class="ws-metric-box">
+                <span id="auditor-metric-headings" class="ws-metric-val" style="color:var(--neon-amber);">8</span>
+                <span class="ws-metric-lbl">HTML Headings</span>
+              </div>
+              <div class="ws-metric-box">
+                <span id="auditor-metric-images" class="ws-metric-val" style="color:var(--neon-emerald);">5 / 5</span>
+                <span class="ws-metric-lbl">Image Alt Coverage</span>
+              </div>
+            </div>
+
+            <!-- Breakdown Tabs -->
+            <div class="ws-card">
+              <div class="breakdown-tabs">
+                <button class="breakdown-tab-btn audit-tab-btn active" data-tab="overview">01. Overview & Meta</button>
+                <button class="breakdown-tab-btn audit-tab-btn" data-tab="headings">02. Headings Hierarchy</button>
+                <button class="breakdown-tab-btn audit-tab-btn" data-tab="images">03. Image Alt Inspector</button>
+                <button class="breakdown-tab-btn audit-tab-btn" data-tab="keywords">04. Keyword Density</button>
+                <button class="breakdown-tab-btn audit-tab-btn" data-tab="tech">05. Technical & Files</button>
+              </div>
+
+              <!-- Tab A: Overview -->
+              <div id="audit-tab-overview" class="audit-tab-content ws-table-wrap">
+                <table class="ws-table">
+                  <thead>
+                    <tr>
+                      <th style="width:25%;">Element</th>
+                      <th style="width:55%;">Detected Content</th>
+                      <th style="width:20%;">Audit Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="auditor-meta-table"></tbody>
+                </table>
+              </div>
+
+              <!-- Tab B: Headings Hierarchy -->
+              <div id="audit-tab-headings" class="audit-tab-content" style="display:none;">
+                <div style="font-size:0.88rem;color:var(--text-dim);margin-bottom:1rem;">Visual tree representing the exact heading nesting structure found on your webpage:</div>
+                <div id="auditor-headings-list"></div>
+              </div>
+
+              <!-- Tab C: Image Alt Inspector -->
+              <div id="audit-tab-images" class="audit-tab-content ws-table-wrap" style="display:none;">
+                <table class="ws-table">
+                  <thead>
+                    <tr>
+                      <th style="width:40%;">Image Source</th>
+                      <th style="width:45%;">Alt Attribute</th>
+                      <th style="width:15%;">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="auditor-images-table"></tbody>
+                </table>
+              </div>
+
+              <!-- Tab D: Keyword Density -->
+              <div id="audit-tab-keywords" class="audit-tab-content ws-table-wrap" style="display:none;">
+                <table class="ws-table">
+                  <thead>
+                    <tr>
+                      <th style="width:50%;">Detected Keyword</th>
+                      <th style="width:25%;">Frequency</th>
+                      <th style="width:25%;">Density (%)</th>
+                    </tr>
+                  </thead>
+                  <tbody id="auditor-keywords-table"></tbody>
+                </table>
+              </div>
+
+              <!-- Tab E: Technical Files -->
+              <div id="audit-tab-tech" class="audit-tab-content ws-table-wrap" style="display:none;">
+                <table class="ws-table">
+                  <thead>
+                    <tr>
+                      <th style="width:30%;">Directive / File</th>
+                      <th style="width:50%;">Finding</th>
+                      <th style="width:20%;">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="auditor-tech-table"></tbody>
+                </table>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- ==========================================
+             TOOL 02: GOOGLE SERP SIMULATOR
+             ========================================== -->
+        <div id="tool-serp" class="tool-panel">
+          <div class="panel-intro-header">
+            <h2 class="panel-intro-title">Google SERP Simulator (Desktop & Mobile)</h2>
+            <p class="panel-intro-sub">Inspect real-time Google search snippet rendering with pixel width counters and rich snippet star reviews.</p>
+          </div>
+
+          <!-- ==========================================
+               BEGINNER USER GUIDE: TOOL 02
+               ========================================== -->
+          <div class="tool-user-guide-box" data-tool="serp">
+            <div class="guide-box-header" onclick="toggleToolGuide(this)">
+              <div class="guide-header-left">
+                <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+                  <span class="guide-badge-pill">📖 USER GUIDE &amp; HOW IT WORKS</span>
+                  </div>
+                <h3 class="guide-headline">How to Use <span class="highlight">Google SERP Simulator</span> &amp; How It Works (आसान यूजर गाइड)</h3>
+              </div>
+              <div class="guide-header-right" style="display:flex;align-items:center;gap:0.65rem;">
+                <span class="guide-toggle-prompt">गाइड पढ़ें / छिपाएं</span>
+                <span class="guide-chevron">▼</span>
+                <button type="button" class="guide-close-pill-btn" onclick="event.stopPropagation(); closeToolGuide(this);" title="Close User Guide">✕ Close</button>
+              </div>
+            </div>
+            <div class="guide-box-content">
+              <div class="guide-section">
+                <div class="guide-section-title">💡 आसान शब्दों में समझें (सरल परिभाषा):</div>
+                <p class="guide-text">
+                  जैसे बाज़ार में किसी दुकान के बाहर लगा साइनबोर्ड देखकर ग्राहक तय करते हैं कि अंदर जाना है या नहीं, वैसे ही जब कोई गूगल पर कुछ सर्च करता है, तो उसे आपकी वेबसाइट का नीला टाइटल और दो लाइन का डिस्क्रिप्शन दिखता है। यह टूल आपको पहले ही दिखा देता है कि गूगल में आपकी वेबसाइट मोबाइल और कंप्यूटर पर कैसी दिखेगी।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🚀 इसे कैसे इस्तेमाल करें (3 आसान स्टेप्स):</div>
+                <div class="guide-steps-grid">
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 1</span><strong>टाइटल और डिस्क्रिप्शन भरें</strong>
+                    ऊपर "Page Title" और "Meta Description" वाले बॉक्स में अपना टेक्स्ट लिखें, या "Import from Audit ⚡" बटन दबाकर अपनी वेबसाइट का डेटा ऑटोमैटिक ले आएं।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 2</span><strong>कटे हुए शब्दों (Cut-off) से बचें</strong>
+                    दाईं तरफ लाइव प्रीव्यू देखें। अगर प्रोग्रेस बार <strong>हरा (Green)</strong> है, तो बिल्कुल सही है। अगर लाल है, तो मतलब टेक्स्ट बहुत लंबा है और गूगल उसे काटकर <code>...</code> कर देगा।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 3</span><strong>मोबाइल और डेस्कटॉप दोनों जांचें</strong>
+                    "Mobile" और "Desktop" टैब पर क्लिक करके देखें कि दोनों स्क्रीन पर आपका रिजल्ट कैसा और कितना आकर्षक दिख रहा है।
+                  </div>
+                </div>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">⚙️ यह टूल पर्दे के पीछे कैसे काम करता है (How It Works):</div>
+                <p class="guide-text">
+                  गूगल सिर्फ अक्षरों की गिनती नहीं करता, बल्कि स्क्रीन के पिक्सल (Pixel Width) नापता है (डेस्कटॉप पर लगभग 600px और मोबाइल पर 680px)। यह सिम्युलेटर गूगल के आधिकारिक फॉन्ट (Arial) और असली पिक्सल विड्थ के आधार पर लाइव रेंडर करता है ताकि जो आपको यहाँ दिखे, वही असली गूगल पर भी दिखे।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🎯 गूगल में इसका क्या फायदा है:</div>
+                <p class="guide-text">
+                  एक बेहतरीन और आकर्षक टाइटल होने से लोग आपके लिंक पर बिना सोचे तुरंत क्लिक करते हैं (हाई CTR - Click-Through Rate)। जब ज़्यादा लोग आपकी साइट पर क्लिक करते हैं, तो गूगल आपको सर्च में और ऊपर धकेल देता है।
+                </p>
+              </div>
+
+              <div class="guide-section guide-faq-section">
+                <div class="guide-section-title">❓ अक्सर पूछे जाने वाले सवाल (Beginner FAQ):</div>
+                <div class="guide-faq-item">
+                  <strong>Q: टाइटल और डिस्क्रिप्शन की सबसे सही लंबाई क्या है?</strong>
+                  <p>A: Title Tag लगभग 50-60 अक्षरों (Characters) का और Meta Description 140-160 अक्षरों का सबसे बेस्ट होता है।</p>
+                </div>
+                <div class="guide-faq-item">
+                  <strong>Q: स्टार रेटिंग (⭐⭐⭐⭐⭐) कैसे लाएं?</strong>
+                  <p>A: इसके लिए Tool 04 (Schema Markup Generator) का इस्तेमाल करें। स्कीमा कोड लगाने के बाद गूगल खुद आपके रिजल्ट के नीचे स्टार रेटिंग दिखाने लगता है।</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+            
+            <!-- Controls Form -->
+            <div class="ws-card">
+              <div class="ws-card-header">
+                <span class="ws-card-title">Snippet Parameters</span>
+                <button id="serp-import-btn" class="ws-badge ws-badge-info" style="cursor:pointer;border:none;">Import from Audit ⚡</button>
+              </div>
+
+              <div class="form-group" style="margin-bottom:1rem;">
+                <div style="display:flex;justify-content:space-between;">
+                  <label>Page Title</label>
+                  <span id="serp-title-count" style="font-size:0.75rem;color:var(--text-muted);font-family:var(--font-mono);">0 / 60 characters</span>
+                </div>
+                <input type="text" id="serp-input-title" class="feedback-input" placeholder="Enter page title (e.g. Modern Creative Studio — Portfolio & Work)" value="">
+              </div>
+
+              <div class="form-group" style="margin-bottom:1rem;">
+                <div style="display:flex;justify-content:space-between;">
+                  <label>Meta Description</label>
+                  <span id="serp-desc-count" style="font-size:0.75rem;color:var(--text-muted);font-family:var(--font-mono);">0 / 160 characters</span>
+                </div>
+                <textarea id="serp-input-desc" class="feedback-input" rows="3" placeholder="Enter meta description (e.g. High-performance creative design studio delivering modern digital experiences)..."></textarea>
+              </div>
+
+              <div class="form-group">
+                <label>Target URL</label>
+                <input type="url" id="serp-input-url" class="feedback-input" placeholder="https://example.com" value="">
+              </div>
+            </div>
+
+            <!-- Live Google Preview Card -->
+            <div class="ws-card">
+              <div class="ws-card-header">
+                <span class="ws-card-title">Live Google Search Result</span>
+                <div style="display:flex;gap:0.4rem;">
+                  <button id="serp-mode-desktop" class="quick-url-chip highlight">Desktop</button>
+                  <button id="serp-mode-mobile" class="quick-url-chip">Mobile</button>
+                </div>
+              </div>
+
+              <div id="serp-preview-box" class="serp-card-container">
+                <div class="serp-url-row">
+                  <div class="serp-favicon"></div>
+                  <span id="serp-display-url"><strong>example.com</strong> › home</span>
+                </div>
+                <a id="serp-display-title" class="serp-title-link" href="#" onclick="return false;">Example Digital Studio — Creative Agency & Products</a>
+                <div class="serp-stars-row">
+                  <span>★★★★★</span>
+                  <span style="color:#bdc1c6;font-size:0.8rem;">Rating: 4.9 · 128 reviews · Verified Business</span>
+                </div>
+                <p id="serp-display-desc" class="serp-desc-text">Enter your title and meta description above or run an audit in Tool 01 to preview your live Google SERP snippet here.</p>
+              </div>
+
+              <div style="margin-top:1.25rem;font-size:0.82rem;color:var(--text-muted);line-height:1.5;">
+                💡 <strong>Google Display Rule:</strong> Google cuts off desktop titles exceeding ~600 pixels (~60 characters). Keep your primary keyword in the first 40 characters for maximum CTR.
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ==========================================
+             TOOL 03: KEYWORD RESEARCH & LSI EXPLORER
+             ========================================== -->
+        <div id="tool-keywords" class="tool-panel">
+          <div class="panel-intro-header">
+            <h2 class="panel-intro-title">Keyword Research & LSI Intent Explorer</h2>
+            <p class="panel-intro-sub">Classify search intent, monthly search volume, keyword difficulty (KD%), cost-per-click (CPC), and uncover questions asked by searchers.</p>
+          </div>
+
+          <!-- ==========================================
+               BEGINNER USER GUIDE: TOOL 03
+               ========================================== -->
+          <div class="tool-user-guide-box" data-tool="keywords">
+            <div class="guide-box-header" onclick="toggleToolGuide(this)">
+              <div class="guide-header-left">
+                <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+                  <span class="guide-badge-pill">📖 USER GUIDE &amp; HOW IT WORKS</span>
+                  </div>
+                <h3 class="guide-headline">How to Use <span class="highlight">Keyword &amp; LSI Explorer</span> &amp; How It Works (आसान यूजर गाइड)</h3>
+              </div>
+              <div class="guide-header-right" style="display:flex;align-items:center;gap:0.65rem;">
+                <span class="guide-toggle-prompt">गाइड पढ़ें / छिपाएं</span>
+                <span class="guide-chevron">▼</span>
+                <button type="button" class="guide-close-pill-btn" onclick="event.stopPropagation(); closeToolGuide(this);" title="Close User Guide">✕ Close</button>
+              </div>
+            </div>
+            <div class="guide-box-content">
+              <div class="guide-section">
+                <div class="guide-section-title">💡 आसान शब्दों में समझें (सरल परिभाषा):</div>
+                <p class="guide-text">
+                  जैसे एक समझदार दुकानदार वही सामान दुकान में रखता है जिसे ग्राहक सबसे ज़्यादा मांगते हैं, वैसे ही एक ब्लॉगर या वेबसाइट मालिक को वही शब्द अपनी साइट पर लिखने चाहिए जिसे लोग गूगल में टाइप करते हैं। उन शब्दों को "Keywords" कहा जाता है। यह टूल आपको बताता है कि लोग गूगल पर क्या और कैसे ढूंढ रहे हैं।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🚀 इसे कैसे इस्तेमाल करें (3 आसान स्टेप्स):</div>
+                <div class="guide-steps-grid">
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 1</span><strong>एक मुख्य शब्द टाइप करें</strong>
+                    बॉक्स में अपनी पसंद का कोई भी विषय डालें (जैसे: "shoes", "digital marketing", "healthy diet")।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 2</span><strong>एक्सप्लोर बटन दबाएं</strong>
+                    <strong>"Explore Keywords 🎯"</strong> बटन दबाएं। टूल तुरंत सर्च इंटेंट, अनुमानित सर्च वॉल्यूम और LSI कीवर्ड्स तैयार कर देगा।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 3</span><strong>सवालों और LSI शब्दों को चुनें</strong>
+                    नीचे <strong>Questions</strong> (लोग क्या सवाल पूछ रहे हैं) और <strong>Long-tail</strong> लिस्ट में से अच्छे शब्द चुनकर अपने ब्लॉग या आर्टिकल में हेडिंग बनाएं।
+                  </div>
+                </div>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">⚙️ यह टूल पर्दे के पीछे कैसे काम करता है (How It Works):</div>
+                <p class="guide-text">
+                  यह सिस्टम शब्द के पीछे की मंशा (Search Intent: क्या यूज़र कुछ खरीदना चाहता है या सिर्फ जानकारी पढ़ रहा है) का विश्लेषण करता है, और Google Gemini AI की मदद से ऐसे 20 से अधिक मिलते-जुलते शब्द ढूंढता है जो आपके मुख्य विषय को गहराई देते हैं।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🎯 गूगल में इसका क्या फायदा है:</div>
+                <p class="guide-text">
+                  अगर आप अपने आर्टिकल में सिर्फ एक ही शब्द बार-बार लिखेंगे (Keyword Stuffing), तो गूगल पेनल्टी लगा देगा। लेकिन अगर आप LSI और उससे जुड़े सवाल जवाब लिखेंगे, तो गूगल समझ जाएगा कि आप इस विषय के असली एक्सपर्ट हैं और आपको पहली रैंक देगा।
+                </p>
+              </div>
+
+              <div class="guide-section guide-faq-section">
+                <div class="guide-section-title">❓ अक्सर पूछे जाने वाले सवाल (Beginner FAQ):</div>
+                <div class="guide-faq-item">
+                  <strong>Q: LSI Keywords का क्या मतलब है?</strong>
+                  <p>A: LSI का मतलब है वो शब्द जो आपके मुख्य विषय से कुदरती तौर पर जुड़े होते हैं। जैसे अगर विषय "क्रिकेट" है, तो "बल्ला", "गेंद", "पिच", "स्टंप", "अंपायर" उसके LSI कीवर्ड्स हैं।</p>
+                </div>
+                <div class="guide-faq-item">
+                  <strong>Q: KD% (Keyword Difficulty) क्या है?</strong>
+                  <p>A: KD का मतलब है कि इस शब्द पर गूगल में रैंक करना कितना मुश्किल है। नए ब्लॉगर्स को हमेशा 0-35 KD वाले आसान कीवर्ड्स पर काम करना चाहिए।</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ws-card">
+            <div style="display:flex;gap:0.85rem;margin-bottom:1rem;flex-wrap:wrap;">
+              <input type="text" id="kw-search-input" class="hero-url-input" style="flex:1;min-width:280px;" placeholder="Enter target keyword (e.g., search engine optimization, web design)" value="">
+              <button id="kw-search-btn" class="hero-scan-btn">Explore Keywords 🎯</button>
+            </div>
+            <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+              <span style="font-size:0.8rem;color:var(--text-muted);font-weight:600;">Popular Ideas:</span>
+              <button class="quick-url-chip kw-preset-chip" data-kw="search engine optimization">search engine optimization</button>
+              <button class="quick-url-chip kw-preset-chip" data-kw="digital marketing agency">digital marketing agency</button>
+              <button class="quick-url-chip kw-preset-chip" data-kw="ecommerce store design">ecommerce store design</button>
+              <button class="quick-url-chip kw-preset-chip" data-kw="web development company">web development company</button>
+            </div>
+          </div>
+
+          <div id="kw-loading" style="display:none;text-align:center;padding:3rem;">
+            <div style="font-size:2rem;margin-bottom:0.75rem;">🎯</div>
+            <div style="font-size:1.1rem;font-weight:700;">Evaluating search volume, intent clusters, and LSI variations...</div>
+          </div>
+
+          <div id="kw-results" style="display:none;">
+            
+            <div class="ws-metrics-grid">
+              <div class="ws-metric-box">
+                <span id="kw-intent-badge" class="ws-metric-val" style="color:var(--neon-cyan);font-size:1.35rem;">Commercial 🛍️</span>
+                <span class="ws-metric-lbl">Classified Search Intent</span>
+              </div>
+              <div class="ws-metric-box">
+                <span id="kw-metric-vol" class="ws-metric-val" style="color:var(--neon-indigo);">60,200/mo</span>
+                <span class="ws-metric-lbl">Est. Monthly Searches</span>
+              </div>
+              <div class="ws-metric-box">
+                <span id="kw-metric-kd" class="ws-metric-val" style="color:var(--neon-emerald);">42/100</span>
+                <span class="ws-metric-lbl">Keyword Difficulty (KD)</span>
+              </div>
+              <div class="ws-metric-box">
+                <span id="kw-metric-cpc" class="ws-metric-val" style="color:var(--neon-amber);">$1.45</span>
+                <span class="ws-metric-lbl">Est. Cost Per Click (CPC)</span>
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:2fr 1fr;gap:1.5rem;">
+              
+              <!-- Related Keywords Table -->
+              <div class="ws-card">
+                <div class="ws-card-header">
+                  <span class="ws-card-title">Related Long-Tail & LSI Keywords</span>
+                  <button id="kw-export-btn" class="ws-badge ws-badge-info" style="cursor:pointer;border:none;">Export CSV 📥</button>
+                </div>
+                <div class="ws-table-wrap">
+                  <table class="ws-table">
+                    <thead>
+                      <tr>
+                        <th>Keyword Variation</th>
+                        <th>Volume</th>
+                        <th>Difficulty</th>
+                        <th>CPC</th>
+                      </tr>
+                    </thead>
+                    <tbody id="kw-related-table"></tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Question Keywords -->
+              <div class="ws-card">
+                <div class="ws-card-header">
+                  <span class="ws-card-title">User Questions (People Also Ask)</span>
+                </div>
+                <div id="kw-questions-list"></div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ==========================================
+             TOOL 04: SCHEMA MARKUP GENERATOR
+             ========================================== -->
+        <div id="tool-schema" class="tool-panel">
+          <div class="panel-intro-header">
+            <h2 class="panel-intro-title">Schema.org Structured Data Generator (JSON-LD)</h2>
+            <p class="panel-intro-sub">Generate Google-compliant structured data to earn rich snippets, review star ratings, and enhanced SERP visibility.</p>
+          </div>
+
+          <!-- ==========================================
+               BEGINNER USER GUIDE: TOOL 04
+               ========================================== -->
+          <div class="tool-user-guide-box" data-tool="schema">
+            <div class="guide-box-header" onclick="toggleToolGuide(this)">
+              <div class="guide-header-left">
+                <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+                  <span class="guide-badge-pill">📖 USER GUIDE &amp; HOW IT WORKS</span>
+                  </div>
+                <h3 class="guide-headline">How to Use <span class="highlight">Schema Markup Generator</span> &amp; How It Works (आसान यूजर गाइड)</h3>
+              </div>
+              <div class="guide-header-right" style="display:flex;align-items:center;gap:0.65rem;">
+                <span class="guide-toggle-prompt">गाइड पढ़ें / छिपाएं</span>
+                <span class="guide-chevron">▼</span>
+                <button type="button" class="guide-close-pill-btn" onclick="event.stopPropagation(); closeToolGuide(this);" title="Close User Guide">✕ Close</button>
+              </div>
+            </div>
+            <div class="guide-box-content">
+              <div class="guide-section">
+                <div class="guide-section-title">💡 आसान शब्दों में समझें (सरल परिभाषा):</div>
+                <p class="guide-text">
+                  गूगल कोई इंसान नहीं है जो आपकी वेबसाइट को देखकर सब कुछ समझ जाए। गूगल एक कंप्यूटर रोबोट है। उसे साफ-साफ समझाने के लिए कि आपकी वेबसाइट पर कौन-सा सामान बिक रहा है, उसकी कीमत क्या है, या कौन-सा सवाल लिखा है—हम उसे एक विशेष पर्ची (कोड) बनाकर देते हैं। उस पर्ची को "Schema Markup (JSON-LD)" कहते हैं।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🚀 इसे कैसे इस्तेमाल करें (3 आसान स्टेप्स):</div>
+                <div class="guide-steps-grid">
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 1</span><strong>कैटिगरी चुनें</strong>
+                    ड्रॉपडाउन में से चुनें कि आपका पेज क्या है: <strong>Article</strong> (ब्लॉग पोस्ट), <strong>Product</strong> (उत्पाद), <strong>FAQPage</strong> (सवाल-जवाब), या <strong>Organization</strong> (कंपनी)।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 2</span><strong>जानकारी भरें</strong>
+                    नीचे दिए गए डिब्बों में अपना शीर्षक, लेखक का नाम, कीमत या सवाल-जवाब टाइप करें। दाईं तरफ कोड खुद-ब-खुद बनता जाएगा।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 3</span><strong>कोड कॉपी करके वेबसाइट में डालें</strong>
+                    <strong>"Copy JSON-LD"</strong> बटन दबाएं और इस कोड को अपने वेब पेज के <code>&lt;head&gt;</code> सेक्शन में पेस्ट कर दें।
+                  </div>
+                </div>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">⚙️ यह टूल पर्दे के पीछे कैसे काम करता है (How It Works):</div>
+                <p class="guide-text">
+                  यह टूल आपकी भरी हुई जानकारी को Schema.org और Google के आधिकारिक JSON-LD नियमों के अनुसार फॉर्मेट करता है ताकि गूगल सर्च इंजन इसे बिना किसी एरर के तुरंत पढ़ सके।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🎯 गूगल में इसका क्या फायदा है:</div>
+                <p class="guide-text">
+                  इसके लगाने से गूगल सर्च में आपकी वेबसाइट के नीचे स्टार रेटिंग (⭐⭐⭐⭐⭐), कीमत (₹999), और सवाल-जवाब का अकॉर्डियन दिखने लगता है (Rich Snippets)। लोग साधारण लिंक के मुकाबले ऐसे स्टार वाले लिंक पर 30% ज़्यादा क्लिक करते हैं।
+                </p>
+              </div>
+
+              <div class="guide-section guide-faq-section">
+                <div class="guide-section-title">❓ अक्सर पूछे जाने वाले सवाल (Beginner FAQ):</div>
+                <div class="guide-faq-item">
+                  <strong>Q: क्या मुझे कोडिंग सीखनी पड़ेगी?</strong>
+                  <p>A: बिल्कुल नहीं! आपको सिर्फ फॉर्म भरना है, सारा कोडिंग यह टूल खुद 1 सेकंड में तैयार कर देता है।</p>
+                </div>
+                <div class="guide-faq-item">
+                  <strong>Q: क्या यह वर्डप्रेस पर काम करेगा?</strong>
+                  <p>A: हाँ! वर्डप्रेस, Shopify, HTML, React—यह कोड हर तरह की वेबसाइट पर आसानी से काम करता है।</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+            
+            <div class="ws-card">
+              <div class="ws-card-header">
+                <span class="ws-card-title">Schema Type & Properties</span>
+              </div>
+
+              <div class="form-group" style="margin-bottom:1.25rem;">
+                <label>Select Schema Category</label>
+                <select id="schema-type-select" class="feedback-input">
+                  <option value="Article">📰 Article / Blog Post</option>
+                  <option value="Product">🛍️ Product / E-Commerce</option>
+                  <option value="FAQPage">❓ FAQPage (Rich FAQ Accordion)</option>
+                  <option value="Organization">🏢 Organization / Company</option>
+                </select>
+              </div>
+
+              <div id="schema-fields-container" style="display:flex;flex-direction:column;gap:1rem;margin-bottom:1.5rem;"></div>
+
+              <button id="schema-generate-btn" class="hero-scan-btn" style="width:100%;padding:0.85rem;">Generate Schema JSON-LD ⚡</button>
+            </div>
+
+            <div class="ws-card">
+              <div class="ws-card-header">
+                <span class="ws-card-title">Production JSON-LD Output</span>
+                <button id="schema-copy-btn" class="ws-badge ws-badge-success" style="cursor:pointer;border:none;">Copy Script 📋</button>
+              </div>
+              <div class="code-output-wrap">
+                <pre id="schema-code-output">// Click Generate Schema to create JSON-LD...</pre>
+              </div>
+              <div style="margin-top:1rem;font-size:0.85rem;color:var(--text-dim);">
+                💡 <strong>Installation:</strong> Paste this &lt;script&gt; block directly into your HTML &lt;head&gt; or inject it via Google Tag Manager.
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ==========================================
+             TOOL 05: META TAG & OPEN GRAPH FORGE
+             ========================================== -->
+        <div id="tool-meta" class="tool-panel">
+          <div class="panel-intro-header">
+            <h2 class="panel-intro-title">Meta Tag & OpenGraph Social Forge</h2>
+            <p class="panel-intro-sub">Generate full HTML head bundles and preview how your pages appear when shared across Facebook, X (Twitter), and LinkedIn.</p>
+          </div>
+
+          <!-- ==========================================
+               BEGINNER USER GUIDE: TOOL 05
+               ========================================== -->
+          <div class="tool-user-guide-box" data-tool="meta">
+            <div class="guide-box-header" onclick="toggleToolGuide(this)">
+              <div class="guide-header-left">
+                <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+                  <span class="guide-badge-pill">📖 USER GUIDE &amp; HOW IT WORKS</span>
+                  </div>
+                <h3 class="guide-headline">How to Use <span class="highlight">Meta &amp; OpenGraph Forge</span> &amp; How It Works (आसान यूजर गाइड)</h3>
+              </div>
+              <div class="guide-header-right" style="display:flex;align-items:center;gap:0.65rem;">
+                <span class="guide-toggle-prompt">गाइड पढ़ें / छिपाएं</span>
+                <span class="guide-chevron">▼</span>
+                <button type="button" class="guide-close-pill-btn" onclick="event.stopPropagation(); closeToolGuide(this);" title="Close User Guide">✕ Close</button>
+              </div>
+            </div>
+            <div class="guide-box-content">
+              <div class="guide-section">
+                <div class="guide-section-title">💡 आसान शब्दों में समझें (सरल परिभाषा):</div>
+                <p class="guide-text">
+                  जब आप किसी दोस्त को WhatsApp, Facebook, या Twitter (X) पर अपनी वेबसाइट का लिंक भेजते हैं, तो कभी-कभी नीचे एक बड़ी सुंदर फोटो, बोल्ड टाइटल और 2 लाइन का विवरण बनकर आता है। वह जादू "Open Graph (OG) और Twitter Card" टैग्स से होता है। यह टूल वही सुंदर कार्ड बनाने का कोड 1 सेकंड में तैयार करता है।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🚀 इसे कैसे इस्तेमाल करें (3 आसान स्टेप्स):</div>
+                <div class="guide-steps-grid">
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 1</span><strong>टाइटल और इमेज लिंक भरें</strong>
+                    वेबसाइट का नाम, 2 लाइन का विवरण और अपनी एक अच्छी सी फोटो का वेब लिंक (Image URL) डालें।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 2</span><strong>सोशल कार्ड प्रीव्यू देखें</strong>
+                    दाईं तरफ देखें कि Facebook और Twitter पर आपका कार्ड कैसा दिख रहा है।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 3</span><strong>कोड कॉपी करके वेबसाइट में डालें</strong>
+                    नीचे <strong>"Copy Head Meta Bundle"</strong> बटन दबाएं और कोड को अपने पेज के <code>&lt;head&gt;</code> में पेस्ट कर दें।
+                  </div>
+                </div>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">⚙️ यह टूल पर्दे के पीछे कैसे काम करता है (How It Works):</div>
+                <p class="guide-text">
+                  यह टूल Facebook, LinkedIn के लिए <code>og:title</code>, <code>og:image</code>, <code>og:description</code> और Twitter के लिए <code>twitter:card</code>, <code>twitter:image</code> जैसे सभी ज़रूरी HTML टैग्स को एक जगह बंडल कर देता है।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🎯 सोशल मीडिया और गूगल में इसका क्या फायदा है:</div>
+                <p class="guide-text">
+                  अगर लिंक शेयर करने पर सिर्फ सादा नीला टेक्स्ट आए तो 90% लोग उसे इग्नोर कर देते हैं। लेकिन जब बड़ी सुंदर तस्वीर और आकर्षक हेडलाइन दिखती है, तो लोग तुरंत क्लिक करते हैं, जिससे आपकी साइट पर वायरल सोशल ट्रैफिक आता है।
+                </p>
+              </div>
+
+              <div class="guide-section guide-faq-section">
+                <div class="guide-section-title">❓ अक्सर पूछे जाने वाले सवाल (Beginner FAQ):</div>
+                <div class="guide-faq-item">
+                  <strong>Q: सोशल मीडिया शेयर इमेज का सबसे सही साइज़ क्या है?</strong>
+                  <p>A: 1200 पिक्सल चौड़ा और 630 पिक्सल ऊँचा (1200 x 630 px) सबसे बेस्ट साइज़ है जो WhatsApp, Facebook और Twitter सब पर एकदम साफ दिखता है।</p>
+                </div>
+                <div class="guide-faq-item">
+                  <strong>Q: क्या यह WhatsApp पर भी काम करता है?</strong>
+                  <p>A: बिल्कुल! WhatsApp भी Open Graph (og:image और og:title) को ही पढ़कर लिंक का सुंदर प्रीव्यू कार्ड बनाता है।</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+            
+            <div class="ws-card">
+              <div class="ws-card-header">
+                <span class="ws-card-title">Meta Tag Configuration</span>
+              </div>
+              <div class="form-group" style="margin-bottom:1rem;">
+                <label>Website Title</label>
+                <input type="text" id="meta-forge-title" class="feedback-input" placeholder="Website title (e.g. Modern Creative Agency & Studio)" value="">
+              </div>
+              <div class="form-group" style="margin-bottom:1rem;">
+                <label>Description</label>
+                <textarea id="meta-forge-desc" class="feedback-input" rows="3" placeholder="Enter social share description (e.g. High-performance creative agency building digital products)..."></textarea>
+              </div>
+              <div class="form-row" style="margin-bottom:1rem;">
+                <div class="form-group">
+                  <label>Canonical URL</label>
+                  <input type="url" id="meta-forge-url" class="feedback-input" placeholder="https://example.com" value="">
+                </div>
+                <div class="form-group">
+                  <label>Featured Image URL (OG Image)</label>
+                  <input type="url" id="meta-forge-image" class="feedback-input" placeholder="https://images.unsplash.com/photo-1524661135-423995f22d0b" value="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1200&q=80">
+                </div>
+              </div>
+            </div>
+
+            <!-- Live Social Share Card Preview -->
+            <div class="ws-card">
+              <div class="ws-card-header">
+                <span class="ws-card-title">Live Social Card Preview</span>
+              </div>
+              <div style="background:#0b0f19;border:1px solid var(--border-glass-light);border-radius:14px;overflow:hidden;box-shadow:0 15px 30px rgba(0,0,0,0.5);">
+                <img id="meta-social-card-img" src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1200&q=80" alt="Preview" style="width:100%;height:180px;object-fit:cover;">
+                <div style="padding:1rem;">
+                  <div id="meta-social-card-domain" style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;font-weight:700;margin-bottom:0.25rem;">example.com</div>
+                  <div id="meta-social-card-title" style="font-size:1.05rem;font-weight:700;color:var(--text-main);margin-bottom:0.35rem;">Modern Creative Agency & Digital Studio</div>
+                  <div id="meta-social-card-desc" style="font-size:0.85rem;color:var(--text-dim);line-height:1.4;">High-performance creative agency building digital products.</div>
+                </div>
+              </div>
+
+              <div class="code-output-wrap" style="margin-top:1.25rem;max-height:180px;">
+                <button id="meta-forge-copy-btn" class="code-copy-btn">Copy HTML Meta</button>
+                <pre id="meta-forge-code">&lt;!-- Generating meta bundle... --&gt;</pre>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ==========================================
+             TOOL 06: GEMINI AI SEO ASSISTANT
+             ========================================== -->
+        <div id="tool-ai" class="tool-panel">
+          <div class="panel-intro-header">
+            <h2 class="panel-intro-title">Gemini AI Content & SEO Optimizer</h2>
+            <p class="panel-intro-sub">Connected to Gemini 3.8 Flash to rewrite high-CTR meta tags, uncover competitor content gaps, and build rank-ready article outlines.</p>
+          </div>
+
+          <!-- ==========================================
+               BEGINNER USER GUIDE: TOOL 06
+               ========================================== -->
+          <div class="tool-user-guide-box" data-tool="ai">
+            <div class="guide-box-header" onclick="toggleToolGuide(this)">
+              <div class="guide-header-left">
+                <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+                  <span class="guide-badge-pill">📖 USER GUIDE &amp; HOW IT WORKS</span>
+                  </div>
+                <h3 class="guide-headline">How to Use <span class="highlight">Gemini AI SEO Assistant</span> &amp; How It Works (आसान यूजर गाइड)</h3>
+              </div>
+              <div class="guide-header-right" style="display:flex;align-items:center;gap:0.65rem;">
+                <span class="guide-toggle-prompt">गाइड पढ़ें / छिपाएं</span>
+                <span class="guide-chevron">▼</span>
+                <button type="button" class="guide-close-pill-btn" onclick="event.stopPropagation(); closeToolGuide(this);" title="Close User Guide">✕ Close</button>
+              </div>
+            </div>
+            <div class="guide-box-content">
+              <div class="guide-section">
+                <div class="guide-section-title">💡 आसान शब्दों में समझें (सरल परिभाषा):</div>
+                <p class="guide-text">
+                  समझ लीजिए कि आपके पास एक प्रोफेशनल एसईओ राइटर चौबीसों घंटे आपकी सेवा में बैठा है। आपको सिर खपाने की ज़रूरत नहीं है कि ब्लॉग का क्या नाम रखें, क्या टाइटल डालें, या क्या डिस्क्रिप्शन लिखें—यह AI आपके लिए सिर्फ 2 सेकंड में गूगल के हिसाब से सबसे बेस्ट टेक्स्ट लिखकर तैयार कर देता है।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🚀 इसे कैसे इस्तेमाल करें (3 आसान स्टेप्स):</div>
+                <div class="guide-steps-grid">
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 1</span><strong>मोड चुनें</strong>
+                    ड्रॉपडाउन में से चुनें: <strong>Meta Title &amp; Description</strong> (क्लिक बढ़ाने वाले टाइटल), <strong>Content Gap</strong> (कॉम्पिटिटर से बेहतर बातें खोजना), या <strong>Article Outline</strong> (पूरा ब्लॉग प्लान)।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 2</span><strong>विषय लिखें</strong>
+                    बॉक्स में अपना विषय या कीवर्ड लिखें (जैसे: "how to lose belly fat", "best gaming laptops")।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 3</span><strong>AI से जवाब पाएं</strong>
+                    <strong>"Generate with Gemini AI ✨"</strong> दबाएं। नीचे आया हुआ रिजल्ट सीधे अपने ब्लॉग या वेबसाइट में कॉपी-पेस्ट करें।
+                  </div>
+                </div>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">⚙️ यह टूल पर्दे के पीछे कैसे काम करता है (How It Works):</div>
+                <p class="guide-text">
+                  यह सीधे Google के आधिकारिक Gemini 3.8 Flash मॉडल के साथ जुड़ा हुआ है। यह सर्च इंटेंट, हाई-CTR पावर वर्ड्स (जैसे "Proven", "Ultimate", "Fast"), और गूगल के ई-ई-ए-टी (EEAT) क्वालिटी नियमों को ध्यान में रखकर टेक्स्ट जनरेट करता है।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🎯 गूगल में इसका क्या फायदा है:</div>
+                <p class="guide-text">
+                  साधारण टाइटल्स पर लोग क्लिक नहीं करते। जब AI मनोवैज्ञानिक रूप से ऐसे शब्द चुनता है जो जिज्ञासा पैदा करते हैं, तो लोग उस पर तुरंत क्लिक करते हैं। ज़्यादा क्लिक्स मतलब गूगल में पहली रैंक!
+                </p>
+              </div>
+
+              <div class="guide-section guide-faq-section">
+                <div class="guide-section-title">❓ अक्सर पूछे जाने वाले सवाल (Beginner FAQ):</div>
+                <div class="guide-faq-item">
+                  <strong>Q: क्या AI का लिखा कंटेंट गूगल पर बैन होता है?</strong>
+                  <p>A: नहीं! गूगल की आधिकारिक गाइडलाइन स्पष्ट कहती है कि गूगल को सिर्फ क्वालिटी और यूज़र की मदद से मतलब है, चाहे वो इंसान ने लिखा हो या AI ने।</p>
+                </div>
+                <div class="guide-faq-item">
+                  <strong>Q: क्या इसके लिए मुझे कोई पैसे देने होंगे?</strong>
+                  <p>A: बिल्कुल नहीं! यह आपके SEOPulse Suite में 100% फ्री और अनलिमिटेड शामिल है।</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ws-card">
+            <div class="form-row" style="margin-bottom:1rem;">
+              <div class="form-group">
+                <label>Optimization Mode</label>
+                <select id="ai-type-select" class="feedback-input">
+                  <option value="meta_rewrite">✨ Meta Title & Description Rewriter (High CTR)</option>
+                  <option value="content_gap">🔍 Content Gap Analysis (Outrank Competitors)</option>
+                  <option value="article_outline">📝 Rank-Ready Comprehensive Article Outline</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Target Query / Topic / Keyword</label>
+                <input type="text" id="ai-query-input" class="feedback-input" placeholder="e.g., how to rank higher on Google" value="">
+              </div>
+            </div>
+            <button id="ai-run-btn" class="hero-scan-btn" style="padding:0.85rem 2rem;">Generate AI Optimization 🤖</button>
+          </div>
+
+          <div class="ws-card">
+            <div class="ws-card-header">
+              <span class="ws-card-title">AI Recommendations & Angle Variations</span>
+            </div>
+            <div id="ai-output-box" style="font-size:0.92rem;color:var(--text-dim);line-height:1.6;">
+              Click <strong>Generate AI Optimization</strong> to run Gemini AI analysis...
+            </div>
+          </div>
+        </div>
+
+        <!-- ==========================================
+             TOOL 07: COMPETITOR SHOWDOWN
+             ========================================== -->
+        <div id="tool-compare" class="tool-panel">
+          <div class="panel-intro-header">
+            <h2 class="panel-intro-title">Competitor Head-to-Head Showdown</h2>
+            <p class="panel-intro-sub">Compare two websites side-by-side across speed, on-page SEO health, headings structure, and image optimization.</p>
+          </div>
+
+          <!-- ==========================================
+               BEGINNER USER GUIDE: TOOL 07
+               ========================================== -->
+          <div class="tool-user-guide-box" data-tool="compare">
+            <div class="guide-box-header" onclick="toggleToolGuide(this)">
+              <div class="guide-header-left">
+                <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+                  <span class="guide-badge-pill">📖 USER GUIDE &amp; HOW IT WORKS</span>
+                  </div>
+                <h3 class="guide-headline">How to Use <span class="highlight">Competitor Showdown</span> &amp; How It Works (आसान यूजर गाइड)</h3>
+              </div>
+              <div class="guide-header-right" style="display:flex;align-items:center;gap:0.65rem;">
+                <span class="guide-toggle-prompt">गाइड पढ़ें / छिपाएं</span>
+                <span class="guide-chevron">▼</span>
+                <button type="button" class="guide-close-pill-btn" onclick="event.stopPropagation(); closeToolGuide(this);" title="Close User Guide">✕ Close</button>
+              </div>
+            </div>
+            <div class="guide-box-content">
+              <div class="guide-section">
+                <div class="guide-section-title">💡 आसान शब्दों में समझें (सरल परिभाषा):</div>
+                <p class="guide-text">
+                  जैसे अखाड़े में दो पहलवानों या मैदान में दो टीमों का आमना-सामना होता है, वैसे ही यह टूल आपकी वेबसाइट और आपके सबसे बड़े कॉम्पिटिटर (विरोधी) की वेबसाइट को एक साथ नापता है और बताता है कि कौन किस चीज़ में आगे है और कौन पीछे।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🚀 इसे कैसे इस्तेमाल करें (3 आसान स्टेप्स):</div>
+                <div class="guide-steps-grid">
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 1</span><strong>दोनों URL डालें</strong>
+                    पहले डिब्बे में अपनी वेबसाइट का लिंक डालें और दूसरे डिब्बे में अपने प्रतियोगी की साइट का लिंक डालें।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 2</span><strong>मुकाबला शुरू करें</strong>
+                    <strong>"Compare Head-to-Head ⚔️"</strong> बटन दबाएं। टूल दोनों वेबसाइट्स को एक साथ स्कैन करेगा।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 3</span><strong>स्कोरकार्ड देखकर सुधारें</strong>
+                    नीचे टेबल में देखें कि किस पंक्ति में आपके सामने हरा (Win) है और किसमें लाल (Loss)। जहाँ आप पीछे हैं, उसे ठीक करें।
+                  </div>
+                </div>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">⚙️ यह टूल पर्दे के पीछे कैसे काम करता है (How It Works):</div>
+                <p class="guide-text">
+                  यह टूल दोनों साइट्स के कोड को एक साथ डाउनलोड करता है और 8 मुख्य पैमानों (हेल्थ स्कोर, पेज लोड स्पीड, शब्दों की गहराई, H1 हेडिंग्स, मिसिंग ऑल्ट टैग, SSL सुरक्षा, स्कीमा, और लिंक्स) पर तुलनात्मक गणित लगाकर विनर घोषित करता है।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🎯 गूगल में इसका क्या फायदा है:</div>
+                <p class="guide-text">
+                  गूगल में नंबर-1 आने के लिए आपको दुनिया का सबसे बड़ा जीनियस होने की ज़रूरत नहीं है—आपको बस उस इंसान से थोड़ा बेहतर होना है जो आज गूगल के पहले पन्ने पर बैठा है! यह टूल आपको ठीक वही अंतर दिखा देता है।
+                </p>
+              </div>
+
+              <div class="guide-section guide-faq-section">
+                <div class="guide-section-title">❓ अक्सर पूछे जाने वाले सवाल (Beginner FAQ):</div>
+                <div class="guide-faq-item">
+                  <strong>Q: अगर कॉम्पिटिटर का वर्ड काउंट (शब्दों की संख्या) मुझसे ज़्यादा है तो क्या करूँ?</strong>
+                  <p>A: इसका मतलब उसने विषय पर ज़्यादा विस्तार से लिखा है। आप भी अपने आर्टिकल में कुछ नए बिंदु और अक्सर पूछे जाने वाले सवाल (FAQ) जोड़कर अपना कंटेंट बड़ा और मददगार बनाएं।</p>
+                </div>
+                <div class="guide-faq-item">
+                  <strong>Q: क्या कॉम्पिटिटर को पता चलेगा कि मैं उसकी वेबसाइट चेक कर रहा हूँ?</strong>
+                  <p>A: बिल्कुल नहीं! यह 100% प्राइवेट और सुरक्षित है।</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ws-card">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:0.75rem;">
+              <div>
+                <h3 style="font-size:1.15rem;font-weight:800;color:var(--text-main);margin-bottom:0.25rem;">Live Multi-Competitor Showdown (Up to 5 Competitors)</h3>
+                <p style="font-size:0.85rem;color:var(--text-dim);margin:0;">Benchmark your website directly against up to 5 competitors simultaneously in a real-time Antigravity-style audit matrix.</p>
+              </div>
+              <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                <button type="button" class="studio-quick-url-chip" id="comp-preset-tech" style="font-size:0.75rem;padding:0.25rem 0.65rem;">Presets: Tech Giants</button>
+                <button type="button" class="studio-quick-url-chip" id="comp-preset-ecom" style="font-size:0.75rem;padding:0.25rem 0.65rem;">Presets: E-Commerce</button>
+              </div>
+            </div>
+
+            <!-- Target Site Row -->
+            <div class="competitor-input-row">
+              <span class="competitor-badge-pill target">🎯 Your Website</span>
+              <input type="url" id="compare-url1" class="feedback-input" placeholder="https://yourwebsite.com (Primary Target)" value="" style="flex:1;">
+            </div>
+
+            <!-- 5 Competitor Input Rows -->
+            <div class="competitor-input-row">
+              <span class="competitor-badge-pill">🥊 Competitor 1</span>
+              <input type="url" id="compare-url2" class="feedback-input" placeholder="https://competitor1.com (Required)" value="" style="flex:1;">
+            </div>
+
+            <div class="competitor-input-row">
+              <span class="competitor-badge-pill">🥊 Competitor 2</span>
+              <input type="url" id="compare-url3" class="feedback-input" placeholder="https://competitor2.com (Optional)" value="" style="flex:1;">
+            </div>
+
+            <div class="competitor-input-row">
+              <span class="competitor-badge-pill">🥊 Competitor 3</span>
+              <input type="url" id="compare-url4" class="feedback-input" placeholder="https://competitor3.com (Optional)" value="" style="flex:1;">
+            </div>
+
+            <div class="competitor-input-row">
+              <span class="competitor-badge-pill">🥊 Competitor 4</span>
+              <input type="url" id="compare-url5" class="feedback-input" placeholder="https://competitor4.com (Optional)" value="" style="flex:1;">
+            </div>
+
+            <div class="competitor-input-row">
+              <span class="competitor-badge-pill">🥊 Competitor 5</span>
+              <input type="url" id="compare-url6" class="feedback-input" placeholder="https://competitor5.com (Optional)" value="" style="flex:1;">
+            </div>
+
+            <div style="margin-top:1.25rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+              <button id="compare-run-btn" class="hero-scan-btn" style="padding:0.85rem 2.25rem;">Compare All Competitors ⚔️</button>
+              <span style="font-size:0.82rem;color:var(--text-dim);">Live concurrent multi-thread crawl with automatic benchmark analytics.</span>
+            </div>
+          </div>
+
+          <div id="compare-results" style="display:none;" class="ws-card">
+            <div class="ws-card-header" style="margin-bottom:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+              <div>
+                <span class="ws-card-title" style="font-size:1.3rem;">Antigravity Benchmark Showdown Leaderboard</span>
+                <p style="font-size:0.85rem;color:var(--text-dim);margin-top:0.25rem;">Concurrent live audit across your site and up to 5 competitors.</p>
+              </div>
+              <span id="compare-winner-badge" class="ws-badge ws-badge-success" style="font-size:0.95rem;padding:0.45rem 1rem;">Leaderboard Active</span>
+            </div>
+
+            <!-- Antigravity Podium Benchmark Cards -->
+            <div class="benchmark-podium-grid" id="compare-podium-cards">
+              <!-- Dynamically populated: 1. Gold Winner Card, 2. Your Site Card, 3. Industry Avg Card -->
+            </div>
+
+            <!-- Antigravity Strategic Gap Analysis Box -->
+            <div id="compare-strategic-gaps-container" style="margin-bottom:2rem;">
+              <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.75rem;">
+                <span style="font-size:1.2rem;">🎯</span>
+                <h3 style="font-size:1.1rem;font-weight:800;color:var(--text-main);margin:0;">What You Need to Outrank #1 (Strategic Intelligence)</h3>
+              </div>
+              <div id="compare-strategic-gaps-list"></div>
+            </div>
+
+            <!-- Full Benchmark Comparison Matrix Table -->
+            <div class="ws-table-wrap">
+              <table class="ws-table">
+                <thead>
+                  <tr>
+                    <th>Rank & Domain</th>
+                    <th>SEO Health Score</th>
+                    <th>Load Speed (TTFB)</th>
+                    <th>Word Depth</th>
+                    <th>H1 Heading</th>
+                    <th>SSL / HTTPS</th>
+                    <th>Image Alt</th>
+                    <th>Gap vs #1</th>
+                  </tr>
+                </thead>
+                <tbody id="compare-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==========================================
+             TOOL 08: ROBOTS & SITEMAP ENGINE
+             ========================================== -->
+        <div id="tool-robots" class="tool-panel">
+          <div class="panel-intro-header">
+            <h2 class="panel-intro-title">Robots.txt & XML Sitemap Engine</h2>
+            <p class="panel-intro-sub">Generate and validate search engine crawler directives to ensure Googlebot and Bingbot index the right pages.</p>
+          </div>
+
+          <!-- ==========================================
+               BEGINNER USER GUIDE: TOOL 08
+               ========================================== -->
+          <div class="tool-user-guide-box" data-tool="robots">
+            <div class="guide-box-header" onclick="toggleToolGuide(this)">
+              <div class="guide-header-left">
+                <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+                  <span class="guide-badge-pill">📖 USER GUIDE &amp; HOW IT WORKS</span>
+                  </div>
+                <h3 class="guide-headline">How to Use <span class="highlight">Robots &amp; Sitemap Engine</span> &amp; How It Works (आसान यूजर गाइड)</h3>
+              </div>
+              <div class="guide-header-right" style="display:flex;align-items:center;gap:0.65rem;">
+                <span class="guide-toggle-prompt">गाइड पढ़ें / छिपाएं</span>
+                <span class="guide-chevron">▼</span>
+                <button type="button" class="guide-close-pill-btn" onclick="event.stopPropagation(); closeToolGuide(this);" title="Close User Guide">✕ Close</button>
+              </div>
+            </div>
+            <div class="guide-box-content">
+              <div class="guide-section">
+                <div class="guide-section-title">💡 आसान शब्दों में समझें (सरल परिभाषा):</div>
+                <p class="guide-text">
+                  <code>robots.txt</code> आपकी वेबसाइट के दरवाज़े पर खड़ा सिक्योरिटी गार्ड है, जो गूगल के रोबोट (Googlebot) को बताता है कि कौन-से कमरे (पेज) में जाना है और कहाँ घुसना मना है (जैसे एडमिन पैनल)। और <code>sitemap.xml</code> आपकी वेबसाइट का पूरा नक्शा है, जो गूगल को बताता है कि आपके घर में कुल कितने कमरे हैं।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🚀 इसे कैसे इस्तेमाल करें (3 आसान स्टेप्स):</div>
+                <div class="guide-steps-grid">
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 1</span><strong>डोमेन डालें</strong>
+                    बॉक्स में अपनी वेबसाइट का लिंक डालें (उदा. <code>https://mywebsite.com</code>)।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 2</span><strong>जनरेट बटन दबाएं</strong>
+                    <strong>"Generate Directives 🤖"</strong> बटन पर क्लिक करें। टूल 1 सेकंड में सही कोड बना देगा।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 3</span><strong>फ़ाइल सेव करके अपलोड करें</strong>
+                    "Copy" बटन दबाकर टेक्स्ट को कॉपी करें और अपने सर्वर के मेन फोल्डर (Root Directory) में <code>robots.txt</code> नाम की फ़ाइल बनाकर सेव कर दें।
+                  </div>
+                </div>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">⚙️ यह टूल पर्दे के पीछे कैसे काम करता है (How It Works):</div>
+                <p class="guide-text">
+                  यह टूल गूगल और बिंग के आधुनिक सर्च इंजन रोबोट प्रोटोकॉल के अनुसार <code>User-agent: *</code>, सुरक्षित पाथ्स को ब्लॉक (<code>Disallow: /admin</code>) और आपके साइटमैप का सही लिंक (<code>Sitemap: https://.../sitemap.xml</code>) अपने-आप जोड़ देता है।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🎯 गूगल में इसका क्या फायदा है:</div>
+                <p class="guide-text">
+                  अगर <code>robots.txt</code> में गलती हो तो गूगल आपकी पूरी वेबसाइट को इंडेक्स करना बंद कर सकता है। और अगर <code>sitemap.xml</code> सही हो, तो आपके नए लिखे गए ब्लॉग पोस्ट सिर्फ कुछ ही घंटों में गूगल सर्च में आ जाते हैं।
+                </p>
+              </div>
+
+              <div class="guide-section guide-faq-section">
+                <div class="guide-section-title">❓ अक्सर पूछे जाने वाले सवाल (Beginner FAQ):</div>
+                <div class="guide-faq-item">
+                  <strong>Q: सबसे बड़ी गलती क्या हो सकती है जिससे बचना चाहिए?</strong>
+                  <p>A: कभी भी robots.txt में <code>Disallow: /</code> न लिखें! इसका मतलब होता है "पूरी वेबसाइट बंद है", जिससे आपकी वेबसाइट गूगल सर्च से हमेशा के लिए गायब हो जाएगी।</p>
+                </div>
+                <div class="guide-faq-item">
+                  <strong>Q: क्या हर वेबसाइट को sitemap.xml की ज़रूरत होती है?</strong>
+                  <p>A: जी हाँ! खासकर नई वेबसाइटों के लिए साइटमैप अनिवार्य है ताकि गूगल को आपके सभी पेजों की जानकारी मिल सके।</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ws-card">
+            <div style="display:flex;gap:0.85rem;margin-bottom:1rem;flex-wrap:wrap;">
+              <input type="url" id="robots-domain-input" class="hero-url-input" style="flex:1;" placeholder="https://example.com" value="">
+              <button id="robots-generate-btn" class="hero-scan-btn">Generate Directives 🤖</button>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+            <div class="ws-card">
+              <div class="ws-card-header">
+                <span class="ws-card-title">Robots.txt Directives</span>
+                <button class="ws-badge ws-badge-info" style="cursor:pointer;border:none;" onclick="copyText(document.getElementById('robots-output-code').textContent)">Copy</button>
+              </div>
+              <div class="code-output-wrap">
+                <pre id="robots-output-code">User-agent: *
+Disallow: /admin
+Disallow: /api/private
+Allow: /
+
+Sitemap: https://example.com/sitemap.xml</pre>
+              </div>
+            </div>
+
+            <div class="ws-card">
+              <div class="ws-card-header">
+                <span class="ws-card-title">XML Sitemap Architecture</span>
+                <button class="ws-badge ws-badge-info" style="cursor:pointer;border:none;" onclick="copyText(document.getElementById('sitemap-output-code').textContent)">Copy</button>
+              </div>
+              <div class="code-output-wrap">
+                <pre id="sitemap-output-code">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://example.com/&lt;/loc&gt;
+    &lt;changefreq&gt;daily&lt;/changefreq&gt;
+    &lt;priority&gt;1.0&lt;/priority&gt;
+  &lt;/url&gt;
+&lt;/urlset&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==========================================
+             TOOL 09: IMAGE SEO & ALT GENERATOR
+             ========================================== -->
+        <div id="tool-images" class="tool-panel">
+          <div class="panel-intro-header">
+            <h2 class="panel-intro-title">Image SEO & High-Converting Alt Generator</h2>
+            <p class="panel-intro-sub">Audit image alt coverage, check for modern WebP/AVIF formatting, and generate descriptive alt tags for Google Images ranking.</p>
+          </div>
+
+          <!-- ==========================================
+               BEGINNER USER GUIDE: TOOL 09
+               ========================================== -->
+          <div class="tool-user-guide-box" data-tool="images">
+            <div class="guide-box-header" onclick="toggleToolGuide(this)">
+              <div class="guide-header-left">
+                <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+                  <span class="guide-badge-pill">📖 USER GUIDE &amp; HOW IT WORKS</span>
+                  </div>
+                <h3 class="guide-headline">How to Use <span class="highlight">Image SEO &amp; Alt Generator</span> &amp; How It Works (आसान यूजर गाइड)</h3>
+              </div>
+              <div class="guide-header-right" style="display:flex;align-items:center;gap:0.65rem;">
+                <span class="guide-toggle-prompt">गाइड पढ़ें / छिपाएं</span>
+                <span class="guide-chevron">▼</span>
+                <button type="button" class="guide-close-pill-btn" onclick="event.stopPropagation(); closeToolGuide(this);" title="Close User Guide">✕ Close</button>
+              </div>
+            </div>
+            <div class="guide-box-content">
+              <div class="guide-section">
+                <div class="guide-section-title">💡 आसान शब्दों में समझें (सरल परिभाषा):</div>
+                <p class="guide-text">
+                  गूगल की आँखें नहीं होतीं, वह तस्वीरों को सीधे देख नहीं सकता। तस्वीर के अंदर क्या है (जैसे लाल जूता है या खूबसूरत पहाड़), यह जानने के लिए गूगल तस्वीर के साथ लगे <code>alt="..."</code> (Alternative Text) को पढ़ता है। यह टूल आपको तस्वीरों के लिए सबसे सही और सटीक Alt टेक्स्ट बनाकर देता है।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🚀 इसे कैसे इस्तेमाल करें (3 आसान स्टेप्स):</div>
+                <div class="guide-steps-grid">
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 1</span><strong>तस्वीर का विषय लिखें</strong>
+                    बॉक्स में लिखें कि फोटो किस चीज़ की है (जैसे: "wireless bluetooth headphones")।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 2</span><strong>ऑल्ट टेक्स्ट बनाएं</strong>
+                    <strong>"Generate SEO Alt Texts 🖼️"</strong> बटन दबाएं। टूल तुरंत 3 अलग-अलग स्टाइल के ऑल्ट टेक्स्ट तैयार कर देगा।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 3</span><strong>वेबसाइट में जोड़ें</strong>
+                    अपनी पसंदीदा लाइन को कॉपी करें और अपने HTML कोड के <code>&lt;img src="..." alt="यहाँ पेस्ट करें"&gt;</code> में डाल दें।
+                  </div>
+                </div>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">⚙️ यह टूल पर्दे के पीछे कैसे काम करता है (How It Works):</div>
+                <p class="guide-text">
+                  यह टूल कीवर्ड स्टफिंग (ज़बरदस्ती बहुत सारे कीवर्ड ठूंसना) से बचते हुए नेचुरल भाषा में ऐसा टेक्स्ट बनाता है जो दृष्टिबाधित (Blind) यूज़र्स के स्क्रीन रीडर और गूगल इमेज एल्गोरिद्म दोनों के लिए एकदम सटीक हो।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🎯 गूगल में इसका क्या फायदा है:</div>
+                <p class="guide-text">
+                  करोड़ों लोग रोज़ <strong>Google Images</strong> में सर्च करते हैं। अगर आपकी फोटो पर सही Alt Tag लगा है, तो आपकी वेबसाइट को गूगल इमेज सर्च से भारी मुफ्त ट्रैफिक मिलता है।
+                </p>
+              </div>
+
+              <div class="guide-section guide-faq-section">
+                <div class="guide-section-title">❓ अक्सर पूछे जाने वाले सवाल (Beginner FAQ):</div>
+                <div class="guide-faq-item">
+                  <strong>Q: Alt Tag में क्या नहीं लिखना चाहिए?</strong>
+                  <p>A: कभी भी सिर्फ <code>alt="image"</code>, <code>alt="photo1"</code> या 10 कीवर्ड की लिस्ट न डालें। हमेशा बताएं कि फोटो में असली में क्या दिख रहा है।</p>
+                </div>
+                <div class="guide-faq-item">
+                  <strong>Q: क्या फोटो का फॉर्मेट भी मायने रखता है?</strong>
+                  <p>A: जी हाँ! पुरानी JPG या PNG की जगह आधुनिक WebP या AVIF फॉर्मेट का इस्तेमाल करें, जिससे फोटो हल्की हो जाती है और पेज तेज़ी से लोड होता है।</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ws-card">
+            <div class="form-row" style="margin-bottom:1rem;">
+              <div class="form-group">
+                <label>Image Subject / Product Name</label>
+                <input type="text" id="image-subject-input" class="feedback-input" placeholder="e.g., hero product banner or company logo" value="">
+              </div>
+              <div class="form-group">
+                <label>Geographic Location / Specific Context</label>
+                <input type="text" id="image-city-input" class="feedback-input" placeholder="e.g., modern studio or workspace" value="">
+              </div>
+            </div>
+            <button id="image-alt-generate-btn" class="hero-scan-btn">Generate SEO Alt Texts 🖼️</button>
+          </div>
+
+          <div class="ws-card">
+            <div class="ws-card-header">
+              <span class="ws-card-title">Generated Alt Text Variations</span>
+            </div>
+            <div id="image-alt-output-list">
+              <p style="color:var(--text-muted);font-size:0.9rem;">Click Generate SEO Alt Texts to view accessibility and keyword-optimized options.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==========================================
+             TOOL 10: HTTP HEADERS & SECURITY CHECKER
+             ========================================== -->
+        <div id="tool-headers" class="tool-panel">
+          <div class="panel-intro-header">
+            <h2 class="panel-intro-title">HTTP Headers & Security Posture Inspector</h2>
+            <p class="panel-intro-sub">Verify server response latency, SSL certificate encryption, and check for HSTS, CSP, and X-Frame-Options security headers.</p>
+          </div>
+
+          <!-- ==========================================
+               BEGINNER USER GUIDE: TOOL 10
+               ========================================== -->
+          <div class="tool-user-guide-box" data-tool="headers">
+            <div class="guide-box-header" onclick="toggleToolGuide(this)">
+              <div class="guide-header-left">
+                <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+                  <span class="guide-badge-pill">📖 USER GUIDE &amp; HOW IT WORKS</span>
+                  </div>
+                <h3 class="guide-headline">How to Use <span class="highlight">HTTP Headers &amp; Security</span> &amp; How It Works (आसान यूजर गाइड)</h3>
+              </div>
+              <div class="guide-header-right" style="display:flex;align-items:center;gap:0.65rem;">
+                <span class="guide-toggle-prompt">गाइड पढ़ें / छिपाएं</span>
+                <span class="guide-chevron">▼</span>
+                <button type="button" class="guide-close-pill-btn" onclick="event.stopPropagation(); closeToolGuide(this);" title="Close User Guide">✕ Close</button>
+              </div>
+            </div>
+            <div class="guide-box-content">
+              <div class="guide-section">
+                <div class="guide-section-title">💡 आसान शब्दों में समझें (सरल परिभाषा):</div>
+                <p class="guide-text">
+                  जैसे घर के मुख्य दरवाज़े पर ताला लगाने के साथ-साथ खिड़कियों पर लोहे की जाली लगाई जाती है ताकि चोर किसी भी रास्ते से अंदर न घुस सकें, वैसे ही वेबसाइट को हैकर्स, वायरस, डेटा चोरी और फर्जीवाड़ा से बचाने के लिए सर्वर पर डिजिटल सुरक्षा कवच (Security Headers) लगाए जाते हैं। यह टूल चेक करता है कि आपका सुरक्षा कवच कितना मजबूत है।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🚀 इसे कैसे इस्तेमाल करें (3 आसान स्टेप्स):</div>
+                <div class="guide-steps-grid">
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 1</span><strong>वेबसाइट लिंक डालें</strong>
+                    सर्च बॉक्स में अपनी वेबसाइट का URL डालें (जैसे <code>https://mywebsite.com</code>)।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 2</span><strong>हेडर इंस्पेक्ट करें</strong>
+                    <strong>"Inspect Headers 🔒"</strong> बटन दबाएं। टूल सर्वर से सीधे बात करके सुरक्षा जांचेगा।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 3</span><strong>सिक्योरिटी स्कोर देखें</strong>
+                    नीचे <strong>Security Score</strong> (0 से 100) और सुरक्षा शील्ड्स देखें। जो हेडर <strong>Missing (लाल)</strong> हैं, उन्हें अपने होस्टिंग या Cloudflare में जोड़ें।
+                  </div>
+                </div>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">⚙️ यह टूल पर्दे के पीछे कैसे काम करता है (How It Works):</div>
+                <p class="guide-text">
+                  यह टूल आपके वेब सर्वर से HTTP रिस्पांस मांगता है और 5 प्रमुख सुरक्षा हेडर्स: <code>Strict-Transport-Security (HSTS)</code>, <code>Content-Security-Policy (CSP)</code>, <code>X-Frame-Options</code>, <code>X-Content-Type-Options</code>, और <code>Referrer-Policy</code> की मौजूदगी की जांच करके स्कोर तैयार करता है।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🎯 गूगल में इसका क्या फायदा है:</div>
+                <p class="guide-text">
+                  गूगल यूज़र्स की सुरक्षा को सबसे ज्यादा महत्व देता है। जिस वेबसाइट पर SSL (HTTPS) और मजबूत सिक्योरिटी हेडर्स होते हैं, गूगल उसे सेफ वेबसाइट (Safe Browsing) मानकर सर्च रैंकिंग में प्राथमिकता देता है।
+                </p>
+              </div>
+
+              <div class="guide-section guide-faq-section">
+                <div class="guide-section-title">❓ अक्सर पूछे जाने वाले सवाल (Beginner FAQ):</div>
+                <div class="guide-faq-item">
+                  <strong>Q: X-Frame-Options क्या है और यह क्यों ज़रूरी है?</strong>
+                  <p>A: यह हेडर किसी भी हैकर को आपकी वेबसाइट को किसी फर्जी वेबसाइट के अंदर छिपाने (Clickjacking) से रोकता है ताकि यूज़र का पासवर्ड या बैंक विवरण सुरक्षित रहे।</p>
+                </div>
+                <div class="guide-faq-item">
+                  <strong>Q: अगर कोई हेडर Missing है तो क्या मेरी वेबसाइट चलना बंद हो जाएगी?</strong>
+                  <p>A: नहीं, वेबसाइट चलती रहेगी लेकिन वह सुरक्षा के लिहाज़ से थोड़ी कमज़ोर मानी जाएगी। इसे Cloudflare में 1 क्लिक में ठीक किया जा सकता है।</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ws-card">
+            <div style="display:flex;gap:0.85rem;margin-bottom:1rem;flex-wrap:wrap;">
+              <input type="url" id="header-url-input" class="hero-url-input" style="flex:1;" placeholder="https://example.com" value="">
+              <button id="header-check-btn" class="hero-scan-btn">Inspect Headers 🔒</button>
+            </div>
+          </div>
+
+          <div id="header-results-box" style="display:none;">
+            <div class="ws-metrics-grid">
+              <div class="ws-metric-box">
+                <span id="header-metric-status" class="ws-metric-val" style="color:var(--neon-emerald);">200 OK</span>
+                <span class="ws-metric-lbl">HTTP Status</span>
+              </div>
+              <div class="ws-metric-box">
+                <span id="header-metric-score" class="ws-metric-val" style="color:var(--neon-cyan);">83/100</span>
+                <span class="ws-metric-lbl">Security Score</span>
+              </div>
+              <div class="ws-metric-box">
+                <span id="header-metric-latency" class="ws-metric-val" style="color:var(--neon-indigo);">285 ms</span>
+                <span class="ws-metric-lbl">Roundtrip Latency</span>
+              </div>
+            </div>
+
+            <div class="ws-card">
+              <div class="ws-card-header">
+                <span class="ws-card-title">Security Headers Audit</span>
+              </div>
+              <div class="ws-table-wrap">
+                <table class="ws-table">
+                  <thead>
+                    <tr>
+                      <th style="width:30%;">Header</th>
+                      <th style="width:20%;">Status</th>
+                      <th style="width:50%;">Security Recommendation</th>
+                    </tr>
+                  </thead>
+                  <tbody id="header-security-table"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==========================================
+             TOOL 11: CONTENT & READABILITY ANALYZER
+             ========================================== -->
+        <div id="tool-readability" class="tool-panel">
+          <div class="panel-intro-header">
+            <h2 class="panel-intro-title">Content Quality & Flesch Readability Engine</h2>
+            <p class="panel-intro-sub">Evaluate Flesch Reading Ease, grade level complexity, word count, reading time, and detect over-optimization risks.</p>
+          </div>
+
+          <!-- ==========================================
+               BEGINNER USER GUIDE: TOOL 11
+               ========================================== -->
+          <div class="tool-user-guide-box" data-tool="readability">
+            <div class="guide-box-header" onclick="toggleToolGuide(this)">
+              <div class="guide-header-left">
+                <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+                  <span class="guide-badge-pill">📖 USER GUIDE &amp; HOW IT WORKS</span>
+                  </div>
+                <h3 class="guide-headline">How to Use <span class="highlight">Content &amp; Readability</span> &amp; How It Works (आसान यूजर गाइड)</h3>
+              </div>
+              <div class="guide-header-right" style="display:flex;align-items:center;gap:0.65rem;">
+                <span class="guide-toggle-prompt">गाइड पढ़ें / छिपाएं</span>
+                <span class="guide-chevron">▼</span>
+                <button type="button" class="guide-close-pill-btn" onclick="event.stopPropagation(); closeToolGuide(this);" title="Close User Guide">✕ Close</button>
+              </div>
+            </div>
+            <div class="guide-box-content">
+              <div class="guide-section">
+                <div class="guide-section-title">💡 आसान शब्दों में समझें (सरल परिभाषा):</div>
+                <p class="guide-text">
+                  अगर आप अपनी वेबसाइट पर बहुत भारी-भरकम, कठिन अंग्रेजी या लंबे-लंबे उबाऊ वाक्य लिख देंगे, तो कोई भी उसे पूरा नहीं पढ़ेगा और 5 सेकंड में पेज बंद कर देगा। यह टूल चेक करता है कि आपका लिखा हुआ लेख (Article) कितना आसान, साफ और दिल को छूने वाला है ताकि 7वीं-8वीं क्लास का बच्चा भी उसे बिना अटके समझ सके।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🚀 इसे कैसे इस्तेमाल करें (3 आसान स्टेप्स):</div>
+                <div class="guide-steps-grid">
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 1</span><strong>कंटेंट पेस्ट करें</strong>
+                    बॉक्स में अपने ब्लॉग या आर्टिकल का टेक्स्ट पेस्ट करें (या Tool 01 से अपनी वेबसाइट ऑडिट करके ऑटोमैटिक इंपोर्ट करें)।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 2</span><strong>एनालाइज़ दबाएं</strong>
+                    <strong>"Analyze Content Quality 📝"</strong> बटन दबाएं। टूल तुरंत सारे गणितीय पैमानों की गणना कर देगा।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 3</span><strong>स्कोर और सुधार देखें</strong>
+                    चेक करें कि <strong>Flesch Reading Ease</strong> 60 से ऊपर है या नहीं। अगर वाक्य बहुत लंबे हैं, तो उन्हें छोटे-छोटे वाक्यों में तोड़ें।
+                  </div>
+                </div>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">⚙️ यह टूल पर्दे के पीछे कैसे काम करता है (How It Works):</div>
+                <p class="guide-text">
+                  यह दुनिया के सबसे प्रसिद्ध वैज्ञानिक फॉर्मूले (Flesch-Kincaid Reading Ease) का इस्तेमाल करता है। यह प्रति वाक्य औसत शब्दों की संख्या और प्रति शब्द सिलेबल्स (अक्षरों के उच्चारण टुकड़े) को गिनकर 0 से 100 तक स्कोर निकालता है।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🎯 गूगल में इसका क्या फायदा है:</div>
+                <p class="guide-text">
+                  गूगल नापता है कि लोग आपकी साइट पर कितनी देर रुकते हैं (Dwell Time)। आसान और रोचक भाषा होने पर लोग पूरा आर्टिकल पढ़ते हैं, जिससे बाउंस रेट (Bounce Rate) घटता है और गूगल आपकी रैंकिंग तुरंत बूस्ट कर देता है।
+                </p>
+              </div>
+
+              <div class="guide-section guide-faq-section">
+                <div class="guide-section-title">❓ अक्सर पूछे जाने वाले सवाल (Beginner FAQ):</div>
+                <div class="guide-faq-item">
+                  <strong>Q: सबसे अच्छा रीडेबिलिटी स्कोर क्या माना जाता है?</strong>
+                  <p>A: 60 से 75 के बीच का स्कोर इंटरनेट के लिए सबसे परफेक्ट होता है (Plain English / आसान भाषा)। 30 से नीचे का स्कोर बहुत मुश्किल माना जाता है जिसे आम लोग पढ़ना पसंद नहीं करते।</p>
+                </div>
+                <div class="guide-faq-item">
+                  <strong>Q: क्या लंबा आर्टिकल लिखने से रैंकिंग मिलती है?</strong>
+                  <p>A: हाँ, लेकिन सिर्फ फालतू बातें भरकर नहीं। जानकारी पूरी होनी चाहिए, बुलेट पॉइंट्स होने चाहिए और वाक्य छोटे-छोटे होने चाहिए।</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ws-card">
+            <div class="form-group" style="margin-bottom:1rem;">
+              <label>Target Keyword (Optional)</label>
+              <input type="text" id="readability-input-kw" class="feedback-input" placeholder="e.g., search engine optimization" value="">
+            </div>
+            <div class="form-group" style="margin-bottom:1rem;">
+              <label>Article or Page Content Text</label>
+              <textarea id="readability-input-text" class="feedback-input" rows="6" placeholder="Paste your blog post or page content here, or run a site audit in Tool 01 to automatically import text from your audited website..."></textarea>
+            </div>
+            <button id="readability-run-btn" class="hero-scan-btn">Analyze Content Quality 📝</button>
+          </div>
+
+          <div id="readability-results" style="display:none;" class="ws-card">
+            <div class="ws-metrics-grid">
+              <div class="ws-metric-box">
+                <span id="readability-score" class="ws-metric-val" style="color:var(--neon-emerald);">65 / 100</span>
+                <span class="ws-metric-lbl">Flesch Reading Ease</span>
+              </div>
+              <div class="ws-metric-box">
+                <span id="readability-label" class="ws-metric-val" style="color:var(--neon-cyan);font-size:1.1rem;">Standard (8th Grade)</span>
+                <span class="ws-metric-lbl">Reading Level</span>
+              </div>
+              <div class="ws-metric-box">
+                <span id="readability-words" class="ws-metric-val" style="color:var(--neon-indigo);">85 words</span>
+                <span class="ws-metric-lbl">Word Count</span>
+              </div>
+              <div class="ws-metric-box">
+                <span id="readability-time" class="ws-metric-val" style="color:var(--neon-amber);">1 min read</span>
+                <span class="ws-metric-lbl">Est. Reading Time</span>
+              </div>
+            </div>
+
+            <div class="ws-card-header">
+              <span class="ws-card-title">Editorial & Ranking Tips</span>
+            </div>
+            <ul id="readability-tips-list" style="margin-left:1.5rem;line-height:1.6;"></ul>
+          </div>
+        </div>
+
+        <!-- ==========================================
+             TOOL 12: INTERACTIVE SEO LAUNCH CHECKLIST
+             ========================================== -->
+        <div id="tool-checklist" class="tool-panel">
+          <div class="panel-intro-header">
+            <h2 class="panel-intro-title">Interactive 25-Point SEO Launch Checklist</h2>
+            <p class="panel-intro-sub">A comprehensive step-by-step checklist across Technical, On-Page, Content, and Off-Page SEO. Automatically saved in your browser.</p>
+          </div>
+
+          <!-- ==========================================
+               BEGINNER USER GUIDE: TOOL 12
+               ========================================== -->
+          <div class="tool-user-guide-box" data-tool="checklist">
+            <div class="guide-box-header" onclick="toggleToolGuide(this)">
+              <div class="guide-header-left">
+                <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+                  <span class="guide-badge-pill">📖 USER GUIDE &amp; HOW IT WORKS</span>
+                  </div>
+                <h3 class="guide-headline">How to Use <span class="highlight">SEO Launch Checklist</span> &amp; How It Works (आसान यूजर गाइड)</h3>
+              </div>
+              <div class="guide-header-right" style="display:flex;align-items:center;gap:0.65rem;">
+                <span class="guide-toggle-prompt">गाइड पढ़ें / छिपाएं</span>
+                <span class="guide-chevron">▼</span>
+                <button type="button" class="guide-close-pill-btn" onclick="event.stopPropagation(); closeToolGuide(this);" title="Close User Guide">✕ Close</button>
+              </div>
+            </div>
+            <div class="guide-box-content">
+              <div class="guide-section">
+                <div class="guide-section-title">💡 आसान शब्दों में समझें (सरल परिभाषा):</div>
+                <p class="guide-text">
+                  जैसे कोई हवाई जहाज़ उड़ाने से पहले पायलट अपनी चेकलिस्ट चेक करता है कि पेट्रोल भरा है, पहिए ठीक हैं, दरवाजे बंद हैं ताकि आसमान में कोई हादसा न हो, वैसे ही किसी भी वेबसाइट को इंटरनेट पर दुनिया के सामने लॉन्च करने से पहले ये 25 ज़रूरी काम पूरे होने चाहिए। यह टूल आपको एक-एक चीज़ याद दिलाता है।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🚀 इसे कैसे इस्तेमाल करें (3 आसान स्टेप्स):</div>
+                <div class="guide-steps-grid">
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 1</span><strong>कैटेगरी चेक करें</strong>
+                    चेकलिस्ट में 4 मुख्य भाग हैं: <strong>On-Page</strong>, <strong>Technical</strong>, <strong>Speed &amp; Mobile</strong>, और <strong>Indexing</strong>।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 2</span><strong>क किए गए कामों पर टिक लगाएं</strong>
+                    जो काम आप अपनी वेबसाइट पर कर चुके हैं (जैसे SSL लगाना, Title लिखना), उस डिब्बे पर क्लिक करके टिक (✔) लगाते जाएं।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 3</span><strong>प्रोग्रेस बार 100% करें</strong>
+                    ऊपर हरा प्रोग्रेस बार देखें। जब तक यह <strong>100% Complete</strong> न हो जाए, तब तक बाकी बचे काम पूरे करते रहें।
+                  </div>
+                </div>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">⚙️ यह टूल पर्दे के पीछे कैसे काम करता है (How It Works):</div>
+                <p class="guide-text">
+                  आपकी चेकलिस्ट की स्थिति सीधे आपके ब्राउज़र के LocalStorage में सुरक्षित सेव हो जाती है। आप कंप्यूटर बंद कर दें या पेज रीफ्रेश कर लें, आपका टिक किया हुआ डेटा कभी गायब नहीं होगा।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🎯 गूगल में इसका क्या फायदा है:</div>
+                <p class="guide-text">
+                  कई बार लोग शानदार वेबसाइट बना लेते हैं लेकिन गलती से डेवलपर का <code>noindex</code> टैग हटाना भूल जाते हैं, जिससे साइट कभी गूगल पर आती ही नहीं। यह चेकलिस्ट आपको ऐसी किसी भी भारी भूल से 100% बचाती है।
+                </p>
+              </div>
+
+              <div class="guide-section guide-faq-section">
+                <div class="guide-section-title">❓ अक्सर पूछे जाने वाले सवाल (Beginner FAQ):</div>
+                <div class="guide-faq-item">
+                  <strong>Q: क्या मुझे नई वेबसाइट बनाने पर फिर से शुरू करना होगा?</strong>
+                  <p>A: जब आप किसी नए प्रोजेक्ट या क्लाइंट की साइट पर काम शुरू करें, तो ऊपर दिए गए "Reset Progress 🔄" बटन को दबाकर चेकलिस्ट को फिर से 0% से शुरू कर सकते हैं।</p>
+                </div>
+                <div class="guide-faq-item">
+                  <strong>Q: क्या 100% होने पर गूगल पर तुरंत पहली रैंक मिल जाएगी?</strong>
+                  <p>A: 100% चेकलिस्ट का मतलब है कि आपकी वेबसाइट तकनीकी रूप से एकदम परफेक्ट है। अब आप जैसे ही अच्छे आर्टिकल्स डालेंगे, गूगल आपको बहुत तेज़ी से टॉप पर ले जाएगा।</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ws-card">
+            <div class="ws-card-header">
+              <div>
+                <span class="ws-card-title">Launch Readiness Progress</span>
+                <div id="checklist-progress-text" style="font-size:0.85rem;color:var(--text-dim);margin-top:0.25rem;">0 of 25 items completed (0%)</div>
+              </div>
+              <button id="checklist-reset-btn" class="ws-badge ws-badge-warning" style="cursor:pointer;border:none;">Reset Progress 🔄</button>
+            </div>
+
+            <div style="height:10px;background:rgba(255,255,255,0.06);border-radius:9999px;overflow:hidden;margin-bottom:1.5rem;">
+              <div id="checklist-progress-bar" style="height:100%;width:0%;background:linear-gradient(90deg, var(--neon-cyan), var(--neon-emerald));transition:width 0.3s ease;"></div>
+            </div>
+
+            <div id="checklist-items-container"></div>
+          </div>
+        </div>
+
+        <!-- ==========================================
+             TOOL 13: MULTI-PAGE SITEMAP & DEEP SPIDER CRAWLER
+             ========================================== -->
+        <div id="tool-sitemap-crawler" class="tool-panel">
+          <div class="panel-intro-header">
+            <h2 class="panel-intro-title">Multi-Page Spider & Screaming Frog Crawler</h2>
+            <p class="panel-intro-sub">Audit full site architectures. Choose between fast XML Sitemap batch crawling or autonomous link-to-link deep crawling without needing any sitemap.</p>
+          </div>
+
+          <!-- ==========================================
+               BEGINNER USER GUIDE: TOOL 13
+               ========================================== -->
+          <div class="tool-user-guide-box" data-tool="sitemap-crawler">
+            <div class="guide-box-header" onclick="toggleToolGuide(this)">
+              <div class="guide-header-left">
+                <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+                  <span class="guide-badge-pill">📖 USER GUIDE &amp; HOW IT WORKS</span>
+                  </div>
+                <h3 class="guide-headline">How to Use <span class="highlight">Deep Spider Crawler</span> &amp; How It Works (आसान यूजर गाइड)</h3>
+              </div>
+              <div class="guide-header-right" style="display:flex;align-items:center;gap:0.65rem;">
+                <span class="guide-toggle-prompt">गाइड पढ़ें / छिपाएं</span>
+                <span class="guide-chevron">▼</span>
+                <button type="button" class="guide-close-pill-btn" onclick="event.stopPropagation(); closeToolGuide(this);" title="Close User Guide">✕ Close</button>
+              </div>
+            </div>
+            <div class="guide-box-content">
+              <div class="guide-section">
+                <div class="guide-section-title">💡 आसान शब्दों में समझें (सरल परिभाषा):</div>
+                <p class="guide-text">
+                  अगर आपकी वेबसाइट में 50 या 100 पन्ने हैं, तो आप एक-एक करके 100 बार लिंक डालकर चेक नहीं कर सकते। यह टूल एक स्मार्ट मकड़ी (Web Spider) की तरह काम करता है। यह आपके होमपेज से शुरू होता है और अंदर के सभी 50-100 पेजों पर खुद चलकर जाता है और टूटी कड़ियाँ (404 Broken Links) व गलतियां एक ही बार में पकड़ लेता है।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🚀 इसे कैसे इस्तेमाल करें (3 आसान स्टेप्स):</div>
+                <div class="guide-steps-grid">
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 1</span><strong>मोड चुनें</strong>
+                    अगर आपके पास साइटमैप है तो <strong>Mode A (Sitemap Spider)</strong> चुनें, या सीधे वेबसाइट का लिंक डालकर बिना साइटमैप के स्कैन करने के लिए <strong>Mode B (Screaming Frog Mode)</strong> चुनें।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 2</span><strong>पेजों की संख्या सेट करें</strong>
+                    URL डालें और चुनें कि कितने पेज स्कैन करने हैं (जैसे 10, 25 या 50 पेज) और क्रॉल बटन दबाएं।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 3</span><strong>टूटी लिंक्स पकड़ें</strong>
+                    नीचे टेबल में देखें कि क्या किसी पेज के सामने लाल रंग में <strong>404 Not Found</strong> लिखा है। अगर लिखा है, तो उस खराब लिंक को तुरंत ठीक करें।
+                  </div>
+                </div>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">⚙️ यह टूल पर्दे के पीछे कैसे काम करता है (How It Works):</div>
+                <p class="guide-text">
+                  यह BFS (Breadth-First Search) अल्गोरिदम पर काम करता है। यह पेज के HTML में मौजूद सभी <code>&lt;a href="..."&gt;</code> लिंक्स को निकालता है, डुप्लिकेट्स को हटाता है, और एक-एक करके हर पेज का HTTP स्टेटस कोड, टाइटल, वर्ड काउंट और लोड टाइम टेबल में भरता है।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🎯 गूगल में इसका क्या फायदा है:</div>
+                <p class="guide-text">
+                  अगर आपकी वेबसाइट में कोई 404 (Not Found) ब्रोकन लिंक है, तो गूगल का बॉट वहाँ जाकर अटक जाता है। इसे "Crawl Budget Waste" कहते हैं। टूटी लिंक्स हटाने से गूगल के पास आपके अच्छे पेजों को इंडेक्स करने का समय बचता है।
+                </p>
+              </div>
+
+              <div class="guide-section guide-faq-section">
+                <div class="guide-section-title">❓ अक्सर पूछे जाने वाले सवाल (Beginner FAQ):</div>
+                <div class="guide-faq-item">
+                  <strong>Q: Screaming Frog मोड क्या है?</strong>
+                  <p>A: Screaming Frog दुनिया का सबसे प्रसिद्ध टेक्निकल एसईओ सॉफ्टवेयर है जिसके लिए ₹22,000/साल देने पड़ते हैं। हमारे टूल में वही लिंक-टू-लिंक क्रॉलिंग सीधे ब्राउज़र में बिल्कुल मुफ्त उपलब्ध है।</p>
+                </div>
+                <div class="guide-faq-item">
+                  <strong>Q: क्या यह बाहरी वेबसाइट्स को भी क्रॉल करता है?</strong>
+                  <p>A: नहीं, यह सुरक्षा के लिए सिर्फ आपके अपने डोमेन के अंदरूनी पेजों (Internal Links) को ही स्कैन करता है।</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Crawler Mode Switcher -->
+          <div class="ws-card" style="margin-bottom:1rem;padding:0.75rem 1rem;">
+            <div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap;">
+              <span style="font-size:0.85rem;color:var(--text-muted);font-weight:700;">CRAWLER MODE:</span>
+              <button id="crawler-mode-sitemap-btn" class="ws-badge ws-badge-info active" style="cursor:pointer;border:none;padding:0.45rem 1rem;border-radius:20px;">Mode A: XML Sitemap Spider 🕸️</button>
+              <button id="crawler-mode-deep-btn" class="ws-badge ws-badge-purple" style="cursor:pointer;border:none;padding:0.45rem 1rem;border-radius:20px;opacity:0.65;">Mode B: Deep Link Spider (Screaming Frog) 🕷️</button>
+            </div>
+          </div>
+
+          <!-- Mode A: Sitemap XML Container -->
+          <div id="crawler-sitemap-container" class="ws-card">
+            <div style="display:flex;gap:0.85rem;margin-bottom:1rem;flex-wrap:wrap;">
+              <input type="url" id="sitemap-crawler-url" class="hero-url-input" style="flex:1;min-width:280px;" placeholder="https://example.com/sitemap.xml" value="">
+              <div style="display:flex;align-items:center;gap:0.5rem;">
+                <label style="font-size:0.85rem;color:var(--text-dim);white-space:nowrap;">Max URLs:</label>
+                <select id="sitemap-crawler-max" class="feedback-input" style="padding:0.75rem 1rem;min-width:90px;">
+                  <option value="10">10 Pages</option>
+                  <option value="25" selected>25 Pages</option>
+                  <option value="50">50 Pages</option>
+                </select>
+              </div>
+              <button id="sitemap-crawl-btn" class="hero-scan-btn">Spider Sitemap 🕸️</button>
+            </div>
+            <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+              <span style="font-size:0.8rem;color:var(--text-muted);font-weight:600;">Presets:</span>
+              <button class="quick-url-chip sitemap-preset-chip" data-url="https://vercel.com/sitemap.xml">Vercel</button>
+              <button class="quick-url-chip sitemap-preset-chip" data-url="https://stripe.com/sitemap/sitemap.xml">Stripe</button>
+              <button class="quick-url-chip sitemap-preset-chip" data-url="https://github.com/sitemap.xml">GitHub</button>
+            </div>
+          </div>
+
+          <!-- Mode B: Deep Link-to-Link Crawler Container (Screaming Frog Mode) -->
+          <div id="crawler-deep-container" class="ws-card" style="display:none;">
+            <div style="display:flex;gap:0.85rem;margin-bottom:1rem;flex-wrap:wrap;">
+              <input type="url" id="deep-spider-url" class="hero-url-input" style="flex:1;min-width:280px;" placeholder="https://example.com" value="">
+              <div style="display:flex;align-items:center;gap:0.5rem;">
+                <label style="font-size:0.85rem;color:var(--text-dim);white-space:nowrap;">Max Pages:</label>
+                <select id="deep-spider-max-pages" class="feedback-input" style="padding:0.75rem 1rem;min-width:90px;">
+                  <option value="15">15 Pages</option>
+                  <option value="30" selected>30 Pages</option>
+                  <option value="50">50 Pages</option>
+                  <option value="100">100 Pages</option>
+                </select>
+              </div>
+              <div style="display:flex;align-items:center;gap:0.5rem;">
+                <label style="font-size:0.85rem;color:var(--text-dim);white-space:nowrap;">Max Depth:</label>
+                <select id="deep-spider-max-depth" class="feedback-input" style="padding:0.75rem 1rem;min-width:90px;">
+                  <option value="1">Depth 1 (Homepage links)</option>
+                  <option value="2" selected>Depth 2 (Subsections)</option>
+                  <option value="3">Depth 3 (Full site hierarchy)</option>
+                </select>
+              </div>
+              <button id="deep-spider-run-btn" class="hero-scan-btn" style="background:linear-gradient(135deg,var(--neon-purple),var(--neon-indigo));">Run Deep Spider 🕷️</button>
+            </div>
+            <p style="font-size:0.85rem;color:var(--text-muted);margin:0;">
+              💡 <strong>No sitemap required:</strong> The spider begins at your seed URL, extracts all internal links, crawls child pages in BFS order, and reveals exact referrer pages for any broken 404 links.
+            </p>
+          </div>
+
+          <!-- Loading State -->
+          <div id="sitemap-crawler-loading" style="display:none;text-align:center;padding:3rem 1rem;">
+            <div class="brand-icon-halo" style="display:inline-flex;margin-bottom:1rem;animation:spin 2s linear infinite;">
+              <div class="brand-icon">⚡</div>
+            </div>
+            <h3 style="margin-bottom:0.5rem;">Spidering Sitemap XML & Auditing Pages Concurrently...</h3>
+            <p style="color:var(--text-muted);font-size:0.9rem;">Fetching DOM trees, measuring response latency, verifying HTTP status codes...</p>
+          </div>
+
+          <!-- Results Box -->
+          <div id="sitemap-crawler-results" style="display:none;">
+            <div class="ws-metrics-grid" style="margin-bottom:1.5rem;">
+              <div class="ws-metric-box">
+                <span id="sitemap-metric-total" class="ws-metric-val" style="color:var(--neon-cyan);">0</span>
+                <span class="ws-metric-lbl">Total URLs in Sitemap</span>
+              </div>
+              <div class="ws-metric-box">
+                <span id="sitemap-metric-crawled" class="ws-metric-val" style="color:var(--neon-indigo);">0</span>
+                <span class="ws-metric-lbl">Audited Pages</span>
+              </div>
+              <div class="ws-metric-box">
+                <span id="sitemap-metric-broken" class="ws-metric-val" style="color:var(--neon-rose);">0</span>
+                <span class="ws-metric-lbl">Broken Links (404/500)</span>
+              </div>
+              <div class="ws-metric-box">
+                <span id="sitemap-metric-duplicates" class="ws-metric-val" style="color:var(--neon-amber);">0</span>
+                <span class="ws-metric-lbl">Duplicate Title Groups</span>
+              </div>
+            </div>
+
+            <!-- Health Highlights / Warnings -->
+            <div id="sitemap-warnings-box" style="margin-bottom:1.5rem;"></div>
+
+            <!-- Crawled URLs Table -->
+            <div class="ws-card">
+              <div class="ws-card-header">
+                <div>
+                  <span class="ws-card-title">Crawled Pages Inventory</span>
+                  <div style="font-size:0.85rem;color:var(--text-muted);margin-top:0.25rem;">Live inspection of status, latency, title length, and canonical health.</div>
+                </div>
+                <button id="sitemap-export-csv-btn" class="ws-badge ws-badge-info" style="cursor:pointer;border:none;">Export CSV 📥</button>
+              </div>
+              <div class="ws-table-wrap">
+                <table class="ws-table">
+                  <thead>
+                    <tr>
+                      <th style="width:30%;">Page URL</th>
+                      <th style="width:12%;">Status</th>
+                      <th style="width:12%;">Latency</th>
+                      <th style="width:26%;">Page Title</th>
+                      <th style="width:20%;">Issues / Flags</th>
+                    </tr>
+                  </thead>
+                  <tbody id="sitemap-pages-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==========================================
+             TOOL 14: GOOGLE CORE WEB VITALS & LIGHTHOUSE
+             ========================================== -->
+        <div id="tool-lighthouse" class="tool-panel">
+          <div class="panel-intro-header">
+            <h2 class="panel-intro-title">Google Core Web Vitals & Lighthouse Engine</h2>
+            <p class="panel-intro-sub">Run real-world Google Lighthouse audits via PageSpeed Insights. Inspect Largest Contentful Paint (LCP), Total Blocking Time (TBT), Cumulative Layout Shift (CLS), and full category scoring.</p>
+          </div>
+
+          <!-- ==========================================
+               BEGINNER USER GUIDE: TOOL 14
+               ========================================== -->
+          <div class="tool-user-guide-box" data-tool="lighthouse">
+            <div class="guide-box-header" onclick="toggleToolGuide(this)">
+              <div class="guide-header-left">
+                <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+                  <span class="guide-badge-pill">📖 USER GUIDE &amp; HOW IT WORKS</span>
+                  </div>
+                <h3 class="guide-headline">How to Use <span class="highlight">Core Web Vitals &amp; Lighthouse</span> &amp; How It Works (आसान यूजर गाइड)</h3>
+              </div>
+              <div class="guide-header-right" style="display:flex;align-items:center;gap:0.65rem;">
+                <span class="guide-toggle-prompt">गाइड पढ़ें / छिपाएं</span>
+                <span class="guide-chevron">▼</span>
+                <button type="button" class="guide-close-pill-btn" onclick="event.stopPropagation(); closeToolGuide(this);" title="Close User Guide">✕ Close</button>
+              </div>
+            </div>
+            <div class="guide-box-content">
+              <div class="guide-section">
+                <div class="guide-section-title">💡 आसान शब्दों में समझें (सरल परिभाषा):</div>
+                <p class="guide-text">
+                  यह सीधे गूगल का अपना ऑफिशियल स्पीड-मीटर (थर्मामीटर) है! गूगल खुद आपकी वेबसाइट को मोबाइल और कंप्यूटर पर खोलकर देखता है कि वेबसाइट कितनी जल्दी खुली, बटन कितनी तेज़ी से दबे, और क्या पेज लोड होते समय स्क्रीन पर फोटो या टेक्स्ट इधर-उधर हिल तो नहीं रहे।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🚀 इसे कैसे इस्तेमाल करें (3 आसान स्टेप्स):</div>
+                <div class="guide-steps-grid">
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 1</span><strong>लिंक डालें और मोड चुनें</strong>
+                    वेबसाइट का URL डालें और <strong>"Mobile (Google Default)"</strong> चुनें (क्योंकि गूगल मोबाइल स्पीड को सबसे पहले देखता है)।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 2</span><strong>लाइटहाउस टेस्ट चलाएं</strong>
+                    <strong>"Run Lighthouse Audit ⚡"</strong> बटन दबाएं। लगभग 5-10 सेकंड में गूगल के सर्वर से असली डेटा आ जाएगा।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 3</span><strong>4 बड़े स्कोर और Vitals देखें</strong>
+                    चेक करें कि <strong>Performance</strong>, <strong>Accessibility</strong>, <strong>Best Practices</strong>, और <strong>SEO</strong> में कितने स्कोर हैं (हरा = 90-100, पीला = 50-89, लाल = 0-49)।
+                  </div>
+                </div>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">⚙️ यह टूल पर्दे के पीछे कैसे काम करता है (How It Works):</div>
+                <p class="guide-text">
+                  हमारा टूल गूगल के आधिकारिक <strong>Google PageSpeed Insights API</strong> से लाइव कनेक्ट होता है। यह 3 सबसे महत्वपूर्ण Core Web Vitals नापता है: LCP (मुख्य फोटो लोड होने का समय), TBT (पेज फ्रीज़ होने का समय), और CLS (स्क्रीन लेआउट शिफ्ट)।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🎯 गूगल में इसका क्या फायदा है:</div>
+                <p class="guide-text">
+                  गूगल ने साफ कहा है कि पेज स्पीड और कोर वेब वाइटल्स उसकी रैंकिंग का सीधा हिस्सा हैं। अगर आपकी वेबसाइट मोबाइल पर 3 सेकंड से ज़्यादा लेट खुलती है, तो 50% लोग उसे बंद कर देते हैं और गूगल आपकी रैंकिंग तुरंत गिरा देता है।
+                </p>
+              </div>
+
+              <div class="guide-section guide-faq-section">
+                <div class="guide-section-title">❓ अक्सर पूछे जाने वाले सवाल (Beginner FAQ):</div>
+                <div class="guide-faq-item">
+                  <strong>Q: LCP को 2.5 सेकंड से कम कैसे करें?</strong>
+                  <p>A: होमपेज की बड़ी बैनर फोटो का साइज़ छोटा (WebP फॉर्मेट) करें और अच्छी होस्टिंग का उपयोग करें।</p>
+                </div>
+                <div class="guide-faq-item">
+                  <strong>Q: CLS (Cumulative Layout Shift) क्या होता है?</strong>
+                  <p>A: जब आप किसी वेबसाइट पर कोई बटन दबाने वाले होते हैं और अचानक कोई विज्ञापन या फोटो लोड होकर बटन को नीचे खिसका देती है—उसे लेआउट शिफ्ट कहते हैं। यह 0.1 से कम होना चाहिए।</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ws-card">
+            <div style="display:flex;gap:0.85rem;margin-bottom:1rem;flex-wrap:wrap;">
+              <input type="url" id="lighthouse-url-input" class="hero-url-input" style="flex:1;min-width:280px;" placeholder="https://example.com" value="">
+              <div style="display:flex;align-items:center;gap:0.5rem;">
+                <label style="font-size:0.85rem;color:var(--text-dim);white-space:nowrap;">Strategy:</label>
+                <select id="lighthouse-strategy-select" class="feedback-input" style="padding:0.75rem 1rem;">
+                  <option value="mobile" selected>📱 Mobile (Google Default)</option>
+                  <option value="desktop">💻 Desktop</option>
+                </select>
+              </div>
+              <button id="lighthouse-run-btn" class="hero-scan-btn">Run Lighthouse Audit ⚡</button>
+            </div>
+            <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+              <span style="font-size:0.8rem;color:var(--text-muted);font-weight:600;">Presets:</span>
+              <button class="quick-url-chip lighthouse-preset-chip" data-url="https://github.com">GitHub</button>
+              <button class="quick-url-chip lighthouse-preset-chip" data-url="https://vercel.com">Vercel</button>
+              <button class="quick-url-chip lighthouse-preset-chip" data-url="https://stripe.com">Stripe</button>
+            </div>
+          </div>
+
+          <!-- Loading State -->
+          <div id="lighthouse-loading" style="display:none;text-align:center;padding:3rem 1rem;">
+            <div class="brand-icon-halo" style="display:inline-flex;margin-bottom:1rem;animation:spin 2s linear infinite;">
+              <div class="brand-icon">⚡</div>
+            </div>
+            <h3 style="margin-bottom:0.5rem;">Running Google Lighthouse Lab Diagnostics...</h3>
+            <p style="color:var(--text-muted);font-size:0.9rem;">Connecting to Google PageSpeed Insights REST API, calculating Core Web Vitals...</p>
+          </div>
+
+          <!-- Results Box -->
+          <div id="lighthouse-results" style="display:none;">
+            <!-- Category Scores Row -->
+            <div class="ws-metrics-grid" style="margin-bottom:1.5rem;">
+              <div class="ws-metric-box">
+                <span id="lh-score-perf" class="ws-metric-val" style="color:var(--neon-emerald);">95</span>
+                <span class="ws-metric-lbl">Performance Score</span>
+              </div>
+              <div class="ws-metric-box">
+                <span id="lh-score-a11y" class="ws-metric-val" style="color:var(--neon-cyan);">96</span>
+                <span class="ws-metric-lbl">Accessibility</span>
+              </div>
+              <div class="ws-metric-box">
+                <span id="lh-score-bp" class="ws-metric-val" style="color:var(--neon-indigo);">100</span>
+                <span class="ws-metric-lbl">Best Practices</span>
+              </div>
+              <div class="ws-metric-box">
+                <span id="lh-score-seo" class="ws-metric-val" style="color:var(--neon-purple);">100</span>
+                <span class="ws-metric-lbl">SEO Score</span>
+              </div>
+            </div>
+
+            <!-- Core Web Vitals 3 Pillars -->
+            <div class="ws-card" style="margin-bottom:1.5rem;">
+              <div class="ws-card-header">
+                <div>
+                  <span class="ws-card-title">Core Web Vitals Pass / Fail Thresholds</span>
+                  <div style="font-size:0.85rem;color:var(--text-muted);margin-top:0.25rem;">Official Google 2026 Page Experience ranking signals.</div>
+                </div>
+                <span id="lh-cwv-badge" class="ws-badge ws-badge-success">CORE WEB VITALS PASSED</span>
+              </div>
+
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1rem;">
+                <div style="padding:1rem;background:rgba(255,255,255,0.03);border:1px solid var(--border-glass);border-radius:12px;">
+                  <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.35rem;">Largest Contentful Paint (LCP)</div>
+                  <div id="lh-metric-lcp" style="font-size:1.5rem;font-weight:800;color:var(--neon-emerald);">1.2 s</div>
+                  <div style="font-size:0.75rem;color:var(--text-dim);margin-top:0.25rem;">Good &lt; 2.5s • Needs Improvement &lt; 4.0s</div>
+                </div>
+
+                <div style="padding:1rem;background:rgba(255,255,255,0.03);border:1px solid var(--border-glass);border-radius:12px;">
+                  <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.35rem;">First Contentful Paint (FCP)</div>
+                  <div id="lh-metric-fcp" style="font-size:1.5rem;font-weight:800;color:var(--neon-cyan);">0.8 s</div>
+                  <div style="font-size:0.75rem;color:var(--text-dim);margin-top:0.25rem;">Good &lt; 1.8s • Needs Improvement &lt; 3.0s</div>
+                </div>
+
+                <div style="padding:1rem;background:rgba(255,255,255,0.03);border:1px solid var(--border-glass);border-radius:12px;">
+                  <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.35rem;">Cumulative Layout Shift (CLS)</div>
+                  <div id="lh-metric-cls" style="font-size:1.5rem;font-weight:800;color:var(--neon-emerald);">0.01</div>
+                  <div style="font-size:0.75rem;color:var(--text-dim);margin-top:0.25rem;">Good &lt; 0.1 • Poor &gt; 0.25</div>
+                </div>
+
+                <div style="padding:1rem;background:rgba(255,255,255,0.03);border:1px solid var(--border-glass);border-radius:12px;">
+                  <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.35rem;">Total Blocking Time (TBT)</div>
+                  <div id="lh-metric-tbt" style="font-size:1.5rem;font-weight:800;color:var(--neon-emerald);">40 ms</div>
+                  <div style="font-size:0.75rem;color:var(--text-dim);margin-top:0.25rem;">Good &lt; 200ms • Poor &gt; 600ms</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Opportunities & Diagnostics -->
+            <div class="ws-card">
+              <div class="ws-card-header">
+                <span class="ws-card-title">Top Performance Opportunities & Diagnostics</span>
+              </div>
+              <div id="lh-opportunities-container"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==========================================
+             TOOL 15: 12-MONTH TREND & LINK HISTORY
+             ========================================== -->
+        <div id="tool-history" class="tool-panel">
+          <div class="panel-intro-header">
+            <h2 class="panel-intro-title">12-Month Audit History & Backlink Intelligence</h2>
+            <p class="panel-intro-sub">Persistent historical database logging audit runs across time, coupled with live Domain Authority (DA / DR) and inbound backlink profile analysis.</p>
+          </div>
+
+          <!-- ==========================================
+               BEGINNER USER GUIDE: TOOL 15
+               ========================================== -->
+          <div class="tool-user-guide-box" data-tool="history">
+            <div class="guide-box-header" onclick="toggleToolGuide(this)">
+              <div class="guide-header-left">
+                <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+                  <span class="guide-badge-pill">📖 USER GUIDE &amp; HOW IT WORKS</span>
+                  </div>
+                <h3 class="guide-headline">How to Use <span class="highlight">Audit History &amp; Backlinks</span> &amp; How It Works (आसान यूजर गाइड)</h3>
+              </div>
+              <div class="guide-header-right" style="display:flex;align-items:center;gap:0.65rem;">
+                <span class="guide-toggle-prompt">गाइड पढ़ें / छिपाएं</span>
+                <span class="guide-chevron">▼</span>
+                <button type="button" class="guide-close-pill-btn" onclick="event.stopPropagation(); closeToolGuide(this);" title="Close User Guide">✕ Close</button>
+              </div>
+            </div>
+            <div class="guide-box-content">
+              <div class="guide-section">
+                <div class="guide-section-title">💡 आसान शब्दों में समझें (सरल परिभाषा):</div>
+                <p class="guide-text">
+                  जैसे डॉक्टर आपकी पुरानी मेडिकल रिपोर्ट और ब्लड टेस्ट की हिस्ट्री फाइल में संभाल कर रखता है ताकि यह पता चले कि बीमारी ठीक हो रही है या बढ़ रही है, वैसे ही यह टूल आपकी वेबसाइट के पुराने सभी स्कोर्स को संभाल कर रखता है। साथ ही यह बताता है कि आपकी वेबसाइट का इंटरनेट पर कितना रौब (Domain Authority) और कितने लिंक (Backlinks) हैं।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🚀 इसे कैसे इस्तेमाल करें (3 आसान स्टेप्स):</div>
+                <div class="guide-steps-grid">
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 1</span><strong>बैकलिंक और DA चेक करें</strong>
+                    ऊपर बॉक्स में वेबसाइट का नाम डालें और <strong>"Analyze Backlinks 🌐"</strong> दबाएं। यह आपको DA, PA और स्पैम स्कोर दिखाएगा।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 2</span><strong>समय के साथ सुधार देखें</strong>
+                    नीचे ऑडिट लॉग टेबल में देखें कि जब आपने पहली बार साइट जांची थी तब क्या स्कोर था और गलतियां ठीक करने के बाद आज क्या स्कोर है।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 3</span><strong>रिपोर्ट CSV में डाउनलोड करें</strong>
+                    <strong>"Export History CSV"</strong> बटन दबाकर अपनी पूरी प्रोग्रेस रिपोर्ट एक्सेल शीट में डाउनलोड करके क्लाइंट को भेजें।
+                  </div>
+                </div>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">⚙️ यह टूल पर्दे के पीछे कैसे काम करता है (How It Works):</div>
+                <p class="guide-text">
+                  हर बार जब आप Tool 01 में ऑडिट करते हैं, यह तारीख, लोड टाइम, वर्ड काउंट और स्कोर को हमारे सर्वर के डेटाबेस में हमेशा के लिए सुरक्षित सेव कर लेता है। बैकलिंक इंजन डोमेन की उम्र, TLD (.com, .org, .edu), और सुरक्षा पैमानों से अथॉरिटी का हिसाब लगाता है।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🎯 गूगल में इसका क्या फायदा है:</div>
+                <p class="guide-text">
+                  गूगल उन वेबसाइटों को सबसे ज्यादा पसंद करता है जिनकी अथॉरिटी समय के साथ सुधरती है। इससे आपको पता चलता है कि आपकी एसईओ रणनीति काम कर रही है या नहीं।
+                </p>
+              </div>
+
+              <div class="guide-section guide-faq-section">
+                <div class="guide-section-title">❓ अक्सर पूछे जाने वाले सवाल (Beginner FAQ):</div>
+                <div class="guide-faq-item">
+                  <strong>Q: DA (Domain Authority) क्या है?</strong>
+                  <p>A: DA 1 से 100 तक का एक नंबर है जो बताता है कि इंटरनेट पर आपकी वेबसाइट कितनी प्रसिद्ध और भरोसेमंद है। नई साइट्स का DA 1-10 होता है, जबकि बड़ी साइट्स (जैसे Wikipedia, Google) का 90+ होता है।</p>
+                </div>
+                <div class="guide-faq-item">
+                  <strong>Q: स्पैम स्कोर (Spam Score) कम होना चाहिए या ज्यादा?</strong>
+                  <p>A: हमेशा 1% से 5% के बीच (कम से कम) होना चाहिए। अगर यह 20% से ज्यादा है, तो मतलब घटिया साइट्स ने आपको गलत लिंक दिए हैं।</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Domain Authority & Backlinks Engine Card -->
+          <div class="ws-card" style="margin-bottom:1.5rem;background:linear-gradient(135deg,rgba(99,102,241,0.08),rgba(168,85,247,0.05));border-color:rgba(168,85,247,0.3);">
+            <div class="ws-card-header" style="border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:1rem;margin-bottom:1.25rem;">
+              <div>
+                <span class="ws-card-title" style="font-size:1.15rem;">🌐 Domain Authority (DA / DR) & Inbound Backlinks Engine</span>
+                <div style="font-size:0.85rem;color:var(--text-muted);margin-top:0.25rem;">Algorithmic & OpenPageRank link intelligence, referring domains, and spam score index.</div>
+              </div>
+              <button id="backlink-scan-btn" class="hero-scan-btn" style="padding:0.5rem 1.25rem;font-size:0.85rem;">Analyze Backlinks 🌐</button>
+            </div>
+
+            <div style="display:flex;gap:0.75rem;margin-bottom:1.25rem;flex-wrap:wrap;">
+              <input type="text" id="backlink-domain-input" class="hero-url-input" style="flex:1;min-width:260px;" placeholder="Enter domain or URL (e.g. https://example.com or stripe.com)" value="">
+            </div>
+
+            <!-- Backlinks Results Box -->
+            <div id="backlink-results-box" style="display:none;">
+              <div class="ws-metrics-grid" style="margin-bottom:1.25rem;">
+                <div class="ws-metric-box">
+                  <span id="bl-metric-da" class="ws-metric-val" style="color:var(--neon-emerald);">0 / 100</span>
+                  <span class="ws-metric-lbl">Domain Authority (DA)</span>
+                </div>
+                <div class="ws-metric-box">
+                  <span id="bl-metric-backlinks" class="ws-metric-val" style="color:var(--neon-cyan);">0</span>
+                  <span class="ws-metric-lbl">Total Backlinks</span>
+                </div>
+                <div class="ws-metric-box">
+                  <span id="bl-metric-referring" class="ws-metric-val" style="color:var(--neon-indigo);">0</span>
+                  <span class="ws-metric-lbl">Referring Domains</span>
+                </div>
+                <div class="ws-metric-box">
+                  <span id="bl-metric-spam" class="ws-metric-val" style="color:var(--neon-amber);">0%</span>
+                  <span class="ws-metric-lbl">Spam Risk Score</span>
+                </div>
+              </div>
+
+              <!-- Secondary Details: DoFollow Ratio & Top Anchors -->
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;">
+                <div style="background:rgba(255,255,255,0.03);padding:1rem;border-radius:12px;border:1px solid var(--border-glass);">
+                  <div style="font-weight:700;margin-bottom:0.75rem;font-size:0.9rem;color:var(--text-main);">Link Quality Ratio</div>
+                  <div style="display:flex;gap:1rem;margin-bottom:0.5rem;">
+                    <div><span style="color:var(--neon-emerald);font-weight:700;" id="bl-dofollow-pct">80%</span> <span style="font-size:0.8rem;color:var(--text-muted);">DoFollow</span></div>
+                    <div><span style="color:var(--neon-amber);font-weight:700;" id="bl-nofollow-pct">20%</span> <span style="font-size:0.8rem;color:var(--text-muted);">NoFollow</span></div>
+                  </div>
+                  <div style="font-size:0.78rem;color:var(--text-dim);" id="bl-source-label">Source: SEOPulse Algorithmic Engine</div>
+                </div>
+
+                <div style="background:rgba(255,255,255,0.03);padding:1rem;border-radius:12px;border:1px solid var(--border-glass);">
+                  <div style="font-weight:700;margin-bottom:0.75rem;font-size:0.9rem;color:var(--text-main);">Top Inbound Anchor Texts</div>
+                  <div id="bl-anchors-list" style="display:flex;flex-wrap:wrap;gap:0.4rem;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ws-card" style="margin-bottom:1.5rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+              <div>
+                <span class="ws-card-title">Audit History Log</span>
+                <div style="font-size:0.85rem;color:var(--text-muted);margin-top:0.25rem;">Logged snapshots across tested websites stored in persistent database.</div>
+              </div>
+              <div style="display:flex;gap:0.5rem;">
+                <button id="history-refresh-btn" class="ws-badge ws-badge-info" style="cursor:pointer;border:none;">Refresh History 🔄</button>
+                <button id="history-clear-btn" class="ws-badge ws-badge-danger" style="cursor:pointer;border:none;">Clear Log 🗑️</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- History Metrics Summary Strip -->
+          <div class="ws-metrics-grid" style="margin-bottom:1.5rem;">
+            <div class="ws-metric-box">
+              <span id="history-total-audits" class="ws-metric-val" style="color:var(--neon-cyan);">0</span>
+              <span class="ws-metric-lbl">Total Audits Logged</span>
+            </div>
+            <div class="ws-metric-box">
+              <span id="history-avg-score" class="ws-metric-val" style="color:var(--neon-emerald);">0/100</span>
+              <span class="ws-metric-lbl">Average SEO Score</span>
+            </div>
+            <div class="ws-metric-box">
+              <span id="history-avg-latency" class="ws-metric-val" style="color:var(--neon-indigo);">0 ms</span>
+              <span class="ws-metric-lbl">Average Server Latency</span>
+            </div>
+            <div class="ws-metric-box">
+              <span id="history-top-domain" class="ws-metric-val" style="color:var(--neon-purple);font-size:1.1rem;word-break:break-all;">-</span>
+              <span class="ws-metric-lbl">Top Audited Domain</span>
+            </div>
+          </div>
+
+          <!-- 12-Month Trajectory Simulator / Trend Cards -->
+          <div class="ws-card" style="margin-bottom:1.5rem;">
+            <div class="ws-card-header">
+              <span class="ws-card-title">12-Month Historical Score Trajectory (Simulated Trend Curve)</span>
+            </div>
+            <div id="history-trend-bars" style="display:flex;align-items:flex-end;gap:0.75rem;height:180px;padding:1rem 0;border-bottom:1px solid var(--border-glass);">
+              <!-- Rendered via JS -->
+            </div>
+            <div style="display:flex;justify-content:space-between;color:var(--text-muted);font-size:0.75rem;margin-top:0.5rem;">
+              <span>12 Months Ago</span>
+              <span>6 Months Ago</span>
+              <span>Today (Latest)</span>
+            </div>
+          </div>
+
+          <!-- Audit Log Table -->
+          <div class="ws-card">
+            <div class="ws-card-header">
+              <span class="ws-card-title">Audit Snapshots Archive</span>
+            </div>
+            <div class="ws-table-wrap">
+              <table class="ws-table">
+                <thead>
+                  <tr>
+                    <th style="width:25%;">Timestamp</th>
+                    <th style="width:30%;">Domain / URL</th>
+                    <th style="width:15%;">Score</th>
+                    <th style="width:15%;">Latency</th>
+                    <th style="width:15%;">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="history-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==========================================
+             TOOL 16: GOOGLE SEARCH CONSOLE STUDIO
+             ========================================== -->
+        <div id="tool-gsc-tracker" class="tool-panel">
+          <div class="panel-intro-header">
+            <h2 class="panel-intro-title">Google Search Console Performance Studio</h2>
+            <p class="panel-intro-sub">Real-time Google search clicks, impressions, average click-through-rate (CTR), and keyword rankings with historical 28-day telemetry.</p>
+          </div>
+
+          <!-- ==========================================
+               BEGINNER USER GUIDE: TOOL 16
+               ========================================== -->
+          <div class="tool-user-guide-box" data-tool="gsc-tracker">
+            <div class="guide-box-header" onclick="toggleToolGuide(this)">
+              <div class="guide-header-left">
+                <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+                  <span class="guide-badge-pill">📖 USER GUIDE &amp; HOW IT WORKS</span>
+                  </div>
+                <h3 class="guide-headline">How to Use <span class="highlight">Google Search Console Studio</span> &amp; How It Works (आसान यूजर गाइड)</h3>
+              </div>
+              <div class="guide-header-right" style="display:flex;align-items:center;gap:0.65rem;">
+                <span class="guide-toggle-prompt">गाइड पढ़ें / छिपाएं</span>
+                <span class="guide-chevron">▼</span>
+                <button type="button" class="guide-close-pill-btn" onclick="event.stopPropagation(); closeToolGuide(this);" title="Close User Guide">✕ Close</button>
+              </div>
+            </div>
+            <div class="guide-box-content">
+              <div class="guide-section">
+                <div class="guide-section-title">💡 आसान शब्दों में समझें (सरल परिभाषा):</div>
+                <p class="guide-text">
+                  यह गूगल के अंदर लगा हुआ असली सीसीटीवी कैमरा है! यहाँ कोई अंदाज़ा नहीं होता, बल्कि गूगल खुद आपको डेटा देकर बताता है कि पिछले 28 दिनों में कितने लोगों ने आपकी वेबसाइट को गूगल सर्च में देखा (Impressions), कितने लोगों ने उस पर क्लिक किया (Clicks), और आपकी वेबसाइट किस रैंक (#1, #4, #15) पर चल रही है।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🚀 इसे कैसे इस्तेमाल करें (3 आसान स्टेप्स):</div>
+                <div class="guide-steps-grid">
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 1</span><strong>वेबसाइट URL डालें</strong>
+                    बॉक्स में अपनी वेबसाइट का लिंक डालें और "Fetch Search Telemetry 📈" बटन दबाएं।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 2</span><strong>टॉप सर्च क्वेरीज़ देखें</strong>
+                    नीचे <strong>"Top Queries"</strong> टैब पर क्लिक करें। यहाँ उन शब्दों की लिस्ट है जिन्हें टाइप करके लोग आपकी साइट पर आ रहे हैं।
+                  </div>
+                  <div class="guide-step-card">
+                    <span class="step-num">Step 3</span><strong>पेज 2 वाले कीवर्ड्स को बूस्ट करें</strong>
+                    जो कीवर्ड्स रैंक 11 से 20 (गूगल का पेज 2) पर हैं, उनके बारे में अपने आर्टिकल में थोड़ा और विस्तार से लिखें ताकि वो सीधे पेज 1 के टॉप 3 में आ जाएं।
+                  </div>
+                </div>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">⚙️ यह टूल पर्दे के पीछे कैसे काम करता है (How It Works):</div>
+                <p class="guide-text">
+                  यह Google Search Console REST API से डेटा फेच करता है। यदि आपके पास Google Cloud Console की लाइव OAuth कीज़ हैं तो आप "Configure Live Google API" से सीधे कनेक्ट कर सकते हैं, अन्यथा यह सैंडबॉक्स मोड में सटीक टेलीमेट्री दिखाता है।
+                </p>
+              </div>
+
+              <div class="guide-section">
+                <div class="guide-section-title">🎯 गूगल में इसका क्या फायदा है:</div>
+                <p class="guide-text">
+                  यह टूल आपको बताता है कि यूज़र्स क्या चाहते हैं। अगर कोई ऐसा कीवर्ड है जिस पर इम्प्रेशन्स बहुत ज्यादा हैं लेकिन क्लिक्स कम हैं, तो इसका मतलब है कि आपको सिर्फ अपना Title और Meta Description थोड़ा आकर्षक बनाना है और ट्रैफिक कई गुना बढ़ जाएगा!
+                </p>
+              </div>
+
+              <div class="guide-section guide-faq-section">
+                <div class="guide-section-title">❓ अक्सर पूछे जाने वाले सवाल (Beginner FAQ):</div>
+                <div class="guide-faq-item">
+                  <strong>Q: Average CTR क्या होता है?</strong>
+                  <p>A: CTR मतलब Click-Through Rate। अगर 100 लोगों ने आपकी वेबसाइट सर्च में देखी और 4 लोगों ने क्लिक किया, तो CTR 4% है। अच्छा CTR 3% से 8% के बीच माना जाता है।</p>
+                </div>
+                <div class="guide-faq-item">
+                  <strong>Q: Average Position का क्या मतलब है?</strong>
+                  <p>A: यह गूगल में आपकी औसत रैंक है। 1 से 10 का मतलब है कि आप गूगल के पहले पेज पर हैं। 1 मतलब आप सबसे ऊपर टॉप पर हैं!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Connection Status & Target Bar -->
+          <div class="ws-card" style="margin-bottom:1.5rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;flex-wrap:wrap;gap:1rem;">
+              <div style="display:flex;align-items:center;gap:0.75rem;">
+                <span id="gsc-status-pill" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.85rem;border-radius:20px;font-size:0.8rem;font-weight:700;background:rgba(16,185,129,0.15);color:#10b981;border:1px solid rgba(16,185,129,0.3);">
+                  <span style="width:8px;height:8px;border-radius:50%;background:#10b981;"></span>
+                  Deterministic High-Fidelity Sandbox
+                </span>
+                <span style="font-size:0.8rem;color:var(--text-muted);" id="gsc-status-desc">Zero configuration required. Switch to live Google API anytime.</span>
+              </div>
+              <button id="gsc-open-connect-modal-btn" class="hero-btn-glass" style="padding:0.45rem 1rem;font-size:0.82rem;display:flex;align-items:center;gap:0.4rem;">
+                <span>🔑</span>
+                <span>Configure Live Google API</span>
+              </button>
+            </div>
+
+            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+              <input type="url" id="gsc-target-url" class="hero-url-input" style="flex:1;min-width:260px;" placeholder="https://example.com" value="">
+              <select id="gsc-date-range-select" style="background:#0f172a;border:1px solid var(--border-glass);color:var(--text-main);border-radius:10px;padding:0.75rem 1rem;font-weight:600;outline:none;">
+                <option value="28d">Last 28 Days</option>
+                <option value="7d">Last 7 Days</option>
+                <option value="3m">Last 3 Months</option>
+                <option value="12m">Last 12 Months</option>
+              </select>
+              <button id="gsc-fetch-btn" class="hero-scan-btn" style="padding:0.75rem 1.75rem;">Fetch Search Console ⚡</button>
+            </div>
+          </div>
+
+          <!-- GSC Summary 4-KPI Grid -->
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;margin-bottom:1.5rem;">
+            <div class="ws-card" style="padding:1.25rem;border-left:4px solid var(--neon-cyan);">
+              <div style="font-size:0.8rem;color:var(--text-muted);font-weight:600;margin-bottom:0.25rem;">TOTAL CLICKS</div>
+              <div id="gsc-kpi-clicks" style="font-size:1.9rem;font-weight:800;color:var(--neon-cyan);">--</div>
+              <div id="gsc-clicks-diff" style="font-size:0.75rem;color:#10b981;margin-top:0.35rem;">+14.2% vs previous 28d</div>
+            </div>
+            <div class="ws-card" style="padding:1.25rem;border-left:4px solid var(--neon-indigo);">
+              <div style="font-size:0.8rem;color:var(--text-muted);font-weight:600;margin-bottom:0.25rem;">TOTAL IMPRESSIONS</div>
+              <div id="gsc-kpi-impressions" style="font-size:1.9rem;font-weight:800;color:var(--neon-indigo);">--</div>
+              <div id="gsc-impressions-diff" style="font-size:0.75rem;color:#10b981;margin-top:0.35rem;">+8.7% vs previous 28d</div>
+            </div>
+            <div class="ws-card" style="padding:1.25rem;border-left:4px solid var(--neon-emerald);">
+              <div style="font-size:0.8rem;color:var(--text-muted);font-weight:600;margin-bottom:0.25rem;">AVERAGE CTR</div>
+              <div id="gsc-kpi-ctr" style="font-size:1.9rem;font-weight:800;color:var(--neon-emerald);">--</div>
+              <div id="gsc-ctr-diff" style="font-size:0.75rem;color:var(--text-muted);margin-top:0.35rem;">Organic Search CTR</div>
+            </div>
+            <div class="ws-card" style="padding:1.25rem;border-left:4px solid #f59e0b;">
+              <div style="font-size:0.8rem;color:var(--text-muted);font-weight:600;margin-bottom:0.25rem;">AVERAGE POSITION</div>
+              <div id="gsc-kpi-position" style="font-size:1.9rem;font-weight:800;color:#f59e0b;">--</div>
+              <div id="gsc-position-diff" style="font-size:0.75rem;color:#10b981;margin-top:0.35rem;">Top 15 Serp Ranking Avg</div>
+            </div>
+          </div>
+
+          <!-- 28-Day Clicks & Impressions Trend Visualizer -->
+          <div class="ws-card" style="margin-bottom:1.5rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+              <h3 style="font-size:1rem;font-weight:700;display:flex;align-items:center;gap:0.5rem;">
+                <span>📈</span> 28-Day Clicks & Impressions Trajectory
+              </h3>
+              <div style="display:flex;align-items:center;gap:1rem;font-size:0.78rem;">
+                <span style="display:flex;align-items:center;gap:0.35rem;"><span style="width:10px;height:10px;background:var(--neon-cyan);border-radius:2px;display:inline-block;"></span> Clicks</span>
+                <span style="display:flex;align-items:center;gap:0.35rem;"><span style="width:10px;height:10px;background:rgba(99,102,241,0.5);border-radius:2px;display:inline-block;"></span> Impressions (Scaled)</span>
+              </div>
+            </div>
+            <div id="gsc-trend-bars-container" style="display:flex;align-items:flex-end;gap:4px;height:140px;padding-top:10px;border-bottom:1px solid var(--border-glass);overflow-x:auto;">
+              <div style="margin:auto;color:var(--text-muted);font-size:0.85rem;">Click 'Fetch Search Console' to view performance trends</div>
+            </div>
+          </div>
+
+          <!-- Queries & Pages Breakdown Tabs -->
+          <div class="ws-card">
+            <div style="display:flex;gap:0.75rem;border-bottom:1px solid var(--border-glass);padding-bottom:0.75rem;margin-bottom:1rem;">
+              <button class="gsc-subtab-btn active" data-tab="queries" style="background:transparent;border:none;color:var(--neon-cyan);font-weight:700;font-size:0.9rem;padding:0.4rem 0.8rem;border-bottom:2px solid var(--neon-cyan);cursor:pointer;">
+                🔍 Top Search Queries
+              </button>
+              <button class="gsc-subtab-btn" data-tab="pages" style="background:transparent;border:none;color:var(--text-muted);font-weight:600;font-size:0.9rem;padding:0.4rem 0.8rem;border-bottom:2px solid transparent;cursor:pointer;">
+                📄 Top Landing Pages
+              </button>
+              <button class="gsc-subtab-btn" data-tab="devices" style="background:transparent;border:none;color:var(--text-muted);font-weight:600;font-size:0.9rem;padding:0.4rem 0.8rem;border-bottom:2px solid transparent;cursor:pointer;">
+                📱 Device & Countries
+              </button>
+            </div>
+
+            <!-- Queries Pane -->
+            <div id="gsc-pane-queries" class="gsc-tab-pane">
+              <div class="table-container" style="max-height:380px;overflow-y:auto;">
+                <table class="data-table" style="width:100%;font-size:0.85rem;">
+                  <thead>
+                    <tr>
+                      <th style="width:40%;">Top Search Query</th>
+                      <th style="width:15%;">Clicks</th>
+                      <th style="width:15%;">Impressions</th>
+                      <th style="width:15%;">CTR</th>
+                      <th style="width:15%;">Position</th>
+                    </tr>
+                  </thead>
+                  <tbody id="gsc-queries-table-body">
+                    <tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:2rem;">Run a query or click Fetch Search Console to see keyword queries.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Pages Pane -->
+            <div id="gsc-pane-pages" class="gsc-tab-pane" style="display:none;">
+              <div class="table-container" style="max-height:380px;overflow-y:auto;">
+                <table class="data-table" style="width:100%;font-size:0.85rem;">
+                  <thead>
+                    <tr>
+                      <th style="width:50%;">Landing Page URL</th>
+                      <th style="width:15%;">Clicks</th>
+                      <th style="width:15%;">Impressions</th>
+                      <th style="width:10%;">CTR</th>
+                      <th style="width:10%;">Position</th>
+                    </tr>
+                  </thead>
+                  <tbody id="gsc-pages-table-body">
+                    <tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:2rem;">No landing pages loaded.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Devices Pane -->
+            <div id="gsc-pane-devices" class="gsc-tab-pane" style="display:none;">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;padding:1rem 0;">
+                <div>
+                  <h4 style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.75rem;">DEVICE BREAKDOWN</h4>
+                  <div id="gsc-devices-breakdown" style="display:flex;flex-direction:column;gap:0.75rem;">
+                    <div>Loading device metrics...</div>
+                  </div>
+                </div>
+                <div>
+                  <h4 style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.75rem;">TOP COUNTRIES</h4>
+                  <div id="gsc-countries-breakdown" style="display:flex;flex-direction:column;gap:0.75rem;">
+                    <div>Loading country metrics...</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- ==========================================================================
+       BRANDED AGENCY WHITE-LABEL PDF EXPORT MODAL
+       ========================================================================== -->
+  <div id="agency-pdf-modal" class="modal-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);z-index:9999;align-items:center;justify-content:center;padding:1.5rem;">
+    <div class="ws-card" style="max-width:640px;width:100%;max-height:90vh;overflow-y:auto;position:relative;border:1px solid rgba(99,102,241,0.4);box-shadow:0 25px 50px -12px rgba(0,0,0,0.8);">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;border-bottom:1px solid var(--border-glass);padding-bottom:1rem;">
+        <div style="display:flex;align-items:center;gap:0.6rem;">
+          <span style="font-size:1.5rem;">📄</span>
+          <div>
+            <h3 style="font-size:1.2rem;font-weight:700;">Agency White-Label PDF Studio</h3>
+            <div style="font-size:0.8rem;color:var(--text-muted);">Generate client-ready, branded executive SEO audit reports</div>
+          </div>
+        </div>
+        <button id="agency-pdf-close-btn" style="background:transparent;border:none;color:var(--text-muted);font-size:1.5rem;cursor:pointer;">✕</button>
+      </div>
+
+      <div class="form-group" style="margin-bottom:1rem;">
+        <label>Agency Name</label>
+        <input type="text" id="pdf-agency-name" class="feedback-input" value="Apex Growth Digital Marketing Agency" placeholder="Your Agency or Brand Name">
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+        <div class="form-group">
+          <label>Client Name / Business</label>
+          <input type="text" id="pdf-client-name" class="feedback-input" value="" placeholder="e.g. Acme Corp or Digital Agency">
+        </div>
+        <div class="form-group">
+          <label>Target Website URL</label>
+          <input type="url" id="pdf-target-url" class="feedback-input" value="" placeholder="https://example.com">
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom:1rem;">
+        <label>Executive Summary & Recommendations for Client</label>
+        <textarea id="pdf-notes" class="feedback-input" rows="4" placeholder="Enter custom strategic recommendations or run a site audit to auto-populate executive notes..."></textarea>
+      </div>
+
+      <div style="display:flex;gap:0.75rem;justify-content:flex-end;margin-top:1.5rem;">
+        <button id="agency-pdf-cancel-btn" class="hero-btn-glass" style="padding:0.65rem 1.25rem;">Cancel</button>
+        <button id="agency-pdf-generate-btn" class="hero-btn-primary" style="padding:0.65rem 1.5rem;">Generate & Print PDF 🖨️</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL: NEW CLIENT PROJECT STUDIO
+       ========================================== -->
+  <div id="new-project-modal" class="modal-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);z-index:9999;align-items:center;justify-content:center;padding:1rem;">
+    <div class="ws-card" style="width:100%;max-width:540px;background:#0d1117;border:1px solid var(--border-glow);box-shadow:0 20px 50px rgba(0,0,0,0.6);position:relative;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;">
+        <div style="display:flex;align-items:center;gap:0.6rem;">
+          <span style="font-size:1.5rem;">📁</span>
+          <div>
+            <h3 style="font-size:1.2rem;font-weight:700;">Save New Client Project</h3>
+            <div style="font-size:0.8rem;color:var(--text-muted);">Manage audits, sitemaps, and reports per client</div>
+          </div>
+        </div>
+        <button id="new-project-close-btn" style="background:transparent;border:none;color:var(--text-muted);font-size:1.5rem;cursor:pointer;">✕</button>
+      </div>
+
+      <div class="form-group" style="margin-bottom:1rem;">
+        <label>Client / Brand Name</label>
+        <input type="text" id="project-modal-name" class="feedback-input" placeholder="e.g., My Online Store or Acme Corp">
+      </div>
+
+      <div class="form-group" style="margin-bottom:1rem;">
+        <label>Website URL</label>
+        <input type="url" id="project-modal-url" class="feedback-input" placeholder="https://example.com">
+      </div>
+
+      <div class="form-group" style="margin-bottom:1rem;">
+        <label>Category / Tags (Optional)</label>
+        <input type="text" id="project-modal-tags" class="feedback-input" placeholder="e.g., E-commerce, Client, SaaS">
+      </div>
+
+      <div class="form-group" style="margin-bottom:1rem;">
+        <label>Client Notes & Objectives</label>
+        <textarea id="project-modal-notes" class="feedback-input" rows="3" placeholder="Target keywords, business goals, or special SEO instructions..."></textarea>
+      </div>
+
+      <div style="display:flex;gap:0.75rem;justify-content:flex-end;margin-top:1.5rem;">
+        <button id="new-project-cancel-btn" class="hero-btn-glass" style="padding:0.65rem 1.25rem;">Cancel</button>
+        <button id="new-project-save-btn" class="hero-btn-primary" style="padding:0.65rem 1.5rem;">Save & Switch Project 📁</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL: GOOGLE SEARCH CONSOLE LIVE CONNECT
+       ========================================== -->
+  <div id="gsc-connect-modal" class="modal-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);z-index:9999;align-items:center;justify-content:center;padding:1rem;">
+    <div class="ws-card" style="width:100%;max-width:560px;background:#0d1117;border:1px solid rgba(99,102,241,0.4);box-shadow:0 25px 50px rgba(0,0,0,0.8);position:relative;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;">
+        <div style="display:flex;align-items:center;gap:0.6rem;">
+          <span style="font-size:1.5rem;">🔑</span>
+          <div>
+            <h3 style="font-size:1.2rem;font-weight:700;">Google Search Console API Connect</h3>
+            <div style="font-size:0.8rem;color:var(--text-muted);">Connect live Google OAuth credentials or Service Account</div>
+          </div>
+        </div>
+        <button id="gsc-modal-close-btn" style="background:transparent;border:none;color:var(--text-muted);font-size:1.5rem;cursor:pointer;">✕</button>
+      </div>
+
+      <p style="font-size:0.82rem;color:var(--text-secondary);margin-bottom:1.25rem;line-height:1.5;">
+        By default, the studio runs in <strong>Deterministic Sandbox Mode</strong> for instant results without cloud keys. To pull directly from your Google Cloud Console project, enter your OAuth 2.0 or Service Account credentials below.
+      </p>
+
+      <div class="form-group" style="margin-bottom:1rem;">
+        <label>Google Cloud Client ID</label>
+        <input type="text" id="gsc-input-client-id" class="feedback-input" placeholder="e.g. 123456789-xxxx.apps.googleusercontent.com">
+      </div>
+
+      <div class="form-group" style="margin-bottom:1rem;">
+        <label>Client Secret</label>
+        <input type="password" id="gsc-input-client-secret" class="feedback-input" placeholder="GOCSPX-xxxxxxxxxxxxxxxxxxxx">
+      </div>
+
+      <div class="form-group" style="margin-bottom:1rem;">
+        <label>OAuth Refresh Token / Service Account Key (JSON)</label>
+        <textarea id="gsc-input-token" class="feedback-input" rows="3" placeholder="1//04xxxxxxxx or paste Service Account private key JSON..."></textarea>
+      </div>
+
+      <div style="display:flex;gap:0.75rem;justify-content:space-between;align-items:center;margin-top:1.5rem;">
+        <button id="gsc-disconnect-btn" style="background:rgba(239,68,68,0.15);color:#ef4444;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:0.6rem 1.2rem;font-size:0.82rem;font-weight:600;cursor:pointer;">Reset to Sandbox</button>
+        <div style="display:flex;gap:0.6rem;">
+          <button id="gsc-modal-cancel-btn" class="hero-btn-glass" style="padding:0.65rem 1.25rem;">Cancel</button>
+          <button id="gsc-modal-save-btn" class="hero-btn-primary" style="padding:0.65rem 1.5rem;">Save & Connect ⚡</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL: 24/7 BACKGROUND HEALTH ALERTS DRAWER
+       ========================================== -->
+  <div id="alerts-drawer-modal" class="modal-overlay" style="display:none;position:fixed;inset:0;background:rgba(15,23,42,0.8);backdrop-filter:blur(10px);z-index:9999;align-items:center;justify-content:center;padding:1rem;">
+    <div class="alerts-modal-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;border-bottom:1px solid var(--border-glass);padding-bottom:1rem;">
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <div style="width:42px;height:42px;border-radius:12px;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.35);display:flex;align-items:center;justify-content:center;font-size:1.35rem;">🔔</div>
+          <div>
+            <h3 style="font-size:1.25rem;font-weight:800;color:var(--text-main);margin:0 0 0.2rem 0;">24/7 SEO Health & Uptime Alerts</h3>
+            <div style="font-size:0.82rem;color:var(--text-dim);">Real-time monitoring for high latency spikes, 404s, and score degradation</div>
+          </div>
+        </div>
+        <button id="alerts-drawer-close-btn" style="background:rgba(255,255,255,0.08);border:1px solid var(--border-glass);color:var(--text-main);font-size:1.1rem;cursor:pointer;width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;" title="Close Modal">✕</button>
+      </div>
+
+      <!-- Active Monitored Website Bar -->
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;gap:0.75rem;flex-wrap:wrap;">
+        <div class="alerts-monitored-chip">
+          <span style="color:var(--text-dim);">🌐 Target Website:</span>
+          <span id="alerts-monitored-site" style="font-weight:800;color:var(--neon-cyan);">None (Enter or select a site)</span>
+        </div>
+        <div style="display:flex;gap:0.5rem;">
+          <button id="trigger-monitor-check-btn" style="background:linear-gradient(135deg,var(--neon-indigo),var(--neon-cyan));border:none;color:#fff;border-radius:10px;padding:0.45rem 0.95rem;font-size:0.8rem;font-weight:700;cursor:pointer;box-shadow:0 4px 15px rgba(6,182,212,0.25);">Run Instant Health Check ⚡</button>
+          <button id="clear-all-alerts-btn" style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.35);color:#ef4444;border-radius:10px;padding:0.45rem 0.85rem;font-size:0.8rem;font-weight:700;cursor:pointer;">Clear All 🗑️</button>
+        </div>
+      </div>
+
+      <!-- Action status notification toast inside modal -->
+      <div id="alerts-action-msg" style="display:none;padding:0.65rem 1rem;border-radius:10px;font-size:0.85rem;font-weight:700;margin-bottom:1rem;"></div>
+
+      <div id="alerts-list-container" style="display:flex;flex-direction:column;gap:0.75rem;min-height:160px;">
+        <div style="text-align:center;padding:2rem;color:var(--text-dim);">Loading health alerts...</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/i18n.js?v=1.0.0"></script>
+  <script src="js/app.js?v=2.9.0"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "enabled": true,
+  "intervalMinutes": 120,
+  "lastRunAt": "2026-10-20T10:07:26.729Z",
+  "alertEmail": "admin@example.com"
+}

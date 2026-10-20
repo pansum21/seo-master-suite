@@ -1,0 +1,7 @@
+node_modules/
+.env
+*.log
+.DS_Store
+.vercel
+*benchmark*.json
+stress_test_10k_results.json
