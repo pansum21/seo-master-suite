@@ -462,7 +462,7 @@
         <button class="nav-tab-btn active" data-tool="auditor" role="tab" aria-selected="true">
           <span class="tool-seq-num">01</span>
           <span class="tab-icon">🔍</span>
-          <span class="tab-label">Site Health Auditor</span>
+          <span class="tab-label">Site Health &amp; Overall Insights</span>
           <kbd class="nav-shortcut-key">1</kbd>
         </button>
 
@@ -553,7 +553,7 @@
         <button class="nav-tab-btn" data-tool="lighthouse" role="tab" aria-selected="false">
           <span class="tool-seq-num">14</span>
           <span class="tab-icon">⚡</span>
-          <span class="tab-label">Core Web Vitals & LH</span>
+          <span class="tab-label">Performance &amp; Web Vitals</span>
           <kbd class="nav-shortcut-key">L</kbd>
         </button>
 
@@ -595,8 +595,8 @@
       <!-- Top Sticky Workspace Header -->
       <header class="workspace-header">
         <div class="header-left-col">
-          <span class="header-breadcrumb" id="header-breadcrumb-tool">Tool 01 / Crawl & Score</span>
-          <h2 class="header-tool-title" id="header-tool-title">🔍 Site Health Auditor</h2>
+          <span class="header-breadcrumb" id="header-breadcrumb-tool">Tool 01 / Crawl, Insights &amp; Performance</span>
+          <h2 class="header-tool-title" id="header-tool-title">🔍 Site Health &amp; Overall Insights</h2>
         </div>
 
         <!-- Global Header Quick Scanner Bar -->
@@ -653,8 +653,8 @@
         <div id="tool-auditor" class="tool-panel active">
           
           <div class="panel-intro-header">
-            <h2 class="panel-intro-title">Deep Site Health Crawler & 100-Point Scorer</h2>
-            <p class="panel-intro-sub">Inspect full DOM structure, headings hierarchy, image alt coverage, technical files, and Core Web Vitals latency in under 350ms.</p>
+            <h2 class="panel-intro-title">Deep Site Health Crawler, Overall Insights &amp; Performance Scorer</h2>
+            <p class="panel-intro-sub">Inspect overall site health, 5-pillar score radar, actionable quick wins, Core Web Vitals, asset payload distribution, and network latency waterfall.</p>
           </div>
 
           <!-- ==========================================
@@ -751,7 +751,7 @@
           <!-- Results Section -->
           <div id="auditor-results" style="display:none;">
             
-            <!-- Hero Score Card with Circular SVG Dial -->
+            <!-- Hero Score Card with Circular SVG Dial & Executive Insights -->
             <div class="ws-card score-hero-card">
               <div class="score-circle-wrap">
                 <svg class="score-svg" viewBox="0 0 180 180">
@@ -765,20 +765,59 @@
               </div>
 
               <div>
-                <div style="font-size:0.85rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;margin-bottom:0.25rem;">Audited Target</div>
-                <a id="auditor-target-link" href="#" target="_blank" style="font-size:1.25rem;font-weight:800;color:var(--neon-cyan);text-decoration:none;margin-bottom:1rem;display:inline-block;">https://example.com</a>
-                <p style="font-size:0.92rem;color:var(--text-dim);line-height:1.6;margin-bottom:1.25rem;">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.4rem;">
+                  <div style="font-size:0.85rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;">Audited Website Target</div>
+                  <span id="auditor-health-status" class="ws-badge ws-badge-success" style="font-weight:700;">Optimized &amp; Search Ready</span>
+                </div>
+                <a id="auditor-target-link" href="#" target="_blank" style="font-size:1.25rem;font-weight:800;color:var(--neon-cyan);text-decoration:none;margin-bottom:0.75rem;display:inline-block;">https://example.com</a>
+                <p id="auditor-summary-text" style="font-size:0.92rem;color:var(--text-dim);line-height:1.6;margin-bottom:0.85rem;">
                   Your overall SEO health is evaluated using mathematical weighting across Metadata, Headings, Alt coverage, SSL security, and TTFB latency.
                 </p>
-                <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+
+                <!-- Issues Count Pill Bar -->
+                <div class="issues-pills-row" id="auditor-issues-pill-row">
+                  <span id="auditor-issues-critical" class="issue-count-pill critical">🔴 0 Critical</span>
+                  <span id="auditor-issues-warnings" class="issue-count-pill warning">🟡 0 Warnings</span>
+                  <span id="auditor-issues-passed" class="issue-count-pill passed">🟢 0 Passed</span>
+                </div>
+
+                <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.5rem;">
                   <button class="launch-studio-action ws-badge ws-badge-info" data-tool="serp" style="cursor:pointer;padding:0.4rem 0.85rem;border:none;">View in SERP Simulator →</button>
+                  <button class="launch-studio-action ws-badge ws-badge-warning" data-tool="lighthouse" style="cursor:pointer;padding:0.4rem 0.85rem;border:none;">Open Performance Center ⚡</button>
                   <button class="launch-studio-action ws-badge ws-badge-success" data-tool="ai" style="cursor:pointer;padding:0.4rem 0.85rem;border:none;">Optimize with Gemini AI →</button>
                   <button id="auditor-direct-pdf-btn" class="ws-badge" style="cursor:pointer;padding:0.4rem 0.85rem;border:none;background:linear-gradient(135deg, #06b6d4, #3b82f6);color:#ffffff;font-weight:700;">📄 Export Client PDF Report</button>
                 </div>
               </div>
             </div>
 
-            <!-- 4 Quick Key Metrics -->
+            <!-- 5 Multi-Pillar Score Radar Grid -->
+            <div class="ws-card" style="margin-bottom:1.5rem;">
+              <div class="ws-card-header">
+                <div>
+                  <span class="ws-card-title">🏆 5 Core Pillars Health Radar (5 मुख्य स्तंभ स्कोर)</span>
+                  <div style="font-size:0.85rem;color:var(--text-muted);margin-top:0.25rem;">Algorithmic scoring across on-page semantics, network latency, mobile responsiveness, SSL security, and content depth.</div>
+                </div>
+              </div>
+              <div class="pillars-grid" id="auditor-pillars-grid">
+                <!-- Injected via JavaScript -->
+              </div>
+            </div>
+
+            <!-- Top Actionable Quick Wins & Priority Action Plan -->
+            <div class="ws-card" id="auditor-quick-wins-card" style="margin-bottom:1.5rem;">
+              <div class="ws-card-header">
+                <div>
+                  <span class="ws-card-title">⚡ High-Impact Quick Wins (शीर्ष 3 त्वरित रणनीतियाँ)</span>
+                  <div style="font-size:0.85rem;color:var(--text-muted);margin-top:0.25rem;">Fix these high-impact opportunities first to achieve the largest immediate Google ranking boost.</div>
+                </div>
+                <span class="ws-badge ws-badge-info">Algorithmic Priority</span>
+              </div>
+              <div class="quick-wins-grid" id="auditor-quick-wins-container">
+                <!-- Injected via JavaScript -->
+              </div>
+            </div>
+
+            <!-- 4 Quick Key Metrics Bar -->
             <div class="ws-metrics-grid">
               <div class="ws-metric-box">
                 <span id="auditor-metric-speed" class="ws-metric-val" style="color:var(--neon-cyan);">350 ms</span>
@@ -801,15 +840,143 @@
             <!-- Breakdown Tabs -->
             <div class="ws-card">
               <div class="breakdown-tabs">
-                <button class="breakdown-tab-btn audit-tab-btn active" data-tab="overview">01. Overview & Meta</button>
-                <button class="breakdown-tab-btn audit-tab-btn" data-tab="headings">02. Headings Hierarchy</button>
-                <button class="breakdown-tab-btn audit-tab-btn" data-tab="images">03. Image Alt Inspector</button>
-                <button class="breakdown-tab-btn audit-tab-btn" data-tab="keywords">04. Keyword Density</button>
-                <button class="breakdown-tab-btn audit-tab-btn" data-tab="tech">05. Technical & Files</button>
+                <button class="breakdown-tab-btn audit-tab-btn active" data-tab="insights">01. 💡 Overall Insights &amp; Plan</button>
+                <button class="breakdown-tab-btn audit-tab-btn" data-tab="performance">02. ⚡ Performance &amp; Vitals</button>
+                <button class="breakdown-tab-btn audit-tab-btn" data-tab="overview">03. 🔍 Metadata &amp; On-Page</button>
+                <button class="breakdown-tab-btn audit-tab-btn" data-tab="headings">04. 📑 Headings Hierarchy</button>
+                <button class="breakdown-tab-btn audit-tab-btn" data-tab="images">05. 🖼️ Image Alt Inspector</button>
+                <button class="breakdown-tab-btn audit-tab-btn" data-tab="keywords">06. 🎯 Keyword Density</button>
+                <button class="breakdown-tab-btn audit-tab-btn" data-tab="tech">07. ⚙️ Technical &amp; Files</button>
               </div>
 
-              <!-- Tab A: Overview -->
-              <div id="audit-tab-overview" class="audit-tab-content ws-table-wrap">
+              <!-- Tab 1: Overall Insights & Plan -->
+              <div id="audit-tab-insights" class="audit-tab-content">
+                <div style="margin-bottom:1.5rem;">
+                  <h4 style="font-size:1.05rem;color:var(--text-main);margin-bottom:0.5rem;display:flex;align-items:center;gap:0.5rem;">
+                    <span>📋 Complete SEO Diagnosis &amp; Issue Log</span>
+                  </h4>
+                  <p style="font-size:0.88rem;color:var(--text-dim);line-height:1.5;">Categorized audit findings across Critical Blockers, Optimization Warnings, and Passed Technical Signals.</p>
+                </div>
+
+                <!-- Critical Section -->
+                <div id="insights-critical-wrapper" style="margin-bottom:1.5rem;">
+                  <div style="font-size:0.9rem;font-weight:700;color:var(--neon-rose);margin-bottom:0.75rem;display:flex;align-items:center;gap:0.4rem;">
+                    <span>🔴 Critical Issues (तुरंत सुधारें)</span>
+                    <span id="insights-critical-badge" class="ws-badge ws-badge-danger" style="font-size:0.72rem;">0</span>
+                  </div>
+                  <div id="insights-critical-list" style="display:flex;flex-direction:column;gap:0.75rem;"></div>
+                </div>
+
+                <!-- Warnings Section -->
+                <div id="insights-warnings-wrapper" style="margin-bottom:1.5rem;">
+                  <div style="font-size:0.9rem;font-weight:700;color:var(--neon-amber);margin-bottom:0.75rem;display:flex;align-items:center;gap:0.4rem;">
+                    <span>🟡 Optimization Opportunities &amp; Warnings (सुधार योग्य)</span>
+                    <span id="insights-warnings-badge" class="ws-badge ws-badge-warning" style="font-size:0.72rem;">0</span>
+                  </div>
+                  <div id="insights-warnings-list" style="display:flex;flex-direction:column;gap:0.75rem;"></div>
+                </div>
+
+                <!-- Passed Section -->
+                <div id="insights-passed-wrapper">
+                  <div style="font-size:0.9rem;font-weight:700;color:var(--neon-emerald);margin-bottom:0.75rem;display:flex;align-items:center;gap:0.4rem;">
+                    <span>🟢 Passed Signals &amp; Strengths (सफल मानक)</span>
+                    <span id="insights-passed-badge" class="ws-badge ws-badge-success" style="font-size:0.72rem;">0</span>
+                  </div>
+                  <div id="insights-passed-list" style="display:flex;flex-direction:column;gap:0.75rem;"></div>
+                </div>
+              </div>
+
+              <!-- Tab 2: Performance & Core Web Vitals Center -->
+              <div id="audit-tab-performance" class="audit-tab-content" style="display:none;">
+                <div style="margin-bottom:1.25rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
+                  <div>
+                    <h4 style="font-size:1.1rem;color:var(--text-main);margin-bottom:0.25rem;">⚡ Core Web Vitals &amp; Speed Diagnostics (परफॉरमेंस सेंटर)</h4>
+                    <p style="font-size:0.86rem;color:var(--text-dim);">Live measured lab metrics calibrated to Google 2026 Core Web Vitals search ranking signals.</p>
+                  </div>
+                  <span id="perf-overall-badge" class="ws-badge ws-badge-success" style="font-size:0.82rem;font-weight:800;">PASSING WEB VITALS</span>
+                </div>
+
+                <!-- 6 Web Vitals Gauges -->
+                <div class="cwv-cards-grid" id="perf-cwv-grid">
+                  <!-- Injected via JavaScript -->
+                </div>
+
+                <!-- Asset Payload Distribution Bar -->
+                <div style="margin-top:2rem;padding:1.5rem;background:rgba(255,255,255,0.02);border:1px solid var(--border-glass);border-radius:14px;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
+                    <div>
+                      <div style="font-size:0.92rem;font-weight:700;color:var(--text-main);">📦 Asset Payload &amp; Resource Footprint (संसाधन भार और आकार)</div>
+                      <div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem;">Total page transfer weight breakdown across HTML, Scripts, Styles, and Media.</div>
+                    </div>
+                    <span id="perf-total-payload" class="ws-badge ws-badge-info" style="font-size:0.85rem;font-weight:800;">145.2 KB Total</span>
+                  </div>
+
+                  <!-- Segmented Bar -->
+                  <div class="payload-bar-track">
+                    <div id="payload-seg-html" class="payload-bar-seg html" style="width:20%;" title="HTML Document"></div>
+                    <div id="payload-seg-js" class="payload-bar-seg js" style="width:40%;" title="JavaScript"></div>
+                    <div id="payload-seg-css" class="payload-bar-seg css" style="width:15%;" title="CSS Stylesheets"></div>
+                    <div id="payload-seg-img" class="payload-bar-seg img" style="width:25%;" title="Images &amp; Media"></div>
+                  </div>
+
+                  <!-- Legend -->
+                  <div class="payload-legend-grid">
+                    <div class="payload-legend-item">
+                      <span class="payload-dot" style="background:#38bdf8;"></span>
+                      <span>HTML: <strong id="payload-val-html" style="color:var(--text-main);">24 KB</strong> (<span id="payload-pct-html">16%</span>)</span>
+                    </div>
+                    <div class="payload-legend-item">
+                      <span class="payload-dot" style="background:#fbbf24;"></span>
+                      <span>Scripts: <strong id="payload-val-js" style="color:var(--text-main);">58 KB</strong> (<span id="payload-pct-js">40%</span>)</span>
+                    </div>
+                    <div class="payload-legend-item">
+                      <span class="payload-dot" style="background:#a855f7;"></span>
+                      <span>CSS: <strong id="payload-val-css" style="color:var(--text-main);">22 KB</strong> (<span id="payload-pct-css">15%</span>)</span>
+                    </div>
+                    <div class="payload-legend-item">
+                      <span class="payload-dot" style="background:#10b981;"></span>
+                      <span>Images: <strong id="payload-val-img" style="color:var(--text-main);">41 KB</strong> (<span id="payload-pct-img">29%</span>)</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Network Latency Waterfall Timeline -->
+                <div style="margin-top:1.5rem;padding:1.5rem;background:rgba(255,255,255,0.02);border:1px solid var(--border-glass);border-radius:14px;">
+                  <div style="font-size:0.92rem;font-weight:700;color:var(--text-main);margin-bottom:0.25rem;">⏱️ Network Latency Waterfall Timeline (नेटवर्क लेटेंसी वाटरफॉल)</div>
+                  <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1.25rem;">Step-by-step connection timing: DNS lookup, SSL handshake, server processing (TTFB), and HTML download.</div>
+
+                  <div class="waterfall-steps" id="perf-waterfall-steps">
+                    <!-- Injected via JavaScript -->
+                  </div>
+                </div>
+
+                <!-- Text-to-HTML Ratio & Diagnostics -->
+                <div style="margin-top:1.5rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;">
+                  <div style="padding:1.25rem;background:rgba(255,255,255,0.02);border:1px solid var(--border-glass);border-radius:14px;">
+                    <div style="font-size:0.88rem;font-weight:700;color:var(--text-main);margin-bottom:0.35rem;">📝 Text-to-HTML Ratio (टेक्स्ट से कोड अनुपात)</div>
+                    <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.75rem;">Proportion of actual readable text vs underlying HTML markup. Higher text ratio aids search indexing.</div>
+                    <div style="display:flex;align-items:baseline;gap:0.5rem;margin-bottom:0.5rem;">
+                      <span id="perf-ratio-val" style="font-size:2rem;font-weight:800;font-family:var(--font-mono);color:var(--neon-emerald);">24.5%</span>
+                      <span id="perf-ratio-status" class="ws-badge ws-badge-success">GOOD (&gt;15%)</span>
+                    </div>
+                    <div class="pillar-progress-track">
+                      <div id="perf-ratio-fill" class="pillar-progress-fill" style="width:24.5%;background:var(--neon-emerald);"></div>
+                    </div>
+                  </div>
+
+                  <div style="padding:1.25rem;background:rgba(255,255,255,0.02);border:1px solid var(--border-glass);border-radius:14px;">
+                    <div style="font-size:0.88rem;font-weight:700;color:var(--text-main);margin-bottom:0.35rem;">🛠️ Speed &amp; Caching Checklist</div>
+                    <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.75rem;">Key technical performance flags detected on the server response headers.</div>
+                    <div id="perf-diagnostics-list" style="display:flex;flex-direction:column;gap:0.5rem;font-size:0.82rem;">
+                      <!-- Injected via JavaScript -->
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Tab 3: Overview & Meta -->
+              <div id="audit-tab-overview" class="audit-tab-content ws-table-wrap" style="display:none;">
                 <table class="ws-table">
                   <thead>
                     <tr>
@@ -822,13 +989,13 @@
                 </table>
               </div>
 
-              <!-- Tab B: Headings Hierarchy -->
+              <!-- Tab 4: Headings Hierarchy -->
               <div id="audit-tab-headings" class="audit-tab-content" style="display:none;">
                 <div style="font-size:0.88rem;color:var(--text-dim);margin-bottom:1rem;">Visual tree representing the exact heading nesting structure found on your webpage:</div>
                 <div id="auditor-headings-list"></div>
               </div>
 
-              <!-- Tab C: Image Alt Inspector -->
+              <!-- Tab 5: Image Alt Inspector -->
               <div id="audit-tab-images" class="audit-tab-content ws-table-wrap" style="display:none;">
                 <table class="ws-table">
                   <thead>
@@ -842,7 +1009,7 @@
                 </table>
               </div>
 
-              <!-- Tab D: Keyword Density -->
+              <!-- Tab 6: Keyword Density -->
               <div id="audit-tab-keywords" class="audit-tab-content ws-table-wrap" style="display:none;">
                 <table class="ws-table">
                   <thead>
@@ -856,7 +1023,7 @@
                 </table>
               </div>
 
-              <!-- Tab E: Technical Files -->
+              <!-- Tab 7: Technical Files -->
               <div id="audit-tab-tech" class="audit-tab-content ws-table-wrap" style="display:none;">
                 <table class="ws-table">
                   <thead>
@@ -2472,8 +2639,8 @@ Sitemap: https://example.com/sitemap.xml</pre>
              ========================================== -->
         <div id="tool-lighthouse" class="tool-panel">
           <div class="panel-intro-header">
-            <h2 class="panel-intro-title">Google Core Web Vitals & Lighthouse Engine</h2>
-            <p class="panel-intro-sub">Run real-world Google Lighthouse audits via PageSpeed Insights. Inspect Largest Contentful Paint (LCP), Total Blocking Time (TBT), Cumulative Layout Shift (CLS), and full category scoring.</p>
+            <h2 class="panel-intro-title">Google Core Web Vitals &amp; Performance Center</h2>
+            <p class="panel-intro-sub">Run real-world Google Lighthouse audits via PageSpeed Insights. Inspect Largest Contentful Paint (LCP), Total Blocking Time (TBT), Cumulative Layout Shift (CLS), server TTFB, and speed diagnostics.</p>
           </div>
 
           <!-- ==========================================

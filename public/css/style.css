@@ -2527,5 +2527,401 @@ body {
   flex-wrap: wrap;
 }
 
+/* ==========================================================================
+   OVERALL INSIGHTS & PERFORMANCE ENGINE STYLING
+   ========================================================================== */
+
+/* 5 Pillars Multi-Score Radar Grid */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0;
+}
+
+.pillar-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-glass);
+  border-radius: 14px;
+  padding: 1.15rem;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.pillar-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-glass-light);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.pillar-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.pillar-card-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.pillar-grade-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+}
+
+.pillar-score-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  margin-bottom: 0.65rem;
+}
+
+.pillar-big-val {
+  font-size: 2rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  line-height: 1;
+}
+
+.pillar-denom {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.pillar-progress-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.pillar-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Issues Summary Pill Bar */
+.issues-pills-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.issue-count-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border: 1px solid transparent;
+}
+
+.issue-count-pill.critical {
+  background: rgba(244, 63, 94, 0.12);
+  border-color: rgba(244, 63, 94, 0.35);
+  color: var(--neon-rose);
+}
+
+.issue-count-pill.warning {
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.35);
+  color: var(--neon-amber);
+}
+
+.issue-count-pill.passed {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: var(--neon-emerald);
+}
+
+/* Quick Wins & Executive Action Plan */
+.quick-wins-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.quick-win-card {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--border-glass);
+  border-radius: 14px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.85rem;
+  position: relative;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.quick-win-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(99, 102, 241, 0.4);
+}
+
+.quick-win-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.quick-win-priority {
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.quick-win-priority.critical {
+  background: rgba(244, 63, 94, 0.2);
+  color: #ff6b81;
+}
+
+.quick-win-priority.high {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+}
+
+.quick-win-priority.medium {
+  background: rgba(99, 102, 241, 0.2);
+  color: #a5b4fc;
+}
+
+.quick-win-meta {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.quick-win-tag {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+}
+
+.quick-win-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.35;
+}
+
+.quick-win-desc {
+  font-size: 0.84rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+.quick-win-action-box {
+  background: rgba(99, 102, 241, 0.06);
+  border-left: 3px solid var(--neon-indigo);
+  padding: 0.65rem 0.85rem;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.82rem;
+  color: #c7d2fe;
+}
+
+/* Core Web Vitals 6-Metric Grid */
+.cwv-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0;
+}
+
+.cwv-metric-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-glass);
+  border-radius: 14px;
+  padding: 1.15rem;
+  position: relative;
+  transition: border-color 0.2s ease;
+}
+
+.cwv-metric-card:hover {
+  border-color: var(--border-glass-light);
+}
+
+.cwv-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.cwv-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.cwv-status-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+}
+
+.cwv-status-badge.good {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+}
+
+.cwv-status-badge.needs_improvement {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+}
+
+.cwv-status-badge.poor {
+  background: rgba(244, 63, 94, 0.2);
+  color: #ff6b81;
+}
+
+.cwv-val {
+  font-size: 1.75rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  margin-bottom: 0.35rem;
+  line-height: 1;
+}
+
+.cwv-benchmark {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+/* Asset Payload Distribution Bar */
+.payload-bar-track {
+  width: 100%;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+  display: flex;
+  overflow: hidden;
+  margin: 1rem 0;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.payload-bar-seg {
+  height: 100%;
+  transition: width 0.8s ease;
+}
+
+.payload-bar-seg.html {
+  background: #38bdf8;
+}
+
+.payload-bar-seg.js {
+  background: #fbbf24;
+}
+
+.payload-bar-seg.css {
+  background: #a855f7;
+}
+
+.payload-bar-seg.img {
+  background: #10b981;
+}
+
+.payload-legend-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.payload-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+}
+
+.payload-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* Network Latency Waterfall */
+.waterfall-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.waterfall-row {
+  display: grid;
+  grid-template-columns: 180px 1fr 90px;
+  gap: 1rem;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 640px) {
+  .waterfall-row {
+    grid-template-columns: 140px 1fr 70px;
+    font-size: 0.78rem;
+  }
+}
+
+.waterfall-label {
+  color: var(--text-dim);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.waterfall-bar-track {
+  width: 100%;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 999px;
+  position: relative;
+  overflow: hidden;
+}
+
+.waterfall-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.8s ease;
+}
+
+.waterfall-ms {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-align: right;
+  color: var(--text-main);
+}
+
+
 
 

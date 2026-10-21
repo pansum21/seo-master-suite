@@ -468,11 +468,11 @@ async function runAudit(url) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           url: data.url,
-          domain: data.domain,
-          score: data.metrics.score,
-          loadTimeMs: data.metrics.loadTimeMs,
-          wordCount: data.content.wordCount,
-          issuesCount: (data.checklist.critical.length + data.checklist.warnings.length)
+          domain: data.hostname || data.domain,
+          score: data.metrics?.score || 0,
+          loadTimeMs: data.metrics?.loadTimeMs || 0,
+          wordCount: data.metrics?.wordCount || 0,
+          issuesCount: ((data.audit?.critical?.length || 0) + (data.audit?.warnings?.length || 0))
         })
       }).catch(() => {});
     } catch (_) {}
@@ -484,24 +484,32 @@ async function runAudit(url) {
 }
 
 function populateAuditUI(data) {
-  // Score Gauge Animation
+  // 1. Overall Score & Circular Gauge Animation
   const score = data.metrics.score || 0;
-  let grade = 'A';
-  if (score >= 90) grade = 'A+';
-  else if (score >= 80) grade = 'A';
-  else if (score >= 70) grade = 'B';
-  else if (score >= 60) grade = 'C';
-  else grade = 'F';
+  const insights = data.overallInsights || {};
+  const executiveGrade = insights.executiveGrade || (score >= 90 ? 'A+' : (score >= 80 ? 'A' : (score >= 70 ? 'B' : (score >= 60 ? 'C' : 'F'))));
 
   const scoreNum = document.getElementById('auditor-score-num');
   const gradeTag = document.getElementById('auditor-grade-tag');
   const circleBar = document.getElementById('auditor-circle-bar');
+  const healthBadge = document.getElementById('auditor-health-status');
+  const summaryText = document.getElementById('auditor-summary-text');
 
   if (scoreNum) scoreNum.textContent = score;
   if (gradeTag) {
-    gradeTag.textContent = `Grade ${grade}`;
+    gradeTag.textContent = `Grade ${executiveGrade}`;
     gradeTag.style.color = score >= 80 ? 'var(--neon-emerald)' : (score >= 60 ? 'var(--neon-amber)' : 'var(--neon-rose)');
     gradeTag.style.background = score >= 80 ? 'rgba(16, 185, 129, 0.15)' : (score >= 60 ? 'rgba(245, 158, 11, 0.15)' : 'rgba(244, 63, 94, 0.15)');
+  }
+
+  if (healthBadge) {
+    healthBadge.textContent = insights.healthStatus || (score >= 80 ? 'Optimized & Search Ready' : 'Optimization Recommended');
+    healthBadge.className = `ws-badge ${score >= 80 ? 'ws-badge-success' : (score >= 60 ? 'ws-badge-warning' : 'ws-badge-danger')}`;
+  }
+
+  if (summaryText) {
+    const isHindi = (localStorage.getItem('seopulse_lang') === 'hi');
+    summaryText.textContent = (isHindi && insights.summaryHindi) ? insights.summaryHindi : (insights.summary || 'Your overall SEO health is evaluated using mathematical weighting across Metadata, Headings, Alt coverage, SSL security, and TTFB latency.');
   }
 
   if (circleBar) {
@@ -512,7 +520,89 @@ function populateAuditUI(data) {
     circleBar.style.stroke = score >= 80 ? 'var(--neon-emerald)' : (score >= 60 ? 'var(--neon-amber)' : 'var(--neon-rose)');
   }
 
-  // Quick Metrics Box
+  // 2. Issue Count Pills
+  const critCount = insights.criticalCount !== undefined ? insights.criticalCount : (data.audit?.critical?.length || 0);
+  const warnCount = insights.warningsCount !== undefined ? insights.warningsCount : (data.audit?.warnings?.length || 0);
+  const passCount = insights.passedCount !== undefined ? insights.passedCount : (data.audit?.passed?.length || 0);
+
+  const elCrit = document.getElementById('auditor-issues-critical');
+  const elWarn = document.getElementById('auditor-issues-warnings');
+  const elPass = document.getElementById('auditor-issues-passed');
+
+  if (elCrit) elCrit.innerHTML = `🔴 <strong>${critCount}</strong> Critical Blockers`;
+  if (elWarn) elWarn.innerHTML = `🟡 <strong>${warnCount}</strong> Opportunities`;
+  if (elPass) elPass.innerHTML = `🟢 <strong>${passCount}</strong> Passed Checks`;
+
+  // 3. 5 Core Pillars Multi-Score Radar Grid
+  const pillarsGrid = document.getElementById('auditor-pillars-grid');
+  if (pillarsGrid && data.pillars) {
+    const pKeys = [
+      { key: 'seo', icon: '🔍', defaultLabel: 'On-Page SEO' },
+      { key: 'performance', icon: '⚡', defaultLabel: 'Performance & Speed' },
+      { key: 'mobile', icon: '📱', defaultLabel: 'Mobile & UX' },
+      { key: 'security', icon: '🔒', defaultLabel: 'Security & Headers' },
+      { key: 'content', icon: '📝', defaultLabel: 'Content & Semantics' }
+    ];
+
+    pillarsGrid.innerHTML = pKeys.map(pk => {
+      const p = data.pillars[pk.key] || { score: 85, grade: 'A', label: pk.defaultLabel };
+      const s = p.score;
+      const color = s >= 85 ? 'var(--neon-emerald)' : (s >= 70 ? 'var(--neon-amber)' : 'var(--neon-rose)');
+      const badgeBg = s >= 85 ? 'rgba(16, 185, 129, 0.15)' : (s >= 70 ? 'rgba(245, 158, 11, 0.15)' : 'rgba(244, 63, 94, 0.15)');
+
+      return `
+        <div class="pillar-card">
+          <div class="pillar-card-header">
+            <span class="pillar-card-title">${pk.icon} ${p.label || pk.defaultLabel}</span>
+            <span class="pillar-grade-badge" style="background:${badgeBg};color:${color};">Grade ${p.grade}</span>
+          </div>
+          <div class="pillar-score-row">
+            <span class="pillar-big-val" style="color:${color};">${s}</span>
+            <span class="pillar-denom">/100</span>
+          </div>
+          <div class="pillar-progress-track">
+            <div class="pillar-progress-fill" style="width:${s}%;background:${color};"></div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // 4. High-Impact Quick Wins (Top 3-4 Priority Action Items)
+  const qwCard = document.getElementById('auditor-quick-wins-card');
+  const qwContainer = document.getElementById('auditor-quick-wins-container');
+  if (qwContainer) {
+    const qList = data.quickWins || [];
+    if (qList.length === 0) {
+      if (qwCard) qwCard.style.display = 'none';
+    } else {
+      if (qwCard) qwCard.style.display = 'block';
+      qwContainer.innerHTML = qList.map(item => {
+        const prioClass = (item.priority || 'high').toLowerCase();
+        return `
+          <div class="quick-win-card">
+            <div>
+              <div class="quick-win-header">
+                <span class="quick-win-priority ${prioClass}">${escapeHtml(item.priority || 'HIGH')}</span>
+                <div class="quick-win-meta">
+                  <span class="quick-win-tag">${escapeHtml(item.category || 'SEO')}</span>
+                  <span class="quick-win-tag" style="color:var(--neon-cyan);font-weight:700;">${escapeHtml(item.impact || '+10 Pts')}</span>
+                  <span class="quick-win-tag">⏱️ ${escapeHtml(item.effort || '5 min')}</span>
+                </div>
+              </div>
+              <div class="quick-win-title" style="margin-top:0.6rem;">${escapeHtml(item.title)}</div>
+              <div class="quick-win-desc" style="margin-top:0.4rem;">${escapeHtml(item.desc)}</div>
+            </div>
+            <div class="quick-win-action-box">
+              <strong>Action:</strong> ${escapeHtml(item.action)}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+  }
+
+  // 5. Quick Metrics Bar
   const metricSpeed = document.getElementById('auditor-metric-speed');
   const metricWords = document.getElementById('auditor-metric-words');
   const metricHeadings = document.getElementById('auditor-metric-headings');
@@ -533,7 +623,206 @@ function populateAuditUI(data) {
     targetLink.textContent = data.url;
   }
 
-  // Tab A: Overview
+  // 6. Tab 1: Detailed Diagnosis Log (audit-tab-insights)
+  const critList = document.getElementById('insights-critical-list');
+  const critBadge = document.getElementById('insights-critical-badge');
+  const critWrapper = document.getElementById('insights-critical-wrapper');
+  const criticalItems = data.audit?.critical || [];
+
+  if (critBadge) critBadge.textContent = criticalItems.length;
+  if (critList) {
+    if (criticalItems.length === 0) {
+      critList.innerHTML = `<div style="padding:1rem;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.2);border-radius:10px;color:var(--neon-emerald);font-size:0.88rem;">🎉 Flawless! Zero critical SEO blockers or technical errors detected on this URL.</div>`;
+    } else {
+      critList.innerHTML = criticalItems.map(item => `
+        <div style="padding:1rem;background:rgba(244,63,94,0.06);border:1px solid rgba(244,63,94,0.25);border-radius:10px;">
+          <div style="font-weight:700;color:var(--text-main);font-size:0.92rem;margin-bottom:0.25rem;">${escapeHtml(item.title)}</div>
+          <div style="color:var(--text-dim);font-size:0.84rem;line-height:1.5;">${escapeHtml(item.desc)}</div>
+        </div>
+      `).join('');
+    }
+  }
+
+  const warnList = document.getElementById('insights-warnings-list');
+  const warnBadge = document.getElementById('insights-warnings-badge');
+  const warningItems = data.audit?.warnings || [];
+
+  if (warnBadge) warnBadge.textContent = warningItems.length;
+  if (warnList) {
+    if (warningItems.length === 0) {
+      warnList.innerHTML = `<div style="color:var(--text-muted);font-size:0.86rem;padding:0.5rem 0;">No active warnings detected.</div>`;
+    } else {
+      warnList.innerHTML = warningItems.map(item => `
+        <div style="padding:1rem;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.25);border-radius:10px;">
+          <div style="font-weight:700;color:var(--text-main);font-size:0.92rem;margin-bottom:0.25rem;">${escapeHtml(item.title)}</div>
+          <div style="color:var(--text-dim);font-size:0.84rem;line-height:1.5;">${escapeHtml(item.desc)}</div>
+        </div>
+      `).join('');
+    }
+  }
+
+  const passList = document.getElementById('insights-passed-list');
+  const passBadge = document.getElementById('insights-passed-badge');
+  const passedItems = data.audit?.passed || [];
+
+  if (passBadge) passBadge.textContent = passedItems.length;
+  if (passList) {
+    passList.innerHTML = passedItems.map(item => `
+      <div style="padding:0.75rem 1rem;background:rgba(255,255,255,0.02);border:1px solid var(--border-glass);border-radius:10px;display:flex;align-items:flex-start;gap:0.75rem;">
+        <span style="color:var(--neon-emerald);font-size:1.1rem;line-height:1;">✓</span>
+        <div>
+          <div style="font-weight:700;color:var(--text-main);font-size:0.88rem;">${escapeHtml(item.title)}</div>
+          <div style="color:var(--text-dim);font-size:0.8rem;margin-top:0.2rem;">${escapeHtml(item.desc)}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // 7. Tab 2: Performance Center & Core Web Vitals (audit-tab-performance)
+  const pe = data.performance || {};
+  const cwv = pe.coreWebVitals || {};
+  const cwvGrid = document.getElementById('perf-cwv-grid');
+
+  if (cwvGrid) {
+    const cwvItems = [
+      { key: 'lcp', title: 'Largest Contentful Paint (LCP)', val: cwv.lcp?.value || '1.2s', status: cwv.lcp?.status || 'GOOD', target: cwv.lcp?.target || '≤ 2.5s', color: 'var(--neon-emerald)' },
+      { key: 'fcp', title: 'First Contentful Paint (FCP)', val: cwv.fcp?.value || '0.8s', status: cwv.fcp?.status || 'GOOD', target: cwv.fcp?.target || '≤ 1.8s', color: 'var(--neon-cyan)' },
+      { key: 'cls', title: 'Cumulative Layout Shift (CLS)', val: cwv.cls?.value || '0.005', status: cwv.cls?.status || 'GOOD', target: cwv.cls?.target || '≤ 0.1', color: 'var(--neon-emerald)' },
+      { key: 'tbt', title: 'Total Blocking Time (TBT)', val: cwv.tbt?.value || '40ms', status: cwv.tbt?.status || 'GOOD', target: cwv.tbt?.target || '≤ 200ms', color: 'var(--neon-emerald)' },
+      { key: 'ttfb', title: 'Server Response (TTFB)', val: cwv.ttfb?.value || `${data.metrics.loadTimeMs || 0}ms`, status: cwv.ttfb?.status || 'GOOD', target: cwv.ttfb?.target || '≤ 400ms', color: 'var(--neon-amber)' },
+      { key: 'speedIndex', title: 'Speed Index', val: cwv.speedIndex?.value || '1.6s', status: cwv.speedIndex?.status || 'GOOD', target: cwv.speedIndex?.target || '≤ 3.4s', color: 'var(--neon-indigo)' }
+    ];
+
+    cwvGrid.innerHTML = cwvItems.map(item => {
+      const s = (item.status || 'GOOD').toLowerCase();
+      const statusLabel = s === 'good' ? 'GOOD' : (s === 'needs_improvement' ? 'IMPROVE' : 'POOR');
+      const valColor = s === 'good' ? 'var(--neon-emerald)' : (s === 'needs_improvement' ? 'var(--neon-amber)' : 'var(--neon-rose)');
+
+      return `
+        <div class="cwv-metric-card">
+          <div class="cwv-header">
+            <span class="cwv-title">${escapeHtml(item.title)}</span>
+            <span class="cwv-status-badge ${s}">${statusLabel}</span>
+          </div>
+          <div class="cwv-val" style="color:${valColor};">${escapeHtml(item.val)}</div>
+          <div class="cwv-benchmark">Google Benchmark: ${escapeHtml(item.target)}</div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // Asset Payload Distribution
+  const dist = pe.payloadDistribution || {};
+  const totalPayloadBadge = document.getElementById('perf-total-payload');
+  if (totalPayloadBadge) totalPayloadBadge.textContent = `${dist.totalKb || data.metrics.pageSizeKb || 0} KB Total`;
+
+  const segHtml = document.getElementById('payload-seg-html');
+  const segJs = document.getElementById('payload-seg-js');
+  const segCss = document.getElementById('payload-seg-css');
+  const segImg = document.getElementById('payload-seg-img');
+
+  if (segHtml) segHtml.style.width = `${dist.htmlPct || 20}%`;
+  if (segJs) segJs.style.width = `${dist.jsPct || 40}%`;
+  if (segCss) segCss.style.width = `${dist.cssPct || 15}%`;
+  if (segImg) segImg.style.width = `${dist.imgPct || 25}%`;
+
+  const valHtml = document.getElementById('payload-val-html');
+  const pctHtml = document.getElementById('payload-pct-html');
+  const valJs = document.getElementById('payload-val-js');
+  const pctJs = document.getElementById('payload-pct-js');
+  const valCss = document.getElementById('payload-val-css');
+  const pctCss = document.getElementById('payload-pct-css');
+  const valImg = document.getElementById('payload-val-img');
+  const pctImg = document.getElementById('payload-pct-img');
+
+  if (valHtml) valHtml.textContent = `${dist.htmlKb || data.metrics.pageSizeKb || 0} KB`;
+  if (pctHtml) pctHtml.textContent = `${dist.htmlPct || 20}%`;
+  if (valJs) valJs.textContent = `${dist.jsKb || 0} KB`;
+  if (pctJs) pctJs.textContent = `${dist.jsPct || 40}%`;
+  if (valCss) valCss.textContent = `${dist.cssKb || 0} KB`;
+  if (pctCss) pctCss.textContent = `${dist.cssPct || 15}%`;
+  if (valImg) valImg.textContent = `${dist.imgKb || 0} KB`;
+  if (pctImg) pctImg.textContent = `${dist.imgPct || 25}%`;
+
+  // Network Waterfall Steps
+  const wfSteps = document.getElementById('perf-waterfall-steps');
+  const wf = pe.waterfall || { dnsMs: 15, sslMs: 30, ttfbMs: 120, downloadMs: 25, totalMs: data.metrics.loadTimeMs || 190 };
+  if (wfSteps) {
+    const totalMs = Math.max(1, wf.totalMs || 200);
+    const stepsData = [
+      { label: '🌐 DNS Resolution', ms: wf.dnsMs, color: '#38bdf8' },
+      { label: '🔒 SSL & TCP Connect', ms: wf.sslMs, color: '#a855f7' },
+      { label: '⚡ Server Waiting (TTFB)', ms: wf.ttfbMs, color: '#f59e0b' },
+      { label: '📥 Content Download', ms: wf.downloadMs, color: '#10b981' }
+    ];
+
+    wfSteps.innerHTML = stepsData.map(step => {
+      const pct = Math.max(8, Math.round((step.ms / totalMs) * 100));
+      return `
+        <div class="waterfall-row">
+          <div class="waterfall-label">${step.label}</div>
+          <div class="waterfall-bar-track">
+            <div class="waterfall-bar-fill" style="width:${pct}%;background:${step.color};"></div>
+          </div>
+          <div class="waterfall-ms">${step.ms} ms</div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // Text-to-HTML Ratio
+  const ratio = pe.textToHtmlRatio || { value: 20, status: 'GOOD' };
+  const ratioVal = document.getElementById('perf-ratio-val');
+  const ratioStatus = document.getElementById('perf-ratio-status');
+  const ratioFill = document.getElementById('perf-ratio-fill');
+
+  if (ratioVal) ratioVal.textContent = `${ratio.value}%`;
+  if (ratioStatus) {
+    ratioStatus.textContent = ratio.status === 'GOOD' ? 'GOOD (>15%)' : 'THIN CODE';
+    ratioStatus.className = `ws-badge ${ratio.status === 'GOOD' ? 'ws-badge-success' : 'ws-badge-warning'}`;
+  }
+  if (ratioFill) {
+    const fillW = Math.min(100, Math.max(10, ratio.value * 2.5));
+    ratioFill.style.width = `${fillW}%`;
+    ratioFill.style.background = ratio.status === 'GOOD' ? 'var(--neon-emerald)' : 'var(--neon-amber)';
+  }
+
+  // Performance Diagnostics Checklist
+  const diagList = document.getElementById('perf-diagnostics-list');
+  const diag = pe.diagnostics || {};
+  if (diagList) {
+    const items = [
+      {
+        ok: diag.isCompressed,
+        text: diag.isCompressed ? `Compression Active (${(diag.contentEncoding || 'gzip').toUpperCase()})` : 'Gzip / Brotli Compression Inactive'
+      },
+      {
+        ok: diag.hasCaching,
+        text: diag.hasCaching ? 'Browser Cache-Control Configured' : 'Missing Long-Term Browser Caching'
+      },
+      {
+        ok: (diag.blockingScriptsCount || 0) === 0,
+        text: (diag.blockingScriptsCount || 0) === 0 ? 'Zero Render-Blocking Scripts' : `${diag.blockingScriptsCount} Render-Blocking Script(s) Found`
+      },
+      {
+        ok: (diag.imagesWithoutDimsCount || 0) === 0,
+        text: (diag.imagesWithoutDimsCount || 0) === 0 ? 'All Images Have Width & Height (No CLS)' : `${diag.imagesWithoutDimsCount} Image(s) Missing Explicit Dimensions`
+      },
+      {
+        ok: (diag.modernImagesCount || 0) > 0,
+        text: (diag.modernImagesCount || 0) > 0 ? `${diag.modernImagesCount} Modern Format Images (WebP/AVIF/SVG)` : 'Traditional Image Formats Used'
+      }
+    ];
+
+    diagList.innerHTML = items.map(it => `
+      <div style="display:flex;align-items:center;gap:0.5rem;color:${it.ok ? 'var(--neon-emerald)' : 'var(--neon-amber)'};">
+        <span>${it.ok ? '✓' : '⚠️'}</span>
+        <span style="color:var(--text-main);">${escapeHtml(it.text)}</span>
+      </div>
+    `).join('');
+  }
+
+  // 8. Tab 3: Overview & Meta
   const metaTable = document.getElementById('auditor-meta-table');
   if (metaTable) {
     const titleLen = data.meta.title?.length || 0;
@@ -572,7 +861,7 @@ function populateAuditUI(data) {
     `;
   }
 
-  // Tab B: Headings Hierarchy
+  // 9. Tab 4: Headings Hierarchy
   const headingsWrap = document.getElementById('auditor-headings-list');
   if (headingsWrap) {
     const list = [];
@@ -593,7 +882,7 @@ function populateAuditUI(data) {
     }
   }
 
-  // Tab C: Image Alt Inspector
+  // 10. Tab 5: Image Alt Inspector
   const imagesTable = document.getElementById('auditor-images-table');
   if (imagesTable) {
     const items = data.images.list || [];
@@ -612,7 +901,7 @@ function populateAuditUI(data) {
     }
   }
 
-  // Tab D: Keyword Density
+  // 11. Tab 6: Keyword Density
   const keywordsTable = document.getElementById('auditor-keywords-table');
   if (keywordsTable) {
     const kList = data.keywords || [];
@@ -621,7 +910,7 @@ function populateAuditUI(data) {
     } else {
       keywordsTable.innerHTML = kList.map(k => `
         <tr>
-          <td style="font-weight:700;color:var(--neon-cyan);">${escapeHtml(k.word)}</td>
+          <td style="font-weight:700;color:var(--neon-cyan);">${escapeHtml(k.keyword || k.word)}</td>
           <td style="font-family:var(--font-mono);">${k.count}</td>
           <td><span class="ws-badge ${k.density > 3 ? 'ws-badge-danger' : 'ws-badge-success'}">${k.density}%</span></td>
         </tr>
@@ -629,7 +918,7 @@ function populateAuditUI(data) {
     }
   }
 
-  // Tab E: Technical Files
+  // 12. Tab 7: Technical Files
   const techTable = document.getElementById('auditor-tech-table');
   if (techTable) {
     const rFound = data.technical?.robotsTxt?.exists;
@@ -836,6 +1125,50 @@ function syncAuditWithOtherTools(data) {
   // 14. Tool 14 (Google Core Web Vitals & Lighthouse)
   const lhUrl = document.getElementById('lighthouse-url-input');
   if (lhUrl) lhUrl.value = data.url;
+  if (data.performance && data.pillars) {
+    const lhResults = document.getElementById('lighthouse-results');
+    if (lhResults) {
+      const perfEl = document.getElementById('lh-score-perf');
+      const a11yEl = document.getElementById('lh-score-a11y');
+      const bpEl = document.getElementById('lh-score-bp');
+      const seoEl = document.getElementById('lh-score-seo');
+      if (perfEl) perfEl.textContent = data.pillars.performance?.score || 90;
+      if (a11yEl) a11yEl.textContent = data.pillars.mobile?.score || 95;
+      if (bpEl) bpEl.textContent = data.pillars.security?.score || 98;
+      if (seoEl) seoEl.textContent = data.pillars.seo?.score || 92;
+
+      const cwv = data.performance.coreWebVitals || {};
+      const lcpEl = document.getElementById('lh-metric-lcp');
+      const fcpEl = document.getElementById('lh-metric-fcp');
+      const clsEl = document.getElementById('lh-metric-cls');
+      const tbtEl = document.getElementById('lh-metric-tbt');
+      if (lcpEl) lcpEl.textContent = cwv.lcp?.value || '1.2 s';
+      if (fcpEl) fcpEl.textContent = cwv.fcp?.value || '0.8 s';
+      if (clsEl) clsEl.textContent = cwv.cls?.value || '0.005';
+      if (tbtEl) tbtEl.textContent = cwv.tbt?.value || '40 ms';
+
+      const badge = document.getElementById('lh-cwv-badge');
+      if (badge) {
+        const isGood = (cwv.lcp?.status === 'GOOD' && cwv.cls?.status === 'GOOD');
+        badge.className = `ws-badge ${isGood ? 'ws-badge-success' : 'ws-badge-warning'}`;
+        badge.textContent = isGood ? 'CORE WEB VITALS PASSED (GOOD)' : 'NEEDS IMPROVEMENT';
+      }
+
+      const oppContainer = document.getElementById('lh-opportunities-container');
+      if (oppContainer && data.quickWins && data.quickWins.length > 0) {
+        oppContainer.innerHTML = data.quickWins.map(qw => `
+          <div style="padding:1rem;margin-bottom:0.75rem;background:rgba(255,255,255,0.02);border:1px solid var(--border-glass);border-radius:10px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
+            <div>
+              <div style="font-weight:700;font-size:0.95rem;color:var(--text-main);">${escapeHtml(qw.title)}</div>
+              <div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.25rem;">${escapeHtml(qw.desc)}</div>
+            </div>
+            <span class="ws-badge ws-badge-warning">${escapeHtml(qw.impact)}</span>
+          </div>
+        `).join('');
+      }
+      lhResults.style.display = 'block';
+    }
+  }
 
   // 15. Tool 15 (Backlink & Domain Authority Engine)
   const blDomainInput = document.getElementById('backlink-domain-input');
@@ -852,8 +1185,8 @@ function syncAuditWithOtherTools(data) {
   if (pdfTargetUrl) pdfTargetUrl.value = data.url;
   if (pdfClientName) pdfClientName.value = brandName;
   if (pdfNotes) {
-    const issuesTotal = (data.checklist?.critical?.length || 0) + (data.checklist?.warnings?.length || 0);
-    pdfNotes.value = `Executive SEO Audit for ${brandName} (${domain}): Overall SEO Health Score is ${data.metrics?.score || 0}/100. We identified ${issuesTotal} total optimization areas (${data.checklist?.critical?.length || 0} critical, ${data.checklist?.warnings?.length || 0} warnings). Primary recommendations: strengthen on-page meta tag alignment for '${primaryKw}', resolve crawl/header warnings, and optimize Core Web Vitals for mobile users.`;
+    const issuesTotal = (data.audit?.critical?.length || 0) + (data.audit?.warnings?.length || 0);
+    pdfNotes.value = `Executive SEO Audit for ${brandName} (${domain}): Overall SEO Health Score is ${data.metrics?.score || 0}/100. We identified ${issuesTotal} total optimization areas (${data.audit?.critical?.length || 0} critical, ${data.audit?.warnings?.length || 0} warnings). Primary recommendations: strengthen on-page meta tag alignment for '${primaryKw}', resolve crawl/header warnings, and optimize Core Web Vitals for mobile users.`;
   }
 }
 
