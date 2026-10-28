@@ -1,5 +1,6 @@
 import https from 'https';
 import http from 'http';
+import { assertPublicHttpUrl } from './urlSafety.js';
 
 /**
  * Checks HTTP headers, redirects, SSL, and security headers of a given URL
@@ -16,6 +17,7 @@ export async function checkHeaders(targetUrl) {
 
   try {
     const parsed = new URL(urlStr);
+    await assertPublicHttpUrl(urlStr);
     const client = parsed.protocol === 'https:' ? https : http;
 
     const response = await new Promise((resolve, reject) => {

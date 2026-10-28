@@ -2,7 +2,6 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
-import fs from 'fs';
 
 import { auditUrl } from './services/seoAuditor.js';
 import { analyzeKeywords } from './services/keywordEngine.js';
@@ -16,15 +15,39 @@ import { getLighthouseAudit } from './services/lighthouseService.js';
 import { getHistory, logAuditEntry } from './services/historyEngine.js';
 import { crawlSiteDeep } from './services/deepSpider.js';
 import { getProjects, saveProject, deleteProject } from './services/projectManager.js';
-import { analyzeDomainAuthority } from './services/backlinkEngine.js';
+import { getDomainRatingProviderStatus, getAhrefsDomainRatings } from './services/backlinkEngine.js';
 import { getGscStatus, saveGscConfig, disconnectGsc, getGscAnalytics } from './services/gscService.js';
 import { getAlerts, dismissAlert, clearAllAlerts, getMonitorConfig, updateMonitorConfig, executeScheduledCheck, initBackgroundMonitor } from './services/cronMonitor.js';
 
 const app = express();
 const PORT = process.env.PORT || 5050;
 
-app.use(cors());
-app.use(express.json());
+const allowedOrigins = (process.env.ALLOWED_ORIGINS || '').split(',').map(origin => origin.trim()).filter(Boolean);
+app.use(cors({
+  origin(origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
+    return callback(null, false);
+  }
+}));
+app.use(express.json({ limit: '1mb' }));
+
+// Basic per-process request cap for expensive public scan endpoints.
+const apiWindows = new Map();
+app.use('/api', (req, res, next) => {
+  const now = Date.now();
+  const key = req.ip || req.socket.remoteAddress || 'unknown';
+  let window = apiWindows.get(key);
+  if (!window || now - window.startedAt >= 60_000) window = { startedAt: now, count: 0 };
+  window.count += 1;
+  apiWindows.set(key, window);
+  if (apiWindows.size > 5000) {
+    for (const [ip, entry] of apiWindows) if (now - entry.startedAt >= 60_000) apiWindows.delete(ip);
+  }
+  res.setHeader('X-RateLimit-Limit', '120');
+  res.setHeader('X-RateLimit-Remaining', String(Math.max(0, 120 - window.count)));
+  if (window.count > 120) return res.status(429).json({ success: false, error: 'Request limit reached. Try again after one minute.' });
+  next();
+});
 
 // Serve static frontend files from public directory
 app.use(express.static(path.resolve('public')));
@@ -102,7 +125,7 @@ app.post('/api/lighthouse', async (req, res) => {
     res.json(result);
   } catch (err) {
     console.error('Lighthouse Error:', err);
-    res.status(500).json({ error: err.message });
+    res.status(err.statusCode || 500).json({ success: false, error: err.message });
   }
 });
 
@@ -113,7 +136,7 @@ app.get('/api/history', (req, res) => {
     const history = getHistory(domain);
     res.json({ success: true, count: history.length, history });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(err.statusCode || 500).json({ success: false, error: err.message });
   }
 });
 
@@ -289,36 +312,6 @@ app.post('/api/readability', (req, res) => {
   }
 });
 
-// 13. Save Settings / Keys safely into .env
-app.post('/api/settings', (req, res) => {
-  const { GEMINI_API_KEY, GEMINI_MODEL } = req.body;
-  const envPath = path.resolve('.env');
-  let currentEnv = fs.existsSync(envPath) ? fs.readFileSync(envPath, 'utf-8') : '';
-
-  if (GEMINI_API_KEY) {
-    const regex = /^GEMINI_API_KEY=.*$/m;
-    if (regex.test(currentEnv)) {
-      currentEnv = currentEnv.replace(regex, `GEMINI_API_KEY=${GEMINI_API_KEY}`);
-    } else {
-      currentEnv += `\nGEMINI_API_KEY=${GEMINI_API_KEY}`;
-    }
-    process.env.GEMINI_API_KEY = GEMINI_API_KEY;
-  }
-
-  if (GEMINI_MODEL) {
-    const regex = /^GEMINI_MODEL=.*$/m;
-    if (regex.test(currentEnv)) {
-      currentEnv = currentEnv.replace(regex, `GEMINI_MODEL=${GEMINI_MODEL}`);
-    } else {
-      currentEnv += `\nGEMINI_MODEL=${GEMINI_MODEL}`;
-    }
-    process.env.GEMINI_MODEL = GEMINI_MODEL;
-  }
-
-  fs.writeFileSync(envPath, currentEnv.trim() + '\n', 'utf-8');
-  res.json({ success: true, message: 'Settings saved successfully' });
-});
-
 // 13. Deep Link-to-Link Site Spider (Screaming Frog Mode)
 app.post('/api/spider/crawl', async (req, res) => {
   try {
@@ -365,15 +358,19 @@ app.delete('/api/projects/:id', (req, res) => {
   }
 });
 
-// 15. Domain Authority & Inbound Backlinks Engine
+// 15. Ahrefs Domain Rating checker (free public endpoint)
+app.get('/api/backlinks/status', (req, res) => {
+  res.json({ success: true, ...getDomainRatingProviderStatus() });
+});
+
 app.post('/api/backlinks', async (req, res) => {
   try {
-    const { url } = req.body;
-    if (!url) return res.status(400).json({ error: 'URL or domain is required' });
-    const result = await analyzeDomainAuthority(url);
+    const targets = Array.isArray(req.body.targets) ? req.body.targets : [req.body.url];
+    if (!targets.some(Boolean)) return res.status(400).json({ success: false, error: 'Enter a domain or URL.' });
+    const result = await getAhrefsDomainRatings(targets);
     res.json({ success: true, ...result });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(err.statusCode || 500).json({ success: false, error: err.message });
   }
 });
 
@@ -385,10 +382,10 @@ app.get('/api/gsc/status', (req, res) => {
 app.post('/api/gsc/data', (req, res) => {
   try {
     const { url, days = 28 } = req.body;
-    const analytics = getGscAnalytics(url, parseInt(days, 10) || 28);
+    const analytics = getGscAnalytics(url, Math.min(480, Math.max(1, parseInt(days, 10) || 28)));
     res.json({ success: true, ...analytics });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(err.statusCode || 500).json({ success: false, error: err.message });
   }
 });
 
@@ -397,7 +394,7 @@ app.post('/api/gsc/connect', (req, res) => {
     const result = saveGscConfig(req.body);
     res.json(result);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(err.statusCode || 500).json({ success: false, error: err.message });
   }
 });
 

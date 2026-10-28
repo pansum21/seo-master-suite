@@ -1,7 +1,7 @@
 /**
  * Keyword Research & LSI Generator Service
- * Simulates enterprise keyword metrics (Ahrefs / SEMrush style)
- * with search intent, difficulty score, CPC, and semantic LSI expansions.
+ * Generates keyword ideas using transparent heuristics. Search volume, CPC,
+ * and keyword difficulty require a licensed data provider and are not guessed.
  */
 export async function analyzeKeywords(seedKeyword, geminiApiKey = null) {
   const keyword = seedKeyword.trim();
@@ -12,10 +12,7 @@ export async function analyzeKeywords(seedKeyword, geminiApiKey = null) {
   // 1. Detect Search Intent
   const intent = detectSearchIntent(keyword);
 
-  // 2. Deterministic Realistic Metrics based on keyword hashing & patterns
-  const metrics = calculateKeywordMetrics(keyword);
-
-  // 3. Generate 20+ Semantic / LSI Keyword Variations
+  // Suggestions are ideas only, not measured search-demand data.
   const lsiKeywords = generateLsiKeywords(keyword);
 
   // 4. If Gemini API Key provided, augment with real AI niche ideas
@@ -35,7 +32,9 @@ export async function analyzeKeywords(seedKeyword, geminiApiKey = null) {
     intent: intent.type,
     intentConfidence: intent.confidence,
     intentDescription: intent.description,
-    primaryMetrics: metrics,
+    primaryMetrics: null,
+    metricsAvailable: false,
+    dataSource: 'Rule-based keyword suggestions; no search-volume provider connected',
     related: lsiKeywords,
     variations: [...lsiKeywords, ...aiIdeas],
     questions: lsiKeywords.filter(k => k.type === 'Question').map(k => k.keyword),
@@ -62,7 +61,7 @@ function detectSearchIntent(keyword) {
   if (transactionalWords.some(w => kw.includes(w))) {
     return {
       type: 'Transactional 💰',
-      confidence: 'High (88%)',
+      confidence: 'Heuristic',
       description: 'User is searching with clear intent to purchase a product or service.'
     };
   }
@@ -70,7 +69,7 @@ function detectSearchIntent(keyword) {
   if (commercialWords.some(w => kw.includes(w))) {
     return {
       type: 'Commercial Investigation 🔎',
-      confidence: 'High (84%)',
+      confidence: 'Heuristic',
       description: 'User is evaluating options, comparing brands, or reading reviews prior to buying.'
     };
   }
@@ -78,62 +77,15 @@ function detectSearchIntent(keyword) {
   if (navigationalWords.some(w => kw.includes(w))) {
     return {
       type: 'Navigational 🧭',
-      confidence: 'Medium (75%)',
+      confidence: 'Heuristic',
       description: 'User wants to reach a specific brand, portal, or website.'
     };
   }
 
   return {
     type: 'Informational 📚',
-    confidence: 'High (85%)',
+    confidence: 'Heuristic',
     description: 'User is seeking knowledge, answers, tutorials, or inspiration.'
-  };
-}
-
-/**
- * Calculates realistic metrics based on string entropy & patterns
- */
-function calculateKeywordMetrics(kw) {
-  let hash = 0;
-  for (let i = 0; i < kw.length; i++) {
-    hash = (hash << 5) - hash + kw.charCodeAt(i);
-    hash |= 0;
-  }
-  const positiveHash = Math.abs(hash);
-
-  // Volume range ~ 1,400 to 180,000 / mo
-  const baseVolume = 1200 + (positiveHash % 85000);
-  const roundedVolume = Math.round(baseVolume / 100) * 100;
-
-  // Keyword Difficulty: 1 - 100
-  const difficulty = 15 + (positiveHash % 75);
-  let difficultyLabel = 'Easy (Low Competition)';
-  let difficultyColor = '#10b981'; // green
-
-  if (difficulty > 65) {
-    difficultyLabel = 'Hard (High Authority Needed)';
-    difficultyColor = '#ef4444'; // red
-  } else if (difficulty > 35) {
-    difficultyLabel = 'Medium (Target with Good Content)';
-    difficultyColor = '#f59e0b'; // amber
-  }
-
-  // Cost Per Click (USD)
-  const cpc = (0.45 + (positiveHash % 380) / 100).toFixed(2);
-
-  // Organic CTR Potential
-  const organicCtr = (62 + (positiveHash % 25)).toFixed(0) + '%';
-
-  return {
-    searchVolume: roundedVolume,
-    searchVolumeFormatted: roundedVolume.toLocaleString(),
-    difficulty,
-    difficultyLabel,
-    difficultyColor,
-    cpc: parseFloat(cpc) || 1.25,
-    cpcFormatted: `$${cpc}`,
-    organicCtr,
-    trend: '+14% YoY'
   };
 }
 
@@ -144,29 +96,29 @@ function generateLsiKeywords(seed) {
   const s = seed.trim();
   const variations = [
     // Long-tail
-    { keyword: `best ${s} for beginners`, type: 'Long-tail', volume: '3,200', kd: 28, cpc: '$1.20' },
-    { keyword: `custom ${s} online free`, type: 'Long-tail', volume: '4,800', kd: 34, cpc: '$0.85' },
-    { keyword: `affordable ${s} ideas`, type: 'Long-tail', volume: '1,900', kd: 22, cpc: '$0.95' },
-    { keyword: `modern minimalist ${s}`, type: 'Long-tail', volume: '2,600', kd: 31, cpc: '$1.40' },
-    { keyword: `${s} step by step guide`, type: 'Long-tail', volume: '1,400', kd: 25, cpc: '$0.70' },
+    { keyword: `best ${s} for beginners`, type: 'Long-tail' },
+    { keyword: `custom ${s} online free`, type: 'Long-tail' },
+    { keyword: `affordable ${s} ideas`, type: 'Long-tail' },
+    { keyword: `modern minimalist ${s}`, type: 'Long-tail' },
+    { keyword: `${s} step by step guide`, type: 'Long-tail' },
 
     // Questions
-    { keyword: `how to create ${s}`, type: 'Question', volume: '5,400', kd: 32, cpc: '$1.10' },
-    { keyword: `what is the best ${s} website`, type: 'Question', volume: '6,200', kd: 45, cpc: '$1.75' },
-    { keyword: `why do people use ${s}`, type: 'Question', volume: '880', kd: 18, cpc: '$0.50' },
-    { keyword: `where to buy authentic ${s}`, type: 'Question', volume: '2,100', kd: 38, cpc: '$1.90' },
-    { keyword: `is ${s} worth the money`, type: 'Question', volume: '1,650', kd: 29, cpc: '$1.15' },
+    { keyword: `how to create ${s}`, type: 'Question' },
+    { keyword: `what is the best ${s} website`, type: 'Question' },
+    { keyword: `why do people use ${s}`, type: 'Question' },
+    { keyword: `where to buy authentic ${s}`, type: 'Question' },
+    { keyword: `is ${s} worth the money`, type: 'Question' },
 
     // Commercial
-    { keyword: `buy ${s} with instant download`, type: 'Commercial / Buyer', volume: '3,900', kd: 42, cpc: '$2.30' },
-    { keyword: `order personalized ${s}`, type: 'Commercial / Buyer', volume: '4,100', kd: 46, cpc: '$2.60' },
-    { keyword: `top 10 ${s} stores 2026`, type: 'Commercial / Buyer', volume: '7,500', kd: 52, cpc: '$1.80' },
-    { keyword: `discount code for ${s}`, type: 'Commercial / Buyer', volume: '1,300', kd: 35, cpc: '$1.40' },
+    { keyword: `buy ${s} with instant download`, type: 'Commercial / Buyer' },
+    { keyword: `order personalized ${s}`, type: 'Commercial / Buyer' },
+    { keyword: `top ${s} stores`, type: 'Commercial / Buyer' },
+    { keyword: `discount code for ${s}`, type: 'Commercial / Buyer' },
 
     // Comparisons
-    { keyword: `${s} vs competitors comparison`, type: 'Comparison / Alternative', volume: '2,400', kd: 36, cpc: '$1.60' },
-    { keyword: `best alternatives to ${s}`, type: 'Comparison / Alternative', volume: '3,100', kd: 41, cpc: '$1.95' },
-    { keyword: `${s} review and rating`, type: 'Comparison / Alternative', volume: '4,700', kd: 44, cpc: '$2.10' }
+    { keyword: `${s} vs competitors comparison`, type: 'Comparison / Alternative' },
+    { keyword: `best alternatives to ${s}`, type: 'Comparison / Alternative' },
+    { keyword: `${s} review and rating`, type: 'Comparison / Alternative' }
   ];
 
   return variations;
@@ -179,10 +131,10 @@ async function fetchGeminiKeywordExpansions(keyword, apiKey) {
   const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
 
   const prompt = `Act as an expert SEO keyword researcher like Ahrefs / SEMrush.
-For the seed topic "${keyword}", provide 6 high-traffic semantic LSI keyword ideas.
+For the seed topic ${JSON.stringify(keyword)}, provide 6 plausible keyword phrase ideas. Do not estimate or invent search volume, CPC, difficulty, rankings, or traffic.
 Format your response ONLY as a JSON array of objects with keys:
 [
-  { "keyword": "...", "type": "Long-tail" | "Question" | "Commercial / Buyer", "volume": "e.g. 2,800", "kd": 30, "cpc": "$1.50" }
+  { "keyword": "...", "type": "Long-tail" | "Question" | "Commercial / Buyer" }
 ]
 Do not return any markdown ticks or explanation, return raw JSON array only.`;
 
@@ -200,5 +152,10 @@ Do not return any markdown ticks or explanation, return raw JSON array only.`;
   const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
   const cleanJson = text.replace(/```json/gi, '').replace(/```/g, '').trim();
 
-  return JSON.parse(cleanJson);
+  const ideas = JSON.parse(cleanJson);
+  if (!Array.isArray(ideas)) return [];
+  return ideas.filter(i => typeof i?.keyword === 'string').slice(0, 10).map(i => ({
+    keyword: i.keyword.slice(0, 180),
+    type: ['Long-tail', 'Question', 'Commercial / Buyer'].includes(i.type) ? i.type : 'Long-tail'
+  }));
 }
