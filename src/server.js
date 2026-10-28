@@ -2,7 +2,6 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
-import fs from 'fs';
 
 import { auditUrl } from './services/seoAuditor.js';
 import { analyzeKeywords } from './services/keywordEngine.js';
@@ -311,36 +310,6 @@ app.post('/api/readability', (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
-});
-
-// 13. Save Settings / Keys safely into .env
-app.post('/api/settings', (req, res) => {
-  const { GEMINI_API_KEY, GEMINI_MODEL } = req.body;
-  const envPath = path.resolve('.env');
-  let currentEnv = fs.existsSync(envPath) ? fs.readFileSync(envPath, 'utf-8') : '';
-
-  if (GEMINI_API_KEY) {
-    const regex = /^GEMINI_API_KEY=.*$/m;
-    if (regex.test(currentEnv)) {
-      currentEnv = currentEnv.replace(regex, `GEMINI_API_KEY=${GEMINI_API_KEY}`);
-    } else {
-      currentEnv += `\nGEMINI_API_KEY=${GEMINI_API_KEY}`;
-    }
-    process.env.GEMINI_API_KEY = GEMINI_API_KEY;
-  }
-
-  if (GEMINI_MODEL) {
-    const regex = /^GEMINI_MODEL=.*$/m;
-    if (regex.test(currentEnv)) {
-      currentEnv = currentEnv.replace(regex, `GEMINI_MODEL=${GEMINI_MODEL}`);
-    } else {
-      currentEnv += `\nGEMINI_MODEL=${GEMINI_MODEL}`;
-    }
-    process.env.GEMINI_MODEL = GEMINI_MODEL;
-  }
-
-  fs.writeFileSync(envPath, currentEnv.trim() + '\n', 'utf-8');
-  res.json({ success: true, message: 'Settings saved successfully' });
 });
 
 // 13. Deep Link-to-Link Site Spider (Screaming Frog Mode)
