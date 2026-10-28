@@ -17,7 +17,7 @@ const state = {
 const TOOLS_CONFIG = [
   { id: 'auditor', num: '01', icon: '🔍', name: 'Site Health Auditor', key: '1', tag: 'Crawl & Score', desc: 'Deep on-page crawler analyzing metadata, headings hierarchy, image alt tags, technical files, and calculating an algorithmic 0-100 SEO health score.' },
   { id: 'serp', num: '02', icon: '📱', name: 'Google SERP Simulator', key: '2', tag: 'Live Preview', desc: 'Real-time Google search snippet preview for Desktop and Mobile with pixel width counter, character limits, and rich snippet star ratings.' },
-  { id: 'keywords', num: '03', icon: '🎯', name: 'Keyword & LSI Explorer', key: '3', tag: 'Volume & Intent', desc: 'Search intent classification, estimated monthly volume, keyword difficulty (KD%), cost-per-click (CPC), and related question keywords.' },
+  { id: 'keywords', num: '03', icon: '🎯', name: 'Keyword & LSI Explorer', key: '3', tag: 'Ideas & Intent', desc: 'Heuristic intent labels and related phrase ideas. No fabricated search volume, KD, or CPC.' },
   { id: 'schema', num: '04', icon: '🏷️', name: 'Schema Markup Generator', key: '4', tag: 'JSON-LD Builder', desc: 'Generate valid Google-compliant JSON-LD structured data for Articles, Products, FAQs, Local Businesses, and Organizations.' },
   { id: 'meta', num: '05', icon: '🌐', name: 'Meta & OpenGraph Forge', key: '5', tag: 'Social Cards', desc: 'Craft complete HTML head bundles including OpenGraph for Facebook/LinkedIn and Twitter Card tags with live social card rendering.' },
   { id: 'ai', num: '06', icon: '🤖', name: 'Gemini AI SEO Assistant', key: '6', tag: 'AI Optimizer', desc: 'Powered by Gemini AI to rewrite high-CTR titles, detect content gaps against competitors, and generate rank-ready article outlines.' },
@@ -30,7 +30,7 @@ const TOOLS_CONFIG = [
   { id: 'sitemap-crawler', num: '13', icon: '🕸️', name: 'Sitemap Spider Crawler', key: 'C', tag: 'Bulk Spider', desc: 'Concurrently spider and audit up to 50 URLs from any XML sitemap. Catch 404 dead links, duplicate page titles, and domain mismatches.' },
   { id: 'lighthouse', num: '14', icon: '⚡', name: 'Core Web Vitals & Lighthouse', key: 'L', tag: 'Google Lab Vitals', desc: 'Official Google PageSpeed Insights REST integration. Measure Largest Contentful Paint (LCP), Total Blocking Time (TBT), and CLS.' },
   { id: 'history', num: '15', icon: '📈', name: '12-Month Link & Audit History', key: 'H', tag: 'Domain Trajectory', desc: 'Persistent audit logging database tracking site score and latency trends over time, plus on-page anchor link distributions.' },
-  { id: 'gsc-tracker', num: '16', icon: '📊', name: 'Google Search Console', key: 'G', tag: 'Clicks & Rankings', desc: 'Real-time Google search clicks, impressions, average CTR, and keyword rankings.' }
+  { id: 'gsc-tracker', num: '16', icon: '📊', name: 'Google Search Console', key: 'G', tag: 'Connection required', desc: 'Secure Search Console OAuth is not configured; no sample performance data is shown.' }
 ];
 
 // Initialize on DOM Ready
@@ -1355,11 +1355,11 @@ function populateKeywordsUI(data) {
   const cpcEl = document.getElementById('kw-metric-cpc');
 
   const pm = data.primaryMetrics || {};
-  const searchVol = pm.searchVolumeFormatted || (typeof pm.searchVolume === 'number' ? pm.searchVolume.toLocaleString() : (pm.searchVolume || '0'));
-  const diff = typeof pm.difficulty === 'number' ? pm.difficulty : parseInt(pm.difficulty) || 0;
+  const searchVol = pm.searchVolumeFormatted || (typeof pm.searchVolume === 'number' ? pm.searchVolume.toLocaleString() : (pm.searchVolume || '—'));
+  const diff = typeof pm.difficulty === 'number' ? pm.difficulty : null;
   
   // Safe CPC formatting
-  let cpcVal = '$1.25';
+  let cpcVal = '—';
   if (pm.cpcFormatted) {
     cpcVal = pm.cpcFormatted;
   } else if (typeof pm.cpc === 'number') {
@@ -1371,8 +1371,8 @@ function populateKeywordsUI(data) {
   if (intentEl) intentEl.textContent = `${data.intent || 'Informational'}`;
   if (volEl) volEl.textContent = `${searchVol}/mo`;
   if (kdEl) {
-    kdEl.textContent = `${diff}/100`;
-    kdEl.style.color = diff > 65 ? 'var(--neon-rose)' : (diff > 35 ? 'var(--neon-amber)' : 'var(--neon-emerald)');
+    kdEl.textContent = diff == null ? '—' : `${diff}/100`;
+    kdEl.style.color = diff == null ? 'var(--text-muted)' : (diff > 65 ? 'var(--neon-rose)' : (diff > 35 ? 'var(--neon-amber)' : 'var(--neon-emerald)'));
   }
   if (cpcEl) cpcEl.textContent = cpcVal;
 
@@ -1384,9 +1384,9 @@ function populateKeywordsUI(data) {
       table.innerHTML = `<tr><td colspan="4" style="text-align:center;color:var(--text-muted);padding:1.5rem;">No keyword variations found.</td></tr>`;
     } else {
       table.innerHTML = relatedItems.map(r => {
-        const rVol = r.volumeFormatted || (typeof r.volume === 'number' ? r.volume.toLocaleString() : r.volume);
-        const rKd = typeof r.kd === 'number' ? r.kd : parseInt(r.kd) || 20;
-        let rCpc = '$1.00';
+        const rVol = r.volumeFormatted || (typeof r.volume === 'number' ? r.volume.toLocaleString() : (r.volume || '—'));
+        const rKd = typeof r.kd === 'number' ? r.kd : (Number.isFinite(parseInt(r.kd)) ? parseInt(r.kd) : null);
+        let rCpc = '—';
         if (r.cpcFormatted) rCpc = r.cpcFormatted;
         else if (typeof r.cpc === 'number') rCpc = `$${r.cpc.toFixed(2)}`;
         else if (typeof r.cpc === 'string') rCpc = r.cpc.startsWith('$') ? r.cpc : `$${r.cpc}`;
@@ -1396,8 +1396,8 @@ function populateKeywordsUI(data) {
             <td style="font-weight:700;color:var(--text-main);">${escapeHtml(r.keyword)}</td>
             <td style="font-family:var(--font-mono);">${rVol}</td>
             <td>
-              <span class="ws-badge ${rKd > 60 ? 'ws-badge-danger' : (rKd > 35 ? 'ws-badge-warning' : 'ws-badge-success')}">
-                KD ${rKd}
+              <span class="ws-badge ${rKd == null ? 'ws-badge-info' : (rKd > 60 ? 'ws-badge-danger' : (rKd > 35 ? 'ws-badge-warning' : 'ws-badge-success'))}">
+                ${rKd == null ? 'Idea only' : `KD ${rKd}`}
               </span>
             </td>
             <td>${rCpc}</td>
@@ -1837,10 +1837,13 @@ function populateCompareUI(data) {
 
   const leader = data.topLeader || (data.leaderboard && data.leaderboard[0]) || data.site1 || {};
   const mySite = data.mySite || (data.leaderboard && data.leaderboard.find(s => s.isMySite)) || leader;
-  const benchmarks = data.benchmarks || { avgScore: 75, avgSpeed: 450, avgWords: 1200 };
+  const benchmarks = data.benchmarks || { avgScore: null, avgSpeed: null, avgWords: null };
 
   if (winnerBadge) {
-    if (mySite.rank === 1) {
+    if (mySite.isFallback || leader.isFallback) {
+      winnerBadge.className = 'ws-badge ws-badge-info';
+      winnerBadge.textContent = 'Comparison incomplete — one or more sites could not be audited';
+    } else if (mySite.rank === 1) {
       winnerBadge.className = 'ws-badge ws-badge-success';
       winnerBadge.textContent = `👑 Market Leader: Your Site Holds Rank #1 (${mySite.score}/100)`;
     } else {
@@ -1852,8 +1855,8 @@ function populateCompareUI(data) {
   // 1. Antigravity Benchmark Podium Cards
   if (podiumContainer) {
     const isMySiteWinner = mySite.rank === 1;
-    const scoreDiff = leader.score - mySite.score;
-    const speedDiff = mySite.loadTimeMs - leader.loadTimeMs;
+    const scoreDiff = Number.isFinite(leader.score) && Number.isFinite(mySite.score) ? leader.score - mySite.score : null;
+    const speedDiff = Number.isFinite(mySite.loadTimeMs) && Number.isFinite(leader.loadTimeMs) ? mySite.loadTimeMs - leader.loadTimeMs : null;
 
     podiumContainer.innerHTML = `
       <!-- Card 1: Rank #1 Winner -->
@@ -1861,14 +1864,14 @@ function populateCompareUI(data) {
         <div class="podium-badge">👑 Rank #1 Market Leader</div>
         <div class="podium-hostname" title="${escapeHtml(leader.url)}">${escapeHtml(leader.hostname)}</div>
         <div class="podium-score-row">
-          <span class="podium-score-val">${leader.score}</span>
+          <span class="podium-score-val">${leader.score ?? '—'}</span>
           <span style="font-size:1rem;color:var(--text-dim);font-weight:700;">/ 100 SEO Health</span>
         </div>
         <div class="podium-stats-list">
-          <div class="podium-stats-item"><span>TTFB Speed:</span><strong>${leader.loadTimeMs} ms</strong></div>
-          <div class="podium-stats-item"><span>Content Depth:</span><strong>${(leader.wordCount || 0).toLocaleString()} words</strong></div>
-          <div class="podium-stats-item"><span>H1 Architecture:</span><strong>${leader.h1Count === 1 ? 'Optimal (1 H1)' : leader.h1Count + ' tags'}</strong></div>
-          <div class="podium-stats-item"><span>Alt Coverage:</span><strong>${leader.imagesMissingAlt === 0 ? '100% Complete' : leader.imagesMissingAlt + ' Missing'}</strong></div>
+          <div class="podium-stats-item"><span>TTFB Speed:</span><strong>${leader.loadTimeMs == null ? 'Unavailable' : `${leader.loadTimeMs} ms`}</strong></div>
+          <div class="podium-stats-item"><span>Content Depth:</span><strong>${leader.wordCount == null ? 'Unavailable' : `${leader.wordCount.toLocaleString()} words`}</strong></div>
+          <div class="podium-stats-item"><span>H1 Architecture:</span><strong>${leader.h1Count == null ? 'Unavailable' : (leader.h1Count === 1 ? 'Optimal (1 H1)' : `${leader.h1Count} tags`)}</strong></div>
+          <div class="podium-stats-item"><span>Alt Coverage:</span><strong>${leader.imagesMissingAlt == null ? 'Unavailable' : (leader.imagesMissingAlt === 0 ? '100% Complete' : `${leader.imagesMissingAlt} Missing`)}</strong></div>
         </div>
       </div>
 
@@ -1877,32 +1880,32 @@ function populateCompareUI(data) {
         <div class="podium-badge">🎯 Your Website (Rank #${mySite.rank || 1} of ${data.totalCompared || 2})</div>
         <div class="podium-hostname" title="${escapeHtml(mySite.url)}">${escapeHtml(mySite.hostname)}</div>
         <div class="podium-score-row">
-          <span class="podium-score-val">${mySite.score}</span>
+          <span class="podium-score-val">${mySite.score ?? '—'}</span>
           <span style="font-size:1rem;color:var(--text-dim);font-weight:700;">/ 100</span>
           ${isMySiteWinner 
             ? `<span style="font-size:0.75rem;background:#10b981;color:#fff;padding:2px 6px;border-radius:10px;font-weight:800;margin-left:auto;">🏆 Top Rank</span>`
-            : `<span style="font-size:0.75rem;background:#ef4444;color:#fff;padding:2px 6px;border-radius:10px;font-weight:800;margin-left:auto;">-${scoreDiff} pts vs #1</span>`}
+            : (scoreDiff == null ? '' : `<span style="font-size:0.75rem;background:#ef4444;color:#fff;padding:2px 6px;border-radius:10px;font-weight:800;margin-left:auto;">-${scoreDiff} pts vs #1</span>`)}
         </div>
         <div class="podium-stats-list">
-          <div class="podium-stats-item"><span>TTFB Speed:</span><strong>${mySite.loadTimeMs} ms ${speedDiff > 0 ? `(+${speedDiff}ms slower)` : `(${Math.abs(speedDiff)}ms faster)`}</strong></div>
-          <div class="podium-stats-item"><span>Content Depth:</span><strong>${(mySite.wordCount || 0).toLocaleString()} words</strong></div>
-          <div class="podium-stats-item"><span>H1 Architecture:</span><strong>${mySite.h1Count === 1 ? 'Optimal (1 H1)' : mySite.h1Count + ' tags'}</strong></div>
-          <div class="podium-stats-item"><span>Alt Coverage:</span><strong>${mySite.imagesMissingAlt === 0 ? '100% Complete' : mySite.imagesMissingAlt + ' Missing'}</strong></div>
+          <div class="podium-stats-item"><span>TTFB Speed:</span><strong>${mySite.loadTimeMs == null ? 'Unavailable' : `${mySite.loadTimeMs} ms${speedDiff == null ? '' : (speedDiff > 0 ? ` (+${speedDiff}ms slower)` : ` (${Math.abs(speedDiff)}ms faster)`)}`}</strong></div>
+          <div class="podium-stats-item"><span>Content Depth:</span><strong>${mySite.wordCount == null ? 'Unavailable' : `${mySite.wordCount.toLocaleString()} words`}</strong></div>
+          <div class="podium-stats-item"><span>H1 Architecture:</span><strong>${mySite.h1Count == null ? 'Unavailable' : (mySite.h1Count === 1 ? 'Optimal (1 H1)' : `${mySite.h1Count} tags`)}</strong></div>
+          <div class="podium-stats-item"><span>Alt Coverage:</span><strong>${mySite.imagesMissingAlt == null ? 'Unavailable' : (mySite.imagesMissingAlt === 0 ? '100% Complete' : `${mySite.imagesMissingAlt} Missing`)}</strong></div>
         </div>
       </div>
 
       <!-- Card 3: Industry Benchmark Average -->
       <div class="podium-card benchmark">
-        <div class="podium-badge">📊 Industry Benchmark Average</div>
+        <div class="podium-badge">📊 Compared Sites Average</div>
         <div class="podium-hostname">Combined Group (${data.totalCompared || 2} Sites)</div>
         <div class="podium-score-row">
-          <span class="podium-score-val">${benchmarks.avgScore}</span>
+          <span class="podium-score-val">${benchmarks.avgScore ?? '—'}</span>
           <span style="font-size:1rem;color:var(--text-dim);font-weight:700;">/ 100 Group Mean</span>
         </div>
         <div class="podium-stats-list">
-          <div class="podium-stats-item"><span>Avg TTFB Latency:</span><strong>${benchmarks.avgSpeed} ms</strong></div>
-          <div class="podium-stats-item"><span>Avg Content Length:</span><strong>${(benchmarks.avgWords || 0).toLocaleString()} words</strong></div>
-          <div class="podium-stats-item"><span>HTTPS Security:</span><strong>100% Monitored</strong></div>
+          <div class="podium-stats-item"><span>Avg TTFB Latency:</span><strong>${benchmarks.avgSpeed == null ? 'Unavailable' : `${benchmarks.avgSpeed} ms`}</strong></div>
+          <div class="podium-stats-item"><span>Avg Content Length:</span><strong>${benchmarks.avgWords == null ? 'Unavailable' : `${benchmarks.avgWords.toLocaleString()} words`}</strong></div>
+          <div class="podium-stats-item"><span>HTTPS Security:</span><strong>Based on measured sites</strong></div>
           <div class="podium-stats-item"><span>Benchmark Method:</span><strong>Antigravity Live Parallel</strong></div>
         </div>
       </div>
@@ -1933,9 +1936,9 @@ function populateCompareUI(data) {
     const list = data.leaderboard || data.sites || [data.site1, data.site2].filter(Boolean);
     table.innerHTML = list.map((site, idx) => {
       const rank = site.rank || idx + 1;
-      const isWinner = rank === 1;
-      const rankMedal = rank === 1 ? '🥇 #1' : rank === 2 ? '🥈 #2' : rank === 3 ? '🥉 #3' : `#${rank}`;
-      const gapVsLeader = isWinner ? '<span style="color:#10b981;font-weight:700;">Leader (0)</span>' : `<span style="color:#ef4444;font-weight:700;">-${leader.score - site.score} pts</span>`;
+      const isWinner = rank === 1 && !site.isFallback;
+      const rankMedal = site.isFallback ? '—' : rank === 1 ? '🥇 #1' : rank === 2 ? '🥈 #2' : rank === 3 ? '🥉 #3' : `#${rank}`;
+      const gapVsLeader = site.isFallback ? 'Not audited' : isWinner ? '<span style="color:#10b981;font-weight:700;">Leader (0)</span>' : (Number.isFinite(leader.score) && Number.isFinite(site.score) ? `<span style="color:#ef4444;font-weight:700;">-${leader.score - site.score} pts</span>` : 'Unavailable');
 
       return `
         <tr style="${site.isMySite ? 'background:rgba(6,182,212,0.06);' : ''}">
@@ -1951,16 +1954,16 @@ function populateCompareUI(data) {
           <td>
             <div style="display:flex;align-items:center;gap:0.5rem;">
               <div style="width:50px;height:6px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden;">
-                <div style="width:${site.score}%;height:100%;background:${site.score >= 80 ? '#10b981' : site.score >= 60 ? '#f59e0b' : '#ef4444'};"></div>
+                <div style="width:${site.score ?? 0}%;height:100%;background:${site.score >= 80 ? '#10b981' : site.score >= 60 ? '#f59e0b' : '#ef4444'};"></div>
               </div>
-              <strong style="color:${site.score >= 80 ? '#10b981' : site.score >= 60 ? '#f59e0b' : '#ef4444'};">${site.score}/100</strong>
+              <strong style="color:${site.score == null ? 'var(--text-muted)' : (site.score >= 80 ? '#10b981' : site.score >= 60 ? '#f59e0b' : '#ef4444')};">${site.score == null ? '—' : `${site.score}/100`}</strong>
             </div>
           </td>
-          <td>${site.loadTimeMs} ms</td>
-          <td>${(site.wordCount || 0).toLocaleString()} words</td>
-          <td>${site.h1Count === 1 ? '<span style="color:#10b981;">Optimal (1)</span>' : `${site.h1Count || 0} H1s`}</td>
-          <td>${site.isHttps ? '🔒 HTTPS' : '⚠️ Insecure'}</td>
-          <td>${site.imagesMissingAlt === 0 ? '<span style="color:#10b981;">100% Alt</span>' : `${site.imagesMissingAlt || 0} Missing`}</td>
+          <td>${site.loadTimeMs == null ? '—' : `${site.loadTimeMs} ms`}</td>
+          <td>${site.wordCount == null ? '—' : `${site.wordCount.toLocaleString()} words`}</td>
+          <td>${site.h1Count == null ? '—' : (site.h1Count === 1 ? '<span style="color:#10b981;">Optimal (1)</span>' : `${site.h1Count} H1s`)}</td>
+          <td>${site.isHttps == null ? '—' : (site.isHttps ? '🔒 HTTPS' : '⚠️ Insecure')}</td>
+          <td>${site.imagesMissingAlt == null ? '—' : (site.imagesMissingAlt === 0 ? '<span style="color:#10b981;">100% Alt</span>' : `${site.imagesMissingAlt} Missing`)}</td>
           <td>${gapVsLeader}</td>
         </tr>
       `;
@@ -2520,14 +2523,15 @@ function initLighthouseEngine() {
       const data = await res.json();
 
       loading.style.display = 'none';
+      if (!res.ok || !data.success) throw new Error(data.error || `PageSpeed Insights returned HTTP ${res.status}`);
       results.style.display = 'block';
       runBtn.disabled = false;
 
       // Category scores
-      const perfScore = data.scores?.performance ?? data.categories?.performance?.score ?? 90;
-      const a11yScore = data.scores?.accessibility ?? data.categories?.accessibility?.score ?? 92;
-      const bpScore = data.scores?.bestPractices ?? data.categories?.bestPractices?.score ?? 95;
-      const seoScore = data.scores?.seo ?? data.categories?.seo?.score ?? 98;
+      const perfScore = data.scores?.performance ?? '—';
+      const a11yScore = data.scores?.accessibility ?? '—';
+      const bpScore = data.scores?.bestPractices ?? '—';
+      const seoScore = data.scores?.seo ?? '—';
 
       document.getElementById('lh-score-perf').textContent = perfScore;
       document.getElementById('lh-score-a11y').textContent = a11yScore;
@@ -2536,20 +2540,15 @@ function initLighthouseEngine() {
 
       // Vitals
       const vitals = data.coreWebVitals || {};
-      document.getElementById('lh-metric-lcp').textContent = vitals.lcp?.value || vitals.lcp?.displayValue || '1.2 s';
-      document.getElementById('lh-metric-fcp').textContent = vitals.fcp?.value || vitals.fcp?.displayValue || '0.8 s';
-      document.getElementById('lh-metric-cls').textContent = vitals.cls?.value || vitals.cls?.displayValue || '0.01';
-      document.getElementById('lh-metric-tbt').textContent = vitals.tbt?.value || vitals.tbt?.displayValue || '40 ms';
+      document.getElementById('lh-metric-lcp').textContent = vitals.lcp?.value || vitals.lcp?.displayValue || '—';
+      document.getElementById('lh-metric-fcp').textContent = vitals.fcp?.value || vitals.fcp?.displayValue || '—';
+      document.getElementById('lh-metric-cls').textContent = vitals.cls?.value || vitals.cls?.displayValue || '—';
+      document.getElementById('lh-metric-tbt').textContent = vitals.tbt?.value || vitals.tbt?.displayValue || '—';
 
-      // CWV overall badge
+      // PageSpeed reports lab data here; this is not field Core Web Vitals.
       const badge = document.getElementById('lh-cwv-badge');
-      if (vitals.passed) {
-        badge.className = 'ws-badge ws-badge-success';
-        badge.textContent = 'CORE WEB VITALS PASSED (GOOD)';
-      } else {
-        badge.className = 'ws-badge ws-badge-warning';
-        badge.textContent = 'NEEDS IMPROVEMENT';
-      }
+      badge.className = 'ws-badge ws-badge-info';
+      badge.textContent = 'PAGESPEED LAB DATA • CHECK FIELD CWV IN SEARCH CONSOLE';
 
       // Opportunities
       const oppContainer = document.getElementById('lh-opportunities-container');
@@ -2564,7 +2563,7 @@ function initLighthouseEngine() {
           </div>
         `).join('');
       } else {
-        oppContainer.innerHTML = '<div style="color:var(--text-muted);font-size:0.9rem;">No critical performance bottlenecks detected. Site is performing within target latency thresholds.</div>';
+        oppContainer.innerHTML = '<div style="color:var(--text-muted);font-size:0.9rem;">No Lighthouse opportunities above the display threshold were returned for this run.</div>';
       }
 
     } catch (err) {
@@ -2991,20 +2990,20 @@ function initBacklinkEngine() {
       const nofollowEl = document.getElementById('bl-nofollow-pct');
       const srcEl = document.getElementById('bl-source-label');
 
-      if (daEl) daEl.textContent = `${data.da} / 100`;
-      if (blEl) blEl.textContent = data.totalBacklinks;
-      if (refEl) refEl.textContent = data.referringDomains;
-      if (spamEl) spamEl.textContent = data.spamScore;
-      if (dofollowEl) dofollowEl.textContent = data.dofollowRatio;
-      if (nofollowEl) nofollowEl.textContent = data.nofollowRatio;
-      if (srcEl) srcEl.textContent = `Source: ${data.source}`;
+      if (daEl) daEl.textContent = data.pageRank == null ? '—' : `${data.pageRank} / 10`;
+      if (blEl) blEl.textContent = data.backlinks ?? '—';
+      if (refEl) refEl.textContent = data.referringDomains ?? '—';
+      if (spamEl) spamEl.textContent = data.spamScore ?? '—';
+      if (dofollowEl) dofollowEl.textContent = data.dofollowRatio ?? '—';
+      if (nofollowEl) nofollowEl.textContent = data.nofollowRatio ?? '—';
+      if (srcEl) srcEl.textContent = `Source: ${data.source}. ${data.note || ''}`;
 
       const anchorsList = document.getElementById('bl-anchors-list');
       if (anchorsList && data.anchorDistribution) {
         anchorsList.innerHTML = data.anchorDistribution.map(a => `
           <span class="ws-badge ws-badge-info" style="font-size:0.75rem;">${escapeHtml(a.anchor)} (${a.percentage})</span>
         `).join('');
-      }
+      } else if (anchorsList) anchorsList.textContent = 'Unavailable from this provider';
 
       if (resultsBox) resultsBox.style.display = 'block';
     } catch (err) {
@@ -3046,11 +3045,11 @@ function initGscTracker() {
         pill.style.border = '1px solid rgba(16,185,129,0.3)';
         if (desc) desc.textContent = 'Authenticated with Google Cloud. Pulling direct verified property data.';
       } else {
-        pill.innerHTML = `<span style="width:8px;height:8px;border-radius:50%;background:#06b6d4;"></span> Deterministic High-Fidelity Sandbox`;
-        pill.style.color = '#06b6d4';
-        pill.style.background = 'rgba(6,182,212,0.15)';
-        pill.style.border = '1px solid rgba(6,182,212,0.3)';
-        if (desc) desc.textContent = 'Zero configuration required. Switch to live Google API anytime.';
+        pill.innerHTML = `<span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;"></span> Not connected`;
+        pill.style.color = '#f59e0b';
+        pill.style.background = 'rgba(245,158,11,0.12)';
+        pill.style.border = '1px solid rgba(245,158,11,0.3)';
+        if (desc) desc.textContent = data.message || 'Connect Google Search Console to load verified property data. No sample numbers are shown.';
       }
     } catch (_) {}
   }
@@ -3089,7 +3088,7 @@ function initGscTracker() {
         const res = await fetch('/api/gsc/data', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ domain, dateRange })
+          body: JSON.stringify({ url: domain, days: parseInt(dateRange, 10) || 28 })
         });
         const data = await res.json();
         if (!data.success) throw new Error(data.error || 'Failed to fetch GSC data');
@@ -3255,9 +3254,7 @@ function initGscTracker() {
         const res = await fetch('/api/gsc/disconnect', { method: 'POST' });
         const data = await res.json();
         if (data.success) {
-          alert('Switched back to Deterministic Sandbox Mode.');
           closeGscModal();
-          checkGscStatus();
         }
       } catch (err) {
         alert('Disconnect error: ' + err.message);

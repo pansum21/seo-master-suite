@@ -57,35 +57,38 @@ export async function compareMultiCompetitors(myUrl, competitorUrls = []) {
         metaDescOptimal: (data.meta?.description?.length >= 120 && data.meta?.description?.length <= 165)
       });
     } else {
-      // Graceful fallback for unreachable competitor with realistic heuristic benchmark
+      // Keep unreachable sites explicit; never invent metrics for a failed scan.
       sites.push({
         id: `site_${idx}`,
         isMySite: idx === 0,
         url: rawUrl,
         hostname: host,
         title: `${host} (Unreachable during audit)`,
-        score: idx === 0 ? 55 : 62,
-        loadTimeMs: 780,
-        wordCount: 850,
-        h1Count: 1,
-        imagesMissingAlt: 3,
-        imagesTotal: 6,
-        isHttps: rawUrl.startsWith('https://'),
-        schemaCount: 0,
-        linksTotal: 18,
-        criticalCount: 2,
-        warningsCount: 4,
+        score: null,
+        loadTimeMs: null,
+        wordCount: null,
+        h1Count: null,
+        imagesMissingAlt: null,
+        imagesTotal: null,
+        isHttps: null,
+        schemaCount: null,
+        linksTotal: null,
+        criticalCount: null,
+        warningsCount: null,
         metaTitleOptimal: false,
         metaDescOptimal: false,
-        isFallback: true
+        isFallback: true,
+        error: 'No metrics available because the URL could not be audited.'
       });
     }
   });
 
   // Calculate Leaderboard Ranks (sorted by score descending, then fastest speed)
   const ranked = [...sites].sort((a, b) => {
+    if (a.score == null) return b.score == null ? 0 : 1;
+    if (b.score == null) return -1;
     if (b.score !== a.score) return b.score - a.score;
-    return a.loadTimeMs - b.loadTimeMs;
+    return (a.loadTimeMs ?? Infinity) - (b.loadTimeMs ?? Infinity);
   });
 
   const leaderboard = ranked.map((site, index) => ({
@@ -97,13 +100,24 @@ export async function compareMultiCompetitors(myUrl, competitorUrls = []) {
   const leaderSite = leaderboard[0];
 
   // Calculate Average Industry Benchmark
-  const avgScore = Math.round(sites.reduce((acc, s) => acc + s.score, 0) / sites.length);
-  const avgSpeed = Math.round(sites.reduce((acc, s) => acc + s.loadTimeMs, 0) / sites.length);
-  const avgWords = Math.round(sites.reduce((acc, s) => acc + s.wordCount, 0) / sites.length);
+  const measuredSites = sites.filter(s => !s.isFallback);
+  const average = (key) => measuredSites.length
+    ? Math.round(measuredSites.reduce((acc, site) => acc + (Number(site[key]) || 0), 0) / measuredSites.length)
+    : null;
+  const avgScore = average('score');
+  const avgSpeed = average('loadTimeMs');
+  const avgWords = average('wordCount');
 
   // Strategic Gaps for Antigravity-Style Intelligence Box
   const gaps = [];
-  if (mySiteRanked.rank > 1) {
+  if (mySiteRanked?.isFallback || leaderSite?.isFallback) {
+    gaps.push({
+      metric: 'Comparison incomplete',
+      gapText: 'At least one requested site could not be audited. No scores or competitor advantages were invented.',
+      urgency: 'info',
+      action: 'Check the site URL, availability, and crawl access, then run the comparison again.'
+    });
+  } else if (mySiteRanked.rank > 1) {
     const scoreDiff = leaderSite.score - mySiteRanked.score;
     gaps.push({
       metric: 'SEO Health Deficit',

@@ -23,8 +23,32 @@ import { getAlerts, dismissAlert, clearAllAlerts, getMonitorConfig, updateMonito
 const app = express();
 const PORT = process.env.PORT || 5050;
 
-app.use(cors());
-app.use(express.json());
+const allowedOrigins = (process.env.ALLOWED_ORIGINS || '').split(',').map(origin => origin.trim()).filter(Boolean);
+app.use(cors({
+  origin(origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
+    return callback(null, false);
+  }
+}));
+app.use(express.json({ limit: '1mb' }));
+
+// Basic per-process request cap for expensive public scan endpoints.
+const apiWindows = new Map();
+app.use('/api', (req, res, next) => {
+  const now = Date.now();
+  const key = req.ip || req.socket.remoteAddress || 'unknown';
+  let window = apiWindows.get(key);
+  if (!window || now - window.startedAt >= 60_000) window = { startedAt: now, count: 0 };
+  window.count += 1;
+  apiWindows.set(key, window);
+  if (apiWindows.size > 5000) {
+    for (const [ip, entry] of apiWindows) if (now - entry.startedAt >= 60_000) apiWindows.delete(ip);
+  }
+  res.setHeader('X-RateLimit-Limit', '120');
+  res.setHeader('X-RateLimit-Remaining', String(Math.max(0, 120 - window.count)));
+  if (window.count > 120) return res.status(429).json({ success: false, error: 'Request limit reached. Try again after one minute.' });
+  next();
+});
 
 // Serve static frontend files from public directory
 app.use(express.static(path.resolve('public')));
@@ -102,7 +126,7 @@ app.post('/api/lighthouse', async (req, res) => {
     res.json(result);
   } catch (err) {
     console.error('Lighthouse Error:', err);
-    res.status(500).json({ error: err.message });
+    res.status(err.statusCode || 500).json({ success: false, error: err.message });
   }
 });
 
@@ -113,7 +137,7 @@ app.get('/api/history', (req, res) => {
     const history = getHistory(domain);
     res.json({ success: true, count: history.length, history });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(err.statusCode || 500).json({ success: false, error: err.message });
   }
 });
 
@@ -373,7 +397,7 @@ app.post('/api/backlinks', async (req, res) => {
     const result = await analyzeDomainAuthority(url);
     res.json({ success: true, ...result });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(err.statusCode || 500).json({ success: false, error: err.message });
   }
 });
 
@@ -385,10 +409,10 @@ app.get('/api/gsc/status', (req, res) => {
 app.post('/api/gsc/data', (req, res) => {
   try {
     const { url, days = 28 } = req.body;
-    const analytics = getGscAnalytics(url, parseInt(days, 10) || 28);
+    const analytics = getGscAnalytics(url, Math.min(480, Math.max(1, parseInt(days, 10) || 28)));
     res.json({ success: true, ...analytics });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(err.statusCode || 500).json({ success: false, error: err.message });
   }
 });
 
@@ -397,7 +421,7 @@ app.post('/api/gsc/connect', (req, res) => {
     const result = saveGscConfig(req.body);
     res.json(result);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(err.statusCode || 500).json({ success: false, error: err.message });
   }
 });
 

@@ -1,4 +1,5 @@
 import * as cheerio from 'cheerio';
+import { fetchPublicUrl } from './urlSafety.js';
 
 /**
  * SEOPulse Pro Deep Site Spider (Screaming Frog Mode)
@@ -60,14 +61,13 @@ async function auditSinglePage(url, referrer = 'Seed URL', depth = 0) {
   const timeoutId = setTimeout(() => controller.abort(), 12000);
 
   try {
-    const res = await fetch(url, {
+    const res = await fetchPublicUrl(url, {
       signal: controller.signal,
       headers: {
         'User-Agent': 'SEOPulsePro-Spider/3.0 (+https://seopulse.local; Screaming-Frog-Audit-Bot)',
         'Accept': 'text/html,application/xhtml+xml;q=0.9,*/*;q=0.8',
         'Accept-Language': 'en-US,en;q=0.9'
       },
-      redirect: 'follow'
     });
     clearTimeout(timeoutId);
 

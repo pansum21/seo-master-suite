@@ -1,4 +1,5 @@
 import * as cheerio from 'cheerio';
+import { fetchPublicUrl } from './urlSafety.js';
 
 /**
  * Multi-Page Sitemap Crawler
@@ -24,7 +25,7 @@ export async function crawlSitemap(domainOrSitemapUrl, maxPages = 15) {
   let sitemapDomainMismatch = false;
 
   try {
-    const res = await fetch(sitemapUrl, {
+    const res = await fetchPublicUrl(sitemapUrl, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 SEOPulseSpider/2.0'
       },
@@ -50,7 +51,7 @@ export async function crawlSitemap(domainOrSitemapUrl, maxPages = 15) {
   // Fallback if no sitemap.xml exists: crawl origin home page to extract internal links!
   if (discoveredUrls.length === 0) {
     try {
-      const homeRes = await fetch(parsedUrl.origin, {
+      const homeRes = await fetchPublicUrl(parsedUrl.origin, {
         headers: {
           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 SEOPulseSpider/2.0'
         },
@@ -108,12 +109,11 @@ export async function crawlSitemap(domainOrSitemapUrl, maxPages = 15) {
 
         // Try direct fetch
         try {
-          pageRes = await fetch(finalFetchUrl, {
+          pageRes = await fetchPublicUrl(finalFetchUrl, {
             headers: {
               'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 SEOPulseSpider/2.0'
             },
             signal: AbortSignal.timeout(7000),
-            redirect: 'follow'
           });
         } catch (firstErr) {
           // If first fetch failed and there's a domain mismatch, fallback to testing on input origin!
@@ -121,12 +121,11 @@ export async function crawlSitemap(domainOrSitemapUrl, maxPages = 15) {
             try {
               const relativePath = new URL(u).pathname;
               finalFetchUrl = new URL(relativePath, parsedUrl.origin).href;
-              pageRes = await fetch(finalFetchUrl, {
+              pageRes = await fetchPublicUrl(finalFetchUrl, {
                 headers: {
                   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 SEOPulseSpider/2.0'
                 },
                 signal: AbortSignal.timeout(7000),
-                redirect: 'follow'
               });
             } catch {}
           }

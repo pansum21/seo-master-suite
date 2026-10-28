@@ -1,4 +1,5 @@
 import * as cheerio from 'cheerio';
+import { fetchPublicUrl } from './urlSafety.js';
 
 /**
  * Deep On-Page SEO Auditor
@@ -26,14 +27,13 @@ export async function auditUrl(rawUrl) {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 15000);
 
-    response = await fetch(targetUrl, {
+    response = await fetchPublicUrl(targetUrl, {
       signal: controller.signal,
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 SEOPulseBot/1.0',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
         'Accept-Language': 'en-US,en;q=0.9,hi;q=0.8'
       },
-      redirect: 'follow'
     });
 
     clearTimeout(timeout);
@@ -488,13 +488,13 @@ async function checkTechnicalFiles(origin) {
   };
 
   try {
-    const robotsRes = await fetch(`${origin}/robots.txt`, { method: 'HEAD', timeout: 4000 });
+    const robotsRes = await fetchPublicUrl(`${origin}/robots.txt`, { method: 'HEAD', signal: AbortSignal.timeout(4000) });
     result.robotsTxt.status = robotsRes.status;
     result.robotsTxt.exists = robotsRes.status === 200;
   } catch {}
 
   try {
-    const sitemapRes = await fetch(`${origin}/sitemap.xml`, { method: 'HEAD', timeout: 4000 });
+    const sitemapRes = await fetchPublicUrl(`${origin}/sitemap.xml`, { method: 'HEAD', signal: AbortSignal.timeout(4000) });
     result.sitemapXml.status = sitemapRes.status;
     result.sitemapXml.exists = sitemapRes.status === 200;
   } catch {}
