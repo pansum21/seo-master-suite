@@ -1,7 +1,9 @@
+import { assertPublicHttpUrl } from './urlSafety.js';
+
 /** Google PageSpeed Insights API client. Results are never synthesized. */
 export async function getLighthouseAudit(targetUrl, strategy = 'mobile') {
   const url = /^https?:\/\//i.test(targetUrl.trim()) ? targetUrl.trim() : `https://${targetUrl.trim()}`;
-  new URL(url);
+  await assertPublicHttpUrl(url);
   if (!['mobile', 'desktop'].includes(strategy)) throw new Error('Strategy must be mobile or desktop.');
   const startedAt = Date.now();
   const apiKey = process.env.GOOGLE_PAGESPEED_API_KEY || '';
