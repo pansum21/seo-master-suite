@@ -16,7 +16,7 @@ import { getLighthouseAudit } from './services/lighthouseService.js';
 import { getHistory, logAuditEntry } from './services/historyEngine.js';
 import { crawlSiteDeep } from './services/deepSpider.js';
 import { getProjects, saveProject, deleteProject } from './services/projectManager.js';
-import { analyzeDomainAuthority } from './services/backlinkEngine.js';
+import { getDomainRatingProviderStatus, getAhrefsDomainRatings } from './services/backlinkEngine.js';
 import { getGscStatus, saveGscConfig, disconnectGsc, getGscAnalytics } from './services/gscService.js';
 import { getAlerts, dismissAlert, clearAllAlerts, getMonitorConfig, updateMonitorConfig, executeScheduledCheck, initBackgroundMonitor } from './services/cronMonitor.js';
 
@@ -389,12 +389,16 @@ app.delete('/api/projects/:id', (req, res) => {
   }
 });
 
-// 15. Domain Authority & Inbound Backlinks Engine
+// 15. Ahrefs Domain Rating checker (free public endpoint)
+app.get('/api/backlinks/status', (req, res) => {
+  res.json({ success: true, ...getDomainRatingProviderStatus() });
+});
+
 app.post('/api/backlinks', async (req, res) => {
   try {
-    const { url } = req.body;
-    if (!url) return res.status(400).json({ error: 'URL or domain is required' });
-    const result = await analyzeDomainAuthority(url);
+    const targets = Array.isArray(req.body.targets) ? req.body.targets : [req.body.url];
+    if (!targets.some(Boolean)) return res.status(400).json({ success: false, error: 'Enter a domain or URL.' });
+    const result = await getAhrefsDomainRatings(targets);
     res.json({ success: true, ...result });
   } catch (err) {
     res.status(err.statusCode || 500).json({ success: false, error: err.message });

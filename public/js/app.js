@@ -2965,53 +2965,95 @@ function initBacklinkEngine() {
   const scanBtn = document.getElementById('backlink-scan-btn');
   const input = document.getElementById('backlink-domain-input');
   const resultsBox = document.getElementById('backlink-results-box');
+  const batchBtn = document.getElementById('dr-batch-btn');
+  const batchInput = document.getElementById('dr-batch-input');
+  const providerPill = document.getElementById('dr-provider-status');
+  let lastDrRows = [];
 
-  if (!scanBtn) return;
+  const setProviderStatus = (text, tone = 'warning', title = '') => {
+    if (!providerPill) return;
+    providerPill.textContent = text;
+    providerPill.title = title;
+    providerPill.className = `ws-badge ws-badge-${tone}`;
+  };
 
-  scanBtn.addEventListener('click', async () => {
-    const url = (input && input.value.trim()) || state.lastAuditedUrl || 'https://example.com';
-    scanBtn.disabled = true;
-    scanBtn.textContent = 'Analyzing... ⏳';
+  fetch('/api/backlinks/status').then(res => res.json()).then(data => {
+    setProviderStatus(data.configured ? 'Ahrefs API connected' : 'Ahrefs API key required', data.configured ? 'success' : 'warning', data.message || '');
+  }).catch(() => setProviderStatus('Provider status unavailable', 'danger'));
 
+  function renderDrResults(data) {
+    lastDrRows = data.targets || [];
+    if (resultsBox) resultsBox.style.display = 'block';
+    const score = document.getElementById('bl-metric-dr');
+    const count = document.getElementById('bl-target-count');
+    const version = document.getElementById('bl-version');
+    const single = document.getElementById('dr-single-result');
+    const batchBox = document.getElementById('dr-batch-results');
+    const body = document.getElementById('dr-results-body');
+    if (count) count.textContent = lastDrRows.length.toLocaleString();
+    if (version) version.textContent = data.version || 'DR4';
+
+    if (lastDrRows.length === 1) {
+      if (score) score.textContent = lastDrRows[0].domainRating == null ? 'No data' : `${lastDrRows[0].domainRating} / 100`;
+      if (single) single.textContent = `${lastDrRows[0].target} · checked ${new Date(data.fetchedAt).toLocaleString()}`;
+      if (batchBox) batchBox.style.display = 'none';
+      return;
+    }
+
+    if (score) score.textContent = '—';
+    if (single) single.textContent = `Checked ${lastDrRows.length.toLocaleString()} domains · ${new Date(data.fetchedAt).toLocaleString()}`;
+    if (body) body.innerHTML = lastDrRows.map(row => `<tr><td>${escapeHtml(row.target)}</td><td>${row.domainRating == null ? 'No data' : row.domainRating}</td></tr>`).join('');
+    if (batchBox) batchBox.style.display = 'block';
+  }
+
+  async function checkRatings(targets, button) {
+    button.disabled = true;
+    const previousText = button.textContent;
+    button.textContent = 'Checking…';
+    if (resultsBox) resultsBox.style.display = 'none';
+    setProviderStatus('Requesting Ahrefs DR…', 'info');
     try {
       const res = await fetch('/api/backlinks', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url })
+        body: JSON.stringify({ targets })
       });
       const data = await res.json();
-      if (!data.success) throw new Error(data.error || 'Failed to analyze backlinks');
-
-      const daEl = document.getElementById('bl-metric-da');
-      const blEl = document.getElementById('bl-metric-backlinks');
-      const refEl = document.getElementById('bl-metric-referring');
-      const spamEl = document.getElementById('bl-metric-spam');
-      const dofollowEl = document.getElementById('bl-dofollow-pct');
-      const nofollowEl = document.getElementById('bl-nofollow-pct');
-      const srcEl = document.getElementById('bl-source-label');
-
-      if (daEl) daEl.textContent = data.pageRank == null ? '—' : `${data.pageRank} / 10`;
-      if (blEl) blEl.textContent = data.backlinks ?? '—';
-      if (refEl) refEl.textContent = data.referringDomains ?? '—';
-      if (spamEl) spamEl.textContent = data.spamScore ?? '—';
-      if (dofollowEl) dofollowEl.textContent = data.dofollowRatio ?? '—';
-      if (nofollowEl) nofollowEl.textContent = data.nofollowRatio ?? '—';
-      if (srcEl) srcEl.textContent = `Source: ${data.source}. ${data.note || ''}`;
-
-      const anchorsList = document.getElementById('bl-anchors-list');
-      if (anchorsList && data.anchorDistribution) {
-        anchorsList.innerHTML = data.anchorDistribution.map(a => `
-          <span class="ws-badge ws-badge-info" style="font-size:0.75rem;">${escapeHtml(a.anchor)} (${a.percentage})</span>
-        `).join('');
-      } else if (anchorsList) anchorsList.textContent = 'Unavailable from this provider';
-
-      if (resultsBox) resultsBox.style.display = 'block';
+      if (!res.ok || !data.success) throw new Error(data.error || `Request failed (${res.status})`);
+      renderDrResults(data);
+      setProviderStatus('Ahrefs API connected', 'success', 'Domain Rating by Ahrefs');
     } catch (err) {
-      alert('Backlink analysis error: ' + err.message);
+      setProviderStatus(err.message, 'danger');
     } finally {
-      scanBtn.disabled = false;
-      scanBtn.textContent = 'Analyze Backlinks 🌐';
+      button.disabled = false;
+      button.textContent = previousText;
     }
+  }
+
+  if (scanBtn) scanBtn.addEventListener('click', () => {
+    const target = input?.value.trim();
+    if (!target) return setProviderStatus('Enter a domain first', 'warning');
+    checkRatings([target], scanBtn);
+  });
+
+  if (batchBtn) batchBtn.addEventListener('click', () => {
+    const targets = (batchInput?.value || '').split(/[\n,;]+/).map(value => value.trim()).filter(Boolean);
+    if (!targets.length) return setProviderStatus('Paste at least one domain', 'warning');
+    if (targets.length > 1000) return setProviderStatus('Batch limit is 1,000 domains', 'warning');
+    checkRatings(targets, batchBtn);
+  });
+
+  const exportBtn = document.getElementById('dr-export-btn');
+  if (exportBtn) exportBtn.addEventListener('click', () => {
+    if (!lastDrRows.length) return;
+    const quote = value => `"${String(value ?? '').replace(/"/g, '""')}"`;
+    const csv = ['Domain,Ahrefs Domain Rating', ...lastDrRows.map(row => `${quote(row.target)},${row.domainRating ?? ''}`)].join('\n');
+    const blobUrl = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+    const link = document.createElement('a');
+    link.href = blobUrl;
+    link.download = 'ahrefs-domain-ratings.csv';
+    link.click();
+    URL.revokeObjectURL(blobUrl);
   });
 }
 
